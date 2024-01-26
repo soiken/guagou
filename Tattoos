@@ -1,0 +1,87 @@
+      9.4.2 | Survival                                   Vision | 9.4.4
+
+The skill of Tattoos is an ancient one, having been discovered and perfected by the earliest
+Tsol'aa. Using special dry-powder inks crushed from rocks, the tattoo artist magically inscribes, 
+without a needle, various types of symbols onto a body (his own, or another's).
+
+Each type of tattoo requires a different combination of inks. In order to ink a tattoo, the syntax
+is: INK <tattoo> ON <body part> OF <player/me>. The available body parts are: head, torso, right 
+arm, left arm, right leg, left leg. Inking a tattoo requires that you have the proper inks in your 
+inventory, and it will take approximately 25 seconds, during which neither the inker nor the inkee 
+may do anything. Usually, one may find ink for sale at the various markets in the land.
+
+Obsidian ink, which is required to ink the more valuable tattoos such as Book, Flame, and Wand, are
+not available from rocks and may be purchased from general stores.
+
+As you learn higher in the skill of Tattoos, you will be able to place more and more tattoos on your
+body, until such time as you are able to place two tattoos on each bodypart, for a maximum of 12 
+tattoos upon your person.
+
+Tattoos come in a number of varieties. Most you will TOUCH in order to use, while others will work
+automatically under certain circumstances. Some tattoos have a limited number of uses, while some 
+have a chance of wearing off after each use.
+
+Pravna, located within Esterport, has a tattoo parlor where she can ink all tattoos for a cost. READ
+the SIGN in her shop for information, and ASK PRAVNA ABOUT <tattoo> for specific details on each 
+tattoos!
+
+If you wish to purchase an artifact tattoo, there is a parlor IN from Qeddwyn in Esterport that
+provides them. They cost 100 credits each. BUY <tattoo> ON <limb>.
+
+Typing TATTOOS will show you what tattoos you currently bear. WIPE OFF <tattoo> will remove a tattoo
+immediately.
+
+If you have a tattoo token, which entitles the owner to one free permanent tattoo, using the BUY
+command above will consume the token upon purchase.
+
+If you wish to purchase a tattoo, you can see what I'm able to ink with WARES.
+
+To purchase one of these, BUY <tattoo> ON <body part>. The valid places to have a tattoo are on your
+head, torso, right or left arm, or right or left leg. TATTOOS will show you what you currently bear, 
+and WIPE OFF <tattoo> will remove one to leave space for a new one.
+
+Each of my tattoos have a set fee, so please ensure you see WARES for the prices.
+
+If you have any other questions about tattoos, HELP TATTOOS should answer them.
+
+Skill	Rank	Percent	Description
+Firefly	Inept	0%	Light up your surroundings.
+Moss	Novice	0%	Automatically reduce your bleeding.
+Feather	Apprentice	0%	Attain the lightness of a feather and levitate.
+Shield	Capable	0%	Protect yourself from most attacks.
+Mindseye	Capable	40%	See while blind, hear while deaf.
+Hammer	Adept	0%	Shatter another's shield.
+Cloak	Adept	50%	Protect yourself from summonings.
+Bell	Skilled	0%	Be warned when there are those spying on you.
+Crystal	Skilled	40%	Heal yourself of all your wounds.
+Moon	Gifted	0%	Regeneration of mana through the power of light.
+Starburst	Gifted	50%	The power of the stars provides immediate resurrection.
+Boar	Expert	0%	Feel the noble blood of the Black Boar beat in your veins.
+Web	Expert	50%	Snare another in a sticky web.
+Tentacle	Virtuoso	0%	Call the tentacles of Shimite to rip someone from the sky.
+Hourglass	Virtuoso	45%	Send the sands of time to put your victim to sleep.
+Owl	Virtuoso	78%	Through wisdom, refresh your strength of will.
+Brazier	Fabled	0%	Summon another to you.
+Prism	Fabled	45%	Walk on prismatic shards of light.
+Tree	Mythical	0%	Heal yourself with the tree of life.
+Mountain	Mythical	23%	Touch the strength of the mountain to endure the elements.
+Chameleon	Mythical	46%	Change your identity to the casual observer.
+Superscribe	Transcendent	0%	Hold two tattoos on each body part.
+Sven, in Delos, also sells the following tattoos:
+
+Skill	Rank	Percent	Description
+Wand	N/A	0%	Refresh your mental reserves fully.
+Flame	N/A	0%	Burn away that which binds you.
+Book	N/A	0%	Enhance your ability to earn experience.
+
+PATH TRACK ESTERPORT&&
+PATH TRACK TATTOOS&&
+BUY cloak on head&&
+buy starburst on torso&&
+buy chameleon on torso&&
+buy flame on right arm&&
+buy shield on right arm&&
+buy Boar left arm&&
+buy owl left arm&&
+buy bell on left leg&&
+buy mindseye on right leg&&
