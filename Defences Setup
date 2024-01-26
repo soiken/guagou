@@ -1,0 +1,117 @@
+                       CURATIVE DEFENSES
+--------------------------------------------------------------------------------
+Pills (eaten)
+--------------------------------------------------------------------------------
+Insomnia (Stimulant or INSOMNIA in Survival)
+  Prevents sleep-inducing attacks.
+Thirdeye (Acuity or THIRDEYE in Vision)
+  Allows seeing shrouded but not hidden people and locations on the 'who'list.
+Deathsight (Thanatonin or DEATHSIGHT in Vision)
+  Gives ability to see all deaths as they occur.
+Instawake (Kawhe)
+  Wakes immediately from sleep.
+Blindness (Amaurosis)
+  Prevents transfixtion.
+Deafness (Ototoxin)
+  Prevents sensitivity and stun, panic attacks.
+Air Pocket (Waterbreathing)
+  Gives the ability of underwater breathing.
+See: HELP HERBALISM for more information.
+
+
+Poultices (applied)
+--------------------------------------------------------------------------------
+Insulation (Caloric)
+  Prevents the effects of freezing, chill attacks, and will give cold resistance.
+Density (Mass)
+   Prevents one from being forcefully moved in or out of a room.
+Fangbarrier (Paste)
+   Prevents biting and vampire feeding.
+
+
+Elixirs (drank)
+--------------------------------------------------------------------------------
+Venom (Antivenin)
+  Increases resistance to damage from camus and sumac by giving poison resistance.
+Levitation (Levitation)
+  Prevents damage from falls, Golgotha's pit, and tremors of magi. Atavians can also HOVER
+Speed (Speed)
+  Increases reaction time (avoidance).
+ Tempered Heat (Frost)
+  Decreases damage by fire due to fire resistance.
+
+Smoked
+--------------------------------------------------------------------------------
+ Rebounding (Reishi)
+  Creates an aura that rebounds all damage from hand held weapons.
+
+Tattoos
+--------------------------------------------------------------------------------
+Mindseye tattoo
+ Allows one to hear and see while blind and deaf. Or, save the tattoo slot with an Allsight enchantment.
+Cloak tattoo
+  Prevents one from being braziered (forcefully summoned).
+Chameleon
+  Allows one to appear as another on the WHO list.
+Starburst
+Revives upon death with minimal experience loss.
+Flame
+  When activated, protects against next binding ability.
+
+Syssin Skills
+--------------------------------------------------------------------------------
+Hide
+  Allows one to be hidden so only people with lifevision, heatvision, or shadowsight may see you.
+Warding
+  Decreases damage considerably, should ALWAYS be used.
+Recuperating
+  Used to recover endurance, health, mana and heal afflictions. May only be used by Spireans in Spinesreach territory.
+   
+Pacing
+  Allows one to follow, including when they DASH and GALLOP.
+Ghosting
+  Allows movements in and out of a room to appear as only a "ghostly apparition". It will also appear in ENT and GROUP.
+Cloaking
+  Shrouds your movements and your visibility to those without thirdeye or lifevision.
+Weaving
+  Significantly improves avoidance chance at a constant mana drain. Lipread Assuming you are not blind or have the Mindseye defense, will allow one to read the murmurs of those in the room with you.
+Shadowsight
+  Allows one to see hidden or shrouded people in the room.
+Phased
+  Unable to be detected in any way except by other phased beings and use of the BELL tattoo. You cannot DASH in phase but can use PACING.
+
+
+You have the following tattoos:
+Head:        Boar         Active
+Head:        Cloak        Uses left: 47
+Torso:       Starburst    Uses left: 1
+Torso:       None
+Left arm:    None
+Left arm:    None
+Right arm:   Shield       Uses left: 39
+Right arm:   None
+Left leg:    Moss         Active
+Left leg:    Bell         Uses left: 47
+Right leg:   Mindseye     Uses left: 65
+Right leg:   Moon         Active
+
+
+  fabricate brutaliser&&
+  eat Stimulant&&
+  eat thanatonin&&
+  eat acuity&&
+  eat kawhe&&
+  eat amaurosis&&
+  eat ototoxin&&
+  put reishi in pipe&&
+  light pipe&&
+  smoke pipe&&
+  dodge all&&
+  mount brutaliser&&
+  touch mindseye&&
+  touch cloak&&
+  touch shield&&
+  touch bell&&
+  hide&&
+  path track rahveir
+  gogo custom
