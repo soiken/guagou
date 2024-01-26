@@ -102,11 +102,11 @@ MANIPULATE PYLON FOR RETURNING&&
 fabricate brutaliser&&
 PATH TRACK 14395 &&
 BUY 10 Stimulant&&
-BUY 10 amaurosis&&
-BUY 10 ototoxin&&
-eat amaurosis&&
-eat ototoxin&&
 eat Stimulant&&
+BUY 10 amaurosis&&
+eat amaurosis&&
+BUY 10 ototoxin&&
+eat ototoxin&&
 PATH TRACK 12678 &&
 BUY 10 thanatonin&&
 BUY 10 kawhe&&
@@ -121,11 +121,13 @@ dodge all&&
 mount brutaliser&&
 fabricate Eviscerator&&
 PATH TRACK 12668 &&
-BUY 10 vial
+BUY 10 design19116
 PATH TRACK 14395 &&
-BUY REFILL OF antivenin FOR VIAL&&
-BUY REFILL OF levitation FOR VIAL&&
-BUY REFILL OF frost FOR VIAL&&
+buy refill of antivenin for vial402445&&
+buy refill of levitation for vial40260&&
+buy refill of frost for vial402651&&
+buy refill of health for vial402813&&
+buy refill of mana for vial402847&&
 PATH TRACK 14507 &&
 BUY REFILL OF speed FOR VIAL&&
 PATH TRACK 22627 &&
@@ -157,15 +159,15 @@ FIRSTAID PRIORITY DEFENCE levitation 2&&
 FIRSTAID PRIORITY DEFENCE temperance 3&&
 FIRSTAID PRIORITY DEFENCE speed 4&&
 FIRSTAID PRIORITY DEFENCE antivenin 5&&
-FIRSTAID PRIORITY DEFENCE insomnia 6&&
-FIRSTAID PRIORITY DEFENCE blindness 7&&
-FIRSTAID PRIORITY DEFENCE deafness 8&&
-FIRSTAID PRIORITY DEFENCE instawake 9&&
+FIRSTAID PRIORITY DEFENCE INSULATION 6&&
+FIRSTAID PRIORITY DEFENCE levitation 7&&
+FIRSTAID PRIORITY DEFENCE temperance 8&&
+FIRSTAID PRIORITY DEFENCE speed 9&&
 FIRSTAID PRIORITY DEFENCE vigor 10&&
-FIRSTAID PRIORITY DEFENCE density 11&&
-FIRSTAID PRIORITY DEFENCE fangbarrier 12&&
-FIRSTAID PRIORITY DEFENCE rebounding 13&&
-FIRSTAID PRIORITY DEFENCE waterbreathing 14
+FIRSTAID PRIORITY DEFENCE INSULATION 11&&
+FIRSTAID PRIORITY DEFENCE levitation 12&&
+FIRSTAID PRIORITY DEFENCE temperance 13&&
+FIRSTAID PRIORITY DEFENCE temperance 14
 
 fabricate brutaliser&&
 eat amaurosis&&
