@@ -123,15 +123,15 @@ fabricate Eviscerator&&
 PATH TRACK 12668 &&
 BUY 10 design19116
 PATH TRACK 14395 &&
-buy refill of antivenin for vial402445&&
-buy refill of levitation for vial40260&&
-buy refill of frost for vial402651&&
-buy refill of health for vial402813&&
-buy refill of mana for vial402847&&
+buy 100 refill of antivenin for fluidcache&&
+buy 100 refill of levitation for fluidcache&&
+buy 100 refill of frost for fluidcache&&
+buy 100 refill of health for fluidcache&&
+buy 100 refill of mana for fluidcache&&
 PATH TRACK 14507 &&
-BUY REFILL OF speed FOR VIAL&&
+BUY 100 refill OF speed FOR fluidcache&&
 PATH TRACK 22627 &&
-BUY REFILL OF vigor FOR VIAL&&
+BUY 100 refill OF vigor FOR fluidcache&&
 drink antivenin&&
 drink levitation&&
 drink speed&&
