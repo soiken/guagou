@@ -40,6 +40,7 @@ Speed (Speed)
  Tempered Heat (Frost)
   Decreases damage by fire due to fire resistance.
 
+
 Smoked
 --------------------------------------------------------------------------------
  Rebounding (Reishi)
@@ -95,23 +96,33 @@ Left leg:    Bell         Uses left: 47
 Right leg:   Mindseye     Uses left: 65
 Right leg:   Moon         Active
 
-
-  fabricate brutaliser&&
-  eat Stimulant&&
-  eat thanatonin&&
-  eat acuity&&
-  eat kawhe&&
-  eat amaurosis&&
-  eat ototoxin&&
-  put reishi in pipe&&
-  light pipe&&
-  smoke pipe&&
-  dodge all&&
-  mount brutaliser&&
-  fabricate Eviscerator&&
-  touch mindseye&&
-  touch cloak&&
-  touch shield&&
-  touch bell&&
-  fabricate Rimestalker&&
-  hide&&
+PATH TRACK PYLON&&
+MANIPULATE PYLON FOR RETURNING&&
+fabricate brutaliser&&
+eat Stimulant&&
+eat thanatonin&&
+eat acuity&&
+eat kawhe&&
+eat amaurosis&&
+eat ototoxin&&
+put reishi in pipe&&
+light pipe&&
+smoke pipe&&
+dodge all&&
+mount brutaliser&&
+fabricate Eviscerator&&
+drink antivenin&&
+drink levitation&&
+drink speed&&
+drink frost&&
+touch mindseye&&
+touch cloak&&
+touch shield&&
+touch bell&&
+touch Cloak&&
+touch Chameleon&&
+touch starburst&&
+touch flame&&
+lithe on&&
+fabricate Rimestalker&&
+hide&&
