@@ -96,15 +96,83 @@ Left leg:    Bell         Uses left: 47
 Right leg:   Mindseye     Uses left: 65
 Right leg:   Moon         Active
 
+
 PATH TRACK PYLON&&
 MANIPULATE PYLON FOR RETURNING&&
 fabricate brutaliser&&
-eat Stimulant&&
-eat thanatonin&&
-eat acuity&&
-eat kawhe&&
+PATH TRACK 14395 &&
+BUY 10 Stimulant&&
+BUY 10 amaurosis&&
+BUY 10 ototoxin&&
 eat amaurosis&&
 eat ototoxin&&
+eat Stimulant&&
+PATH TRACK 12678 &&
+BUY 10 thanatonin&&
+BUY 10 kawhe&&
+eat thanatonin&&
+eat kawhe&&
+PATH TRACK 13032 &&
+BUY 10 reishi&&
+put reishi in pipe&&
+light pipe&&
+smoke pipe&&
+dodge all&&
+mount brutaliser&&
+fabricate Eviscerator&&
+PATH TRACK 12668 &&
+BUY 10 vial
+PATH TRACK 14395 &&
+BUY REFILL OF antivenin FOR VIAL&&
+BUY REFILL OF levitation FOR VIAL&&
+BUY REFILL OF frost FOR VIAL&&
+PATH TRACK 14507 &&
+BUY REFILL OF speed FOR VIAL&&
+PATH TRACK 22627 &&
+BUY REFILL OF vigor FOR VIAL&&
+drink antivenin&&
+drink levitation&&
+drink speed&&
+drink frost&&
+drink vigor&&
+touch mindseye&&
+touch cloak&&
+touch shield&&
+touch bell&&
+touch Cloak&&
+touch Chameleon&&
+touch starburst&&
+touch flame&&
+lithe on&&
+coagulation on&&
+inspirited on&&
+efficiency on&&
+somersault on&&
+fabricate Rimestalker&&
+hide&&
+
+blindness, deafness,density, insulation, fangbarrier, insomnia, levitation, rebounding, waterbreathing, instawake, temperance, speed, antivenin, vigor
+FIRSTAID PRIORITY DEFENCE INSULATION 1&&
+FIRSTAID PRIORITY DEFENCE levitation 2&&
+FIRSTAID PRIORITY DEFENCE temperance 3&&
+FIRSTAID PRIORITY DEFENCE speed 4&&
+FIRSTAID PRIORITY DEFENCE antivenin 5&&
+FIRSTAID PRIORITY DEFENCE insomnia 6&&
+FIRSTAID PRIORITY DEFENCE blindness 7&&
+FIRSTAID PRIORITY DEFENCE deafness 8&&
+FIRSTAID PRIORITY DEFENCE instawake 9&&
+FIRSTAID PRIORITY DEFENCE vigor 10&&
+FIRSTAID PRIORITY DEFENCE density 11&&
+FIRSTAID PRIORITY DEFENCE fangbarrier 12&&
+FIRSTAID PRIORITY DEFENCE rebounding 13&&
+FIRSTAID PRIORITY DEFENCE waterbreathing 14
+
+fabricate brutaliser&&
+eat amaurosis&&
+eat ototoxin&&
+eat Stimulant&&
+eat thanatonin&&
+eat kawhe&&
 put reishi in pipe&&
 light pipe&&
 smoke pipe&&
@@ -115,6 +183,7 @@ drink antivenin&&
 drink levitation&&
 drink speed&&
 drink frost&&
+drink vigor&&
 touch mindseye&&
 touch cloak&&
 touch shield&&
@@ -124,5 +193,9 @@ touch Chameleon&&
 touch starburst&&
 touch flame&&
 lithe on&&
+coagulation on&&
+inspirited on&&
+efficiency on&&
+somersault on&&
 fabricate Rimestalker&&
 hide&&
