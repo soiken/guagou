@@ -99,9 +99,18 @@ Right leg:   Moon         Active
 
 PATH TRACK PYLON&&
 MANIPULATE PYLON FOR RETURNING&&
+envenom weapon with darkshade&&
+touch mindseye&&
+touch cloak&&
+touch shield&&
+touch bell&&
+touch Cloak&&
+touch Chameleon&&
+touch starburst&&
+touch flame&&
 fabricate brutaliser&&
 PATH TRACK 14507 &&
-buy 10 refill of caloric for fluidcache&&
+buy refill of caloric for fluidcache&&
 PATH TRACK 14395 &&
 BUY 10 Stimulant&&
 eat Stimulant&&
@@ -125,29 +134,54 @@ fabricate Eviscerator&&
 PATH TRACK 12668 &&
 BUY 10 design19116
 PATH TRACK 14395 &&
-buy 100 refill of antivenin for fluidcache&&
-buy 100 refill of levitation for fluidcache&&
-buy 100 refill of frost for fluidcache&&
-buy 100 refill of health for fluidcache&&
-buy 100 refill of mana for fluidcache&&
-buy 10 refill of Mass for fluidcache&&
+buy refill of darkshade for fluidcache&&
+buy refill of antivenin for fluidcache&&
+buy refill of levitation for fluidcache&&
+buy refill of frost for fluidcache&&
+buy refill of health for fluidcache&&
+buy refill of mana for fluidcache&&
+buy refill of Mass for fluidcache&&
+buy refill of antivenin for fluidcache&&
+buy refill of levitation for fluidcache&&
+buy refill of frost for fluidcache&&
+buy refill of health for fluidcache&&
+buy refill of mana for fluidcache&&
+buy refill of Mass for fluidcache&&
+buy refill of antivenin for fluidcache&&
+buy refill of levitation for fluidcache&&
+buy refill of frost for fluidcache&&
+buy refill of health for fluidcache&&
+buy refill of mana for fluidcache&&
+buy refill of Mass for fluidcache&&
+buy refill of antivenin for fluidcache&&
+buy refill of levitation for fluidcache&&
+buy refill of frost for fluidcache&&
+buy refill of health for fluidcache&&
+buy refill of mana for fluidcache&&
+buy refill of Mass for fluidcache&&
+buy refill of antivenin for fluidcache&&
+buy refill of levitation for fluidcache&&
+buy refill of frost for fluidcache&&
+buy refill of health for fluidcache&&
+buy refill of mana for fluidcache&&
+buy refill of Mass for fluidcache&&
 PATH TRACK 14507 &&
-BUY 100 refill OF speed FOR fluidcache&&
+BUY refill OF speed FOR fluidcache&&
+BUY refill OF speed FOR fluidcache&&
+BUY refill OF speed FOR fluidcache&&
+BUY refill OF speed FOR fluidcache&&
+BUY refill OF speed FOR fluidcache&&
 PATH TRACK 22627 &&
-BUY 100 refill OF vigor FOR fluidcache&&
+BUY refill OF vigor FOR fluidcache&&
+BUY refill OF vigor FOR fluidcache&&
+BUY refill OF vigor FOR fluidcache&&
+BUY refill OF vigor FOR fluidcache&&
+BUY refill OF vigor FOR fluidcache&&
 drink antivenin&&
 drink levitation&&
 drink speed&&
 drink frost&&
 drink vigor&&
-touch mindseye&&
-touch cloak&&
-touch shield&&
-touch bell&&
-touch Cloak&&
-touch Chameleon&&
-touch starburst&&
-touch flame&&
 lithe on&&
 coagulation on&&
 inspirited on&&
