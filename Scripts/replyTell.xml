@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>replyTell</name>
+			<script>local name = matches[2] -- Captures the name of the player
+local responses = {
+  "no",
+  " I must, with the utmost solemnity and unequivocal sincerity, express my profound aversion to acquiescing in the solicitation proffered, for the purpose of declination, by means of a polysyllabic and intricately convoluted discourse, the essence of which fundamentally resides in a categorical rejection of your proposition, thereby substantiating my abstention from assent, and it is incumbent upon me to elucidate that my rationale for this refusal is predicated upon an array of multifaceted considerations, hitherto elusive in their clarity, which, if subjected to exhaustive analysis and contemplation, may eventually yield a comprehensible elucidation of my negative disposition.",
+  "I must respectfully decline your proposition with profound appreciation for your kind gesture, as my inclinations do not align harmoniously with the particular endeavor you have graciously proposed. The intricate tapestry of my preferences, governed by a multitude of idiosyncratic variables, precludes me from extending concordance to this particular entreaty, thus necessitating the polite articulation of my declination.",
+  "In a fervent endeavor to impart the query herein, one might eloquently inquire as to the nature of your current exigency, thereby beseeching elucidation upon the subject matter you deem worthy of discourse on this particular juncture.",
+  "Salutations, my esteemed interlocutors, with the exalted elucidation of my salutary sentiment being couched in an intricate tapestry of lexicon, replete with sesquipedalian adornments and labyrinthine syntactic convolution, thus proffering a prodigious challenge to the cognitive faculties of those who endeavor to decipher this epistolary enigma.",
+  "Farewell, in this moment, I bid you adieu, for the present juncture necessitates our parting, as temporal and spatial constraints compel the termination of our discourse, thereby culminating this exchange in the realm of digital interaction, until such a fortuitous occasion in the future when our cognitive pathways may serendipitously converge once more, and we shall recommence our linguistic entanglement with the ebullience of intellectual pursuit.",
+  "Regrettably, my current circumstances preclude me from acceding to your request, as my commitments elsewhere demand my undivided attention.",
+  "I must humbly decline your proposition, for it conflicts with my current endeavors and aspirations.",
+  "I appreciate your inquiry but must respectfully decline your offer due to prior commitments.",
+  "It is with sincere regret that I must decline your request, as my current activities occupy my full attention.",
+  "I find myself unable to comply with your request at this juncture, for various reasons that require my immediate attention.",
+  "While I am truly honored by your request, I must decline as my present focus necessitates my unbroken concentration.",
+  "My apologies, but I cannot acquiesce to your request at this time due to prior obligations.",
+  "I must decline your offer, as my present endeavors prevent me from participating.",
+  "I appreciate your proposal, but I must decline due to my current commitments.",
+  "I must regrettably decline your kind request, as it conflicts with my current priorities."
+}
+
+local randomResponse = responses[math.random(#responses)]
+
+-- Function to send the response with a delay
+local function sendResponse()
+  send("tell " .. name .. " " .. randomResponse)
+end
+
+-- Delay for 5 seconds before sending the response
+tempTimer(5, sendResponse)
+</script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList>
+				<string>^(?i)([^ ]+) tells you, ".*(?:help|city|alright).*"</string>
+			</regexCodeList>
+			<regexCodePropertyList>
+				<integer>1</integer>
+			</regexCodePropertyList>
+		</Trigger>
+	</TriggerPackage>
+</MudletPackage>
