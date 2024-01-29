@@ -1,0 +1,88 @@
+
+Artifacts are items imbued with special powers that can grant you an edge in everyday life. They are
+almost always purchased with credits or iron coins, and are bound to you upon purchase. Should you 
+lose the item somewhere, it will eventually return to your inventory. Refer to HELP ARTIFACTS for 
+more information about the mystical items.
+
+
+PURCHASING POWERS
+-----------------
+
+Here is an overview of the syntax and what they do. In all instances where ARTIFACT PURCHASE is
+used, you can use AP for shorthand.
+
+ARTIFACT PURCHASE LIST [filter]
+View the list of artifacts we have available for purchase. Can supply one or more filters to narrow
+the list down if you desire.
+Possible filters:
+ FULL       - Show you a description of what the artifact does.
+ UNOWNED    - Shows only artifacts you don't already own.
+ AFFORDABLE - Shows only artifacts you can currently afford.
+ UNDER <#>  - Shows only artifacts whose cost is under that value
+ OVER <#>   - Shows only artifacts whose cost is over that value.
+ <category> - Show only artifacts from that category.
+ <search>   - Show only artifacts that match that search term.
+e.g.
+ AP LIST OFFENSIVE UNDER 500
+   Would list offensive artifacts under 500 credits.
+ AP LIST OVER 100 UNDER 400
+   Would list all artifacts between 100 to 400 credits.
+ AP LIST WINGS
+   Would list all artifacts that match the word 'wings'.
+   
+ARTIFACT INFO <artifact>
+View extended information about a particular artifact.
+
+ARTIFACT PURCHASE <artifact> [ON <item|POWERORB>]
+Adds an artifact to your artifact shopping cart. This can used for buying a new item, buying a power
+on an existing item, or upgrading a power you already have. You can use either the artifact's 
+database number, or its power name.
+e.g. AP 312
+     AP CONSTITUTION LEVEL 2 ON CLOAK1234
+     AP ELUSION ON CLOAK1234
+
+For artifacts that have no pre-made item, they must be placed upon a item you own. If you wish to
+gift the artifact or do not own an item to place it upon, you can buy it upon an orb of power, 
+however the artifact will not function until it is transferred onto a valid item.
+
+ARTIFACT PURCHASE APPLY <token>
+Applies one of the variety of artifact tokens we have (e.g. discount). If you have multiple items in
+your cart, the tokens will apply themselves to whatever will give you the most return. i.e. a 33% 
+discount token will always pick a 2k cr arti over a 500cr arti.
+
+ARTIFACT PURCHASE CLEAR
+Empty your shopping cart.
+
+ARTIFACT PURCHASE CHECKOUT [CONFIRM]
+Review everything in your artifact shopping cart, and confirm your purchase.
+
+ARTIFACT PURCHASE HISTORY
+-------------------------
+You can view a history of your artifact purchases using RECEIPTS.
+
+ARTIFACT POWER TRANSFERS
+------------------------
+You may transfer powers from one artifact to another, if the power is transferable and the item type
+is suitable for the weapon power.
+
+Artifact power transfers cost 25 Bound Credits, and if the artifact from which a power is being
+transferred has no powers left after a transfer, it will be destroyed.
+There is no cost when transferring from an orb of power.
+
+ARTIFACT TRANSFER (power) FROM (old artifact) TO (new artifact)
+
+ARTIFACT SHARING
+----------------
+All artifacts will reset into your inventory on a very regular basis, which means that they cannot
+be loaned out very long, but that they also cannot be stolen for very long. They'll also never 
+decay. They cannot be changed to reset to anyone else's inventory, so do not buy artifacts of any 
+kind if you intend to sell them. It is impossible to permanently transfer an artifact, especially 
+between characters under the same registration.
+
+ARTIFACT TATTOOS
+----------------
+Inwards from the main hall of the Artifact shop (at Qeddwyn) is an Artifact tattoo parlour, where
+you can purchase silver ink tattoos. These have unlimited uses and will never fade. They can also 
+never be wiped off or removed. To buy the tattoo, BUY (tattoo) ON (body part).
+
+See Also: HELP ARTIFACT GIFTS, HELP ARTIFACT TRANSFERS, HELP ARTIFACT TRADEINS
