@@ -160,12 +160,12 @@ local pathTrackTargetNum = nil
 function sendNextCommand()
     if #commands == 0 then
         automationRunning = false
-        cecho("<red>Automation completed. No more commands to execute.<reset>\n")
+        cecho("&lt;red&gt;Automation completed. No more commands to execute.&lt;reset&gt;\n")
         return
     end
 
     if not automationRunning then
-        cecho("<red>Automation stopped or not started.<reset>\n")
+        cecho("&lt;red&gt;Automation stopped or not started.&lt;reset&gt;\n")
         return
     end
 
@@ -174,11 +174,11 @@ function sendNextCommand()
         pathTrackCommand = command
         pathTrackTargetNum = tonumber(string.match(command, "%d+")) -- Extract the target room number
         send(command) -- Send the "PATH TRACK" command immediately
-        cecho("<green>Sending PATH TRACK: " .. command .. "<reset>\n")
+        cecho("&lt;green&gt;Sending PATH TRACK: " .. command .. "&lt;reset&gt;\n")
         tempTimer(1.5, checkPathTrack)
     else
         send(command) -- Send non-"PATH TRACK" command immediately
-        cecho("<green>Sending: " .. command .. "<reset>\n")
+        cecho("&lt;green&gt;Sending: " .. command .. "&lt;reset&gt;\n")
         tempTimer(3, sendNextCommand) -- Wait for 3 seconds before sending the next command
     end
 end
@@ -196,32 +196,261 @@ function checkPathTrack()
         sendNextCommand() -- Proceed to send the next command
     else
         tempTimer(1, checkPathTrack) -- Wait for 1 second and then check again
-        cecho("<yellow>Waiting for room match. Current: " .. currentNum .. ", Target: " .. pathTrackTargetNum .. "<reset>\n")
+        cecho("&lt;yellow&gt;Waiting for room match. Current: " .. currentNum .. ", Target: " .. pathTrackTargetNum .. "&lt;reset&gt;\n")
     end
 end
 
 -- Function to start the automation
 function run_nekiosdef()
     if automationRunning then
-        cecho("<yellow>Automation is already running.<reset>\n")
+        cecho("&lt;yellow&gt;Automation is already running.&lt;reset&gt;\n")
         return
     end
 
     automationRunning = true
-    cecho("<green>Automation started.<reset>\n")
+    cecho("&lt;green&gt;Automation started.&lt;reset&gt;\n")
     sendNextCommand() -- Start sending commands
 end
 
 -- Function to stop the automation
 function stop_nekiosdef()
     automationRunning = false -- Stop the automation
-    cecho("<red>Automation stopped.<reset>\n")
+    cecho("&lt;red&gt;Automation stopped.&lt;reset&gt;\n")
 end
 
 -- Initialize the GMCP module (if not already done in another part of your script)
 if not gmcp then
     enableGMCP()
 end</script>
+				<eventHandlerList />
+			</Script>
+			<Script isActive="no" isFolder="no">
+				<name>nekiosinv_script</name>
+				<packageName></packageName>
+				<script>ProgressDisplay = ProgressDisplay or {
+  font = "Ubuntu Mono",
+  fontSize = 10,
+  height = 200,
+  width = 400
+}
+ProgressDisplay.goldLog = ProgressDisplay.goldLog or {}
+ProgressDisplay.expLog = ProgressDisplay.expLog or {}
+
+-- Inventory management
+inv = inv or {}
+
+local function itemList(_, _)
+  local event = gmcp.Char.Items.List
+  if event.location ~= "inv" then
+    return
+  end
+  -- Clear inventory table and rebuild
+  inv = {}
+  for _, item in pairs(event.items) do
+    inv[item.id] = item
+  end
+  raiseEvent("inventory updated")
+end
+
+function ProgressDisplay:reset()
+  self.goldLog = {}
+  self.expLog = {}
+  self.startTime = os.time()
+end
+
+function ProgressDisplay.format_int(number)
+  number = math.floor(number)
+  local i, j, minus, int, fraction = tostring(number):find('([-]?)(%d+)([.]?%d*)')
+  -- reverse the int-string and append a comma to all blocks of 3 digits
+  int = int:reverse():gsub("(%d%d%d)", "%1,")
+  -- reverse the int-string back remove an optional comma and put the 
+  -- optional minus and fractional part back
+  return minus .. int:reverse():gsub("^,", "") .. fraction
+end
+
+function ProgressDisplay.breakdownTime(time)
+  local hours, minutes, seconds = shms(time)
+  hours = tonumber(hours)
+  minutes = tonumber(minutes)
+  seconds = tonumber(seconds)
+  local days = math.floor(hours / 24)
+  hours = hours % 24
+  return days, hours, minutes, seconds
+end
+
+function ProgressDisplay:create()
+  self.container = Adjustable.Container:new({
+    name = "Progress Display",
+    x = 0,
+    y = 0,
+    height = self.height,
+    width = self.width,
+  })
+  self.console = Geyser.MiniConsole:new({
+    name = "progress displayinator gold console",
+    x = 0,
+    y = 0,
+    height = "100%",
+    width = "100%",
+    font = self.font,
+    fontSize = self.fontSize,
+    color = "black",
+  }, self.container)
+  self:update()
+end
+
+function ProgressDisplay:show()
+  self.container:show()
+  self:update()
+end
+
+function ProgressDisplay:hide()
+  self.container:hide()
+end
+
+function ProgressDisplay:update()
+  if self.container.hidden then return end
+  ProgressDisplay:expCheck()
+  ProgressDisplay:goldCheck()
+  ProgressDisplay:displayInventory()
+end
+
+function ProgressDisplay:goldUpdate(amount)
+  local goldLog = self.goldLog
+  local where = gmcp.Room.Info
+  local when = os.time()
+  local logEntry = {
+    ["where"] = {
+      ["roomNum"] = where.num,
+      ["area"] = where.area,
+    },
+    ["when"] = when,
+    ["amount"] = amount,
+  }
+  goldLog[#goldLog+1] = logEntry
+  self:update()
+end
+
+function ProgressDisplay:expUpdate(amount)
+  local expLog = self.expLog
+  local where = gmcp.Room.Info
+  local when = os.time()
+
+  local entry = {
+    ["where"] = {
+      ["roomNum"] = where.num,
+      ["area"] = where.area,
+    },
+    ["when"] = when,
+    ["amount"] = amount,
+  }
+  expLog[#expLog+1] = entry
+  self:update()
+end
+
+function ProgressDisplay:expCheck()
+  local console = self.console
+  local total = 0
+  if not self.startTime then
+    self.startTime = os.time()
+  end
+  local startTime = self.startTime
+  local endTime = os.time()
+  local thisArea, thisRoom = "Unknown", "Unknown"
+  if gmcp.Room and gmcp.Room.Info then
+    thisArea = gmcp.Room.Info.area
+    thisRoom = gmcp.Room.Info.num
+  end
+  local areaExp = 0
+  local roomExp = 0
+  console:clear()
+  for _, log in ipairs(self.expLog) do
+    if log.where.area == thisArea then
+      areaExp = areaExp + log.amount
+    end
+    if log.where.roomNum == thisRoom then
+      roomExp = roomExp + log.amount
+    end
+    total = total + log.amount
+  end
+  local duration = endTime - startTime
+  local days, hours, minutes, seconds = self.breakdownTime(duration)
+  local timeString = f"{days} days {hours} hours {minutes} minutes {seconds} seconds"
+
+  local xph = total / (duration / 60 / 60)
+  local xpToLevel, xpPercentGained = "Unknown", "Unknown"
+  if gmcp.Char and gmcp.Char.Vitals then
+    xpToLevel = tonumber(gmcp.Char.Vitals.maxxp) - tonumber(gmcp.Char.Vitals.xp)
+    xpPercentGained = string.format("%.2f", (total*100)/tonumber(gmcp.Char.Vitals.maxxp))
+  end
+  local timeToLevel = "Infinity"
+  if xph &gt; 1 then
+    timeToLevel = string.format("%.2f", xpToLevel / xph)
+  end
+
+  local readable_total = self.format_int(total)
+  local readable_xph = self.format_int(xph)
+
+  console:cecho(f[[
+&lt;white&gt;Area        : &lt;green&gt;{thisArea}
+&lt;white&gt;Time Period : &lt;green&gt;{timeString}
+&lt;LightSlateBlue&gt;Exp change  : {total&lt;0 and "&lt;red&gt;" or "&lt;green&gt;"}{readable_total} &lt;green&gt;({xpPercentGained}%)
+&lt;LightSlateBlue&gt;Exp/Hour    : {xph&lt;0 and "&lt;red&gt;" or "&lt;green&gt;"}{readable_xph}
+&lt;LightSlateBlue&gt;Hrs to Lvl  : &lt;yellow&gt;{timeToLevel} &lt;green&gt;hours
+]])
+end
+
+function ProgressDisplay:goldCheck()
+  local console = self.console
+  local goldLog = self.goldLog
+  local total = 0
+  local startTime = self.startTime
+  local endTime = os.time()
+  local thisArea = "Unknown"
+  if gmcp.Room and gmcp.Room.Info then
+    thisArea = gmcp.Room.Info.area:gsub("an unstable section of ","")
+  end
+  local areaGold = 0
+  for _, log in ipairs(goldLog) do
+    if log.where.area == thisArea then
+      areaGold = areaGold + log.amount
+    end
+    total = total + log.amount
+  end
+  local duration = endTime - startTime
+  local gps = total / duration
+  local gph = total / (duration/60/60)
+
+  console:cecho(f[[
+&lt;yellow&gt;Gold change : {total&lt;=0 and "&lt;red&gt;" or "&lt;green&gt;"}{total}
+&lt;yellow&gt;Gold in area: &lt;green&gt;{areaGold}
+&lt;yellow&gt;Gold/Second : &lt;green&gt;{string.format("%.2f",gps)}
+&lt;yellow&gt;Gold/Hour   : &lt;green&gt;{string.format("%.2f",gph)}]])
+end
+
+function ProgressDisplay:displayInventory()
+  local console = self.console
+  console:cecho("\n&lt;LightSlateBlue&gt;Inventory Items (Alphabetical Order):\n")
+  
+  -- Create a sorted list of item names and IDs
+  local sortedItems = {}
+  for id, item in pairs(inv) do
+    table.insert(sortedItems, {name = item.name, id = id})
+  end
+  table.sort(sortedItems, function(a, b) return a.name &lt; b.name end)
+
+  for _, item in pairs(sortedItems) do
+    console:cecho(string.format("&lt;yellow&gt;%s &lt;green&gt;ID: %s\n", item.name, item.id))
+  end
+end
+
+if not ProgressDisplay.container then
+  ProgressDisplay:create()
+  ProgressDisplay:reset()
+end
+
+registerNamedTimer("ProgressDisplay", "regular update", 1, function() ProgressDisplay:update() end, true)
+</script>
 				<eventHandlerList />
 			</Script>
 		</ScriptGroup>

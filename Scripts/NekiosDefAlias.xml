@@ -9,7 +9,7 @@
 			<packageName></packageName>
 			<regex></regex>
 			<Alias isActive="yes" isFolder="no">
-				<name>nekiosdef</name>
+				<name>NekiosDefRun</name>
 				<script>run_nekiosdef()</script>
 				<command></command>
 				<packageName></packageName>
@@ -23,18 +23,19 @@
 				<regex>^LOAD$</regex>
 			</Alias>
 			<Alias isActive="yes" isFolder="no">
-				<name>nekiosdef stop</name>
+				<name>NekiosDefStop</name>
 				<script>stop_nekiosdef()</script>
 				<command></command>
 				<packageName></packageName>
 				<regex>^nekiosdef stop$</regex>
 			</Alias>
 			<Alias isActive="yes" isFolder="no">
-				<name>nekiosdef stop</name>
-				<script>reset_nekiosdef()</script>
+				<name>NekiosInvRun</name>
+				<script>updateInventoryList()
+</script>
 				<command></command>
 				<packageName></packageName>
-				<regex>^nekiosdef reset$</regex>
+				<regex>nekiosinv</regex>
 			</Alias>
 		</AliasGroup>
 	</AliasPackage>
