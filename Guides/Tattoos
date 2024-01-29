@@ -69,19 +69,35 @@ Chameleon	Mythical	46%	Change your identity to the casual observer.
 Superscribe	Transcendent	0%	Hold two tattoos on each body part.
 Sven, in Delos, also sells the following tattoos:
 
+Sven, the tattooist in Delos
 Skill	Rank	Percent	Description
 Wand	N/A	0%	Refresh your mental reserves fully.
 Flame	N/A	0%	Burn away that which binds you.
 Book	N/A	0%	Enhance your ability to earn experience.
 
-PATH TRACK ESTERPORT&&
-PATH TRACK TATTOOS&&
-BUY cloak on head&&
-buy starburst on torso&&
-buy chameleon on torso&&
-buy flame on right arm&&
-buy shield on right arm&&
-buy Boar left arm&&
-buy owl left arm&&
-buy bell on left leg&&
-buy mindseye on right leg&&
+PATH TRACK 11053&&
+BUY CLOAK on head&&
+BUY MOSS on head&&
+buy STARBURST on torso&&
+buy Chameleon on torso&&
+buy BOAR on left arm &&
+buy OWL on left arm &&
+buy FLAME on right arm&&
+buy FEATHER on right arm&&
+buy BELL on left leg &&
+buy BOOK on left leg &&
+buy MOON on right leg &&
+buy MOUNTAIN on right leg &&
+
+You have the following tattoos:
+Head:        Cloak        Uses left: 50
+Head:        Moss         Active
+Torso:       Chameleon    Uses left: 20
+Torso:       Starburst    Uses left: 1
+Left arm:    Boar         Permanent
+Left arm:    Owl          Active
+Right arm:   Flame        Uses left: 15
+Right arm:   Feather      Uses left: 50
+Left leg:    Bell         Uses left: 45
+Right leg:   Mountain     Active
+Right leg:   Moon         Active

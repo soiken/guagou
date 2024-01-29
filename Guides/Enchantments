@@ -1,0 +1,172 @@
+Enchantments are skills focused around infusing magical powers into existing items, or creating
+magical items themselves. Below is a list of the functions these powerful abilities can create.
+
+Created Items
+-------------
+Special items created by Enchanting.
+
+  Worrystone
+  - When TOUCHed, it may do one of four things: heal health, heal mana, cure an
+    affliction, or nothing.
+
+  Brooch of the Underking
+  - When WORN, will allow the wearer to see all deaths within the realm.
+    Identical to the deathsight defence, but works while the wearer is dead.
+
+  Spiritbulb and Essencecap
+  - Essencecaps deal with necromantic essence, spiritbulbs with devotion. When
+    created the items possess no energy, but DRAIN ESSENCECAP/SPIRITBULB will
+    draw a portion of the appropriate energy into the bulb and cause it to glow.
+    One can then EAT the item to replenish the energy.
+
+  An Anklet of Lleis
+  - When worn, the anklet of Lleis will increase healing effects done on the
+    wearer by 25%. This only effects healing done by other people.
+
+  Whirlwind of Tanixalthas
+  - You must WIELD the item before you can use it, and then THROW it, to create
+    either a vicious wind or a tempestuous geyser, which will knock any people
+    flying overhead to the ground.
+
+  Shimmering Orb
+  - Simply having this item in your inventory will prevent the APPRAISE ability
+    (Vision) from working on you.
+
+  A Silver Ancestral Pendant
+  - The ancestral pendant will allow a Warden's simulacrum to wear it for
+    additional protection against attacks, as described in AB COMMUNION
+    REQUISITION.
+
+  Beacon Capsule
+  - Two are needed. The first you simply DROP into a room you wish to return to.
+    To use the second, you must THROW BEACON/TOTEM AT GROUND to instantly travel
+    to the first, which will destroy both. It is important to note that this
+    will only work within a very small range.
+
+  Dreamcharm
+  - When holding this item in your inventory, you will recover endurance more
+    quickly while you SLEEP.
+
+  Lunar Eclipse Medallion
+  - When WORN, it will reverse most of the affects of the constellations on you.
+    (See HELP CONSTELLATIONS)
+
+  Time Sphere
+  - When you THROW SPHERE/SHELL AT GROUND, it will slow the recovery of balance
+    and equilibrium for everyone in the room, provided that there are a minimum
+    of four people present.
+
+  Bag of Stasis
+  - Used like a normal container, items inside will decay half as quickly. Only
+    five items can fit inside the bag of stasis.
+
+  Rainstick
+  - Passively increases willpower and mana regeneration during meditation. You
+    need only keep it in your inventory.
+
+  Gemdust
+  - This will break down gemstones into its dust form, receiving 100x of the
+    appropriate dust.
+
+  Eye of Lanos
+  - When wearing this item upon your person, it will grant you the ability to
+    discern the effects of random curing abilities used in the room with you.
+  
+  Aegis
+  - Only of use to a trained mage, this enchantment is used as an ancient magical
+    defence structure, and can be etched with glyphs and attuned.
+
+  Elemental
+  - THROW this magical crystal onto the ground to summon a random miniature
+    elemental to hunt together with you. When their ylem energy runs out, they
+    expire.
+    (See ELEMENTAL on interaction capabilities.)
+
+Altered Items
+-------------
+
+These enchantments are applied to an existing item. The following enchantments are placed on
+specific items:
+
+  Augment
+  - Augmentations are applied to weapons or armour, and will raise one point
+    in every stat. This may be done up to three times, but each augmentation
+    will subtract five Aetolian weeks from the decay time of weapons, and seven
+    Aetolian weeks from the decay time of armour.
+
+  Meteor
+  - Applicable only to arrows. Meteor arrows can be shot into the air at your
+    target from anywhere in the same area as long as they are outdoors, and
+    will break through the victim's shield defence. Flame arrows work like
+    regular arrows, but will set the target on fire. Enchanted arrows cannot
+    be envenomed.
+
+  Cold Pocket
+  - This enchantment is applied to containers (packs, bags, etc.) and will
+    make the food inside decay seven times slower.
+
+The following enchantments may be placed on any item created with Jewelcrafting. (HELP
+JEWELCRAFTING)
+
+  Firelash
+  - This enchantment is quite versatile. When pointed at a player, a firelash
+    enchantment will deal fire damage. You may also damage a player in an
+    adjacent room. You may point it in a direction blocked by an icewall to melt
+    it. Finally, you may point it directly at an icewall to remove it. This last
+    syntax will choose a wall at random if there is more than one in the room.
+  - Usage: POINT FIRELASH AT <target>
+           POINT FIRELASH <direction> AT <target>
+           POINT FIRELASH AT ICEWALL
+           POINT FIRELASH <direction>
+  - Uses: 60
+
+  Firewall
+  - Pointing in a direction will create a deadly firewall. People who pass
+    through the firewall will lose their mass defense if they have it. If not,
+    it will set them on fire.
+  - Usage: POINT FIREWALL <direction>
+  - Uses: 60
+
+  Icewall
+  - Pointing an item enchanted with icewall will, as the name implies, produce
+    an impenetrable wall of ice in the given direction. This wall will prevent
+    many means of travel through that exit.
+  - Usage: POINT ICEWALL <direction>
+  - Uses: 60
+
+  Frostblast
+  - Pointing an item with this enchantment at a player will strip away their
+    caloric defence, or freeze them completely if they are not protected by it.
+    Alternatively, point this at an existing firewall or in a direction to
+    extinguish them.
+  - Usage: POINT FROSTBLAST AT <target>
+           POINT FROSTBLAST <direction>
+           POINT FROSTBLAST AT FIREWALL
+  - Uses: 60
+
+  Resistances
+  - This enchantment will confer a 10% resistance bonus to the appropriate
+    damage type when it is worn. This enchantment will last 60 Aetolian months.
+    Types: Fire, Magic, Electric, Cold
+
+  Allsight
+  - You may touch an item with this enchantment to see and hear normally while
+    deaf and blind. This enchantment is identical to the mindseye defence.
+  - Uses: 60
+
+  Waterwalking
+  - When TOUCHed, a Waterwalking item will allow you to move through water
+    rooms without having to swim. This defence will last for one hour. You may
+    only use normal movement with waterwalking (e.g. no dashing, etc.).
+  - Usage: TOUCH WATERWALKING
+  - Uses: 30
+
+  Purity
+  - When WORN, an item enchanted with Purity will passively and periodically
+    cure an affliction caused by venoms at random.
+
+  Pestilence
+  - Pointing an item with Pestilence will afflict your victim with a random
+    affliction.
+  - Usage: POINT PESTILENCE AT <target>
+  - Uses: 120
