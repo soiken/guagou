@@ -28,7 +28,7 @@ local commands = {
     "touch chainmail",
     "fabricate brutaliser",
     "PATH TRACK 12668",
-    "buy 10 design19116",
+    --"buy 10 design19116",
     "PATH TRACK 12678",
     "buy refill of epidermal for fluidcache",
     "buy 10 thanatonin",
@@ -57,6 +57,11 @@ local commands = {
     "buy refill of mending for fluidcache",
     "buy refill of mending for fluidcache",
     "buy refill of mending for fluidcache",
+    "buy rose",
+    "buy rose",
+    "buy rose",
+    "buy rose",
+    "buy rose",
     "PATH TRACK 14395",
     "buy 10 Stimulant",
     "buy 10 amaurosis",
@@ -146,6 +151,7 @@ local commands = {
     "REMOVE GAUNTLET",
     "GIVE GAUNTLET TO BARAKIN",
     "WEAR GAUNTLET"
+    "gogo custom"
 }
 
 
