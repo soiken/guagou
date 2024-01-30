@@ -1,23 +1,28 @@
-name: Build with Muddler
+name: Build project using muddler and upload artifact
 
 on:
   push:
-    branches:
-      - main  # Change this to the branch you want to trigger the workflow on
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v3.3.0
 
-    - name: Change working directory
-      run: cd main/Scripts/Soiken
+      - name: Change working directory
+        run: cd main/Scripts/Soiken
 
-    - name: Build with Muddler
-      run: |
-        # Run your Muddler commands here, e.g., muddler build
-        # Replace the following command with your actual Muddler build command
-        muddler build
+      - name: Muddle
+        uses: demonnic/build-with-muddler@main
+        with:
+          muddlerVersion: 0.5
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: MyCoolPackageName
+          path: build/tmp/
