@@ -9,10 +9,14 @@ jobs:
   update-release:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code with full history and tags
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # Fetch all history and tags
+    - name: Set up Git
+      run: |
+        git config user.email "you@example.com"
+        git config user.name "Your Name"
+      # Continue on error since the configuration might already be set up.
+
+    - name: Checkout code
+      uses: actions/checkout@v2
 
     - name: Download Latest File
       run: |
@@ -30,7 +34,7 @@ jobs:
       with:
         files: |
           latest_file.mpackage
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_PAT }}
 
     - name: Delete Previous Release
       run: |
