@@ -13,7 +13,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Change working directory
+      run: cd main/Scripts/Soiken
+
     - name: Build with Muddler
-      uses: demonnic/build-with-muddler@v1.4
-      with:
-        working-directory: main/Scripts/Soiken
+      run: |
+        # Run your Muddler commands here, e.g., muddler build
+        # Replace the following command with your actual Muddler build command
+        muddler build
