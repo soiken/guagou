@@ -31,7 +31,9 @@ jobs:
 
     - name: Create Tag
       id: create_tag
-      run: git tag -a v1 -m "Version 1" && git push origin v1
+      run: |
+        git tag -a v1 -m "Version 1"
+        git push origin v1
       if: success()
 
     - name: Create Release
