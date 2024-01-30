@@ -34,7 +34,7 @@ jobs:
       with:
         files: |
           latest_file.mpackage
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_PAT }}
 
     - name: Delete Previous Release
       run: |
