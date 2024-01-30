@@ -1,1 +1,0 @@
-ProgressDisplay:show()
