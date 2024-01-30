@@ -1,0 +1,6 @@
+mpackage = [[Nekios]]
+author = [[soiken]]
+icon = [[soiken.png]]
+title = [[You know what it is]]
+version = [[5.0.0]]
+created = [[2024-01-30T14:26:34+0800]]

@@ -1,0 +1,11 @@
+[
+  {
+    "name": "vermin",
+    "patterns":[
+      {
+        "pattern": "^(Tells): ([^\\s]+) tells you, \".*(?:help|wandering|alright|okay).*\"",
+        "type": "regex"
+      }
+    ]
+  }
+]
