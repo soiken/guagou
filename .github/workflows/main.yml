@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Change working directory to main/Scripts/Soiken
+      - name: Change working directory to Scripts/Soiken
         run: cd main/Scripts/Soiken
 
       - name: Muddle
