@@ -2,7 +2,7 @@ name: Build project using muddler and upload artifact
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main/Script/Soiken ]
   pull_request:
     branches: [ main ]
 
@@ -12,9 +12,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Change working directory to Scripts/Soiken
-        run: cd Scripts/Soiken
 
       - name: Muddle
         uses: demonnic/build-with-muddler@main
