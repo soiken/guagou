@@ -3,5 +3,5 @@
 
 
 ```
-lua uninstallPackage("Nekios") installPackage("https://github.com/soiken/guagou/releases/latest/download/Nekios.mpackage")
+lua uninstallPackage("Nekios") installPackage("https://github.com/soiken/guagou/releases/latest/download/Soiken.mpackage")
 ```
