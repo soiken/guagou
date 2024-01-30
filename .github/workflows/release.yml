@@ -16,7 +16,7 @@ jobs:
       # Continue on error since the configuration might already be set up.
 
     - name: Checkout code
-      uses: actions/checkout@latest
+      uses: actions/checkout@master
 
     - name: Download Latest File
       run: |
@@ -30,7 +30,7 @@ jobs:
 
     - name: Create Release
       id: create_release
-      uses: softprops/action-gh-release@latest
+      uses: softprops/action-gh-release@master
       with:
         files: |
           latest_file.mpackage
