@@ -2,7 +2,7 @@ name: Build project using muddler and upload artifact
 
 on:
   push:
-    branches: [ main/Script/Soiken ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
