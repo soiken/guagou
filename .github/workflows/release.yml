@@ -25,6 +25,10 @@ jobs:
           git status
           git log -n 5
           # Add more commands as needed to gather information
+          
+      - name: Debug Environment Variables
+        run: |
+          env
     
       - name: Create and push tag
         run: |
@@ -35,6 +39,14 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
 
+      - name: Conditional Debug
+        run: |
+          if [ ${{ failure() }} == true ]; then
+            echo "The previous step failed."
+            echo "SomeVariable: ${{ secrets.SomeVariable }}"
+            # Add more debug statements
+          fi
+        continue-on-error: true
 
       - name: Download Latest File
         run: |
