@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>Vermin</name>
+			<script></script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>vermin</name>
+				<script>if snd.toggles.vermin then
+  if snd.toggles.newbie then
+    send("k vermin")
+  else
+  --single attack logic
+    snd.bashing.target = "vermin"
+    battack = ""
+    for k,v in pairs(snd.class_list) do
+      if snd.class_list[k].class == snd.class then
+      if snd[v.class:lower().."_bash_override"] then
+        snd[v.class:lower().."_bash_override"]()
+      else
+        v.func()
+      end
+      snd.send("qeb stand"..snd.sep..battack)
+      end
+    end
+  end
+end
+snd.vermin = snd.vermin + 1
+if snd.vermin &gt;= 1 then
+ if snd.toggles.vermin == true then
+ 		if bot.going then
+      tempTimer(1, snd.move)
+    end
+		disableTimer("moveroom")
+ end
+end</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>Tongue flicking to taste the air, a pebbly black snake comes into view.</string>
+					<string>The glint of pebbly scales alerts you to the entrance of a black snake.</string>
+					<string>With a faint slithering noise, a pebbly black snake enters.</string>
+					<string>You spy a seagull, rooting around the ground for scraps of anything edible.</string>
+					<string>The faint clicking of insect legs on stone alerts you to the entrance of a carrion beetle.</string>
+					<string>A carrion beetle enters, scavenging for flesh.</string>
+					<string>A carrion beetle scuttles in, searching for food.</string>
+					<string>A black rat scurries in, looking for food.</string>
+					<string>A reticulated planthopper lands on a perch nearby, becoming eerily still.</string>
+					<string>The faint clicking of insect legs on stone alerts you to the entrance of a giant ugly pincher.</string>
+					<string>An ugly pincher scuttles in, searching for food.</string>
+					<string>A tiny pincher scuttles in, searching for food.</string>
+					<string>The faint clicking of insect legs on stone alerts you to the entrance of an ugly pincher.</string>
+					<string>A giant ugly pincher enters, scavenging for flesh.</string>
+					<string>An ugly pincher enters, scavenging for flesh.</string>
+					<string>A tiny pincher enters, scavenging for flesh.</string>
+					<string>The faint clicking of insect legs on stone alerts you to the entrance of a tiny pincher.</string>
+					<string>A giant ugly pincher scuttles in, searching for food.</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+					<integer>3</integer>
+				</regexCodePropertyList>
+			</Trigger>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>Sell Vermin</name>
+				<script>if snd.toggles.vermin == true then
+  local area = gmcp.Room.Info.area
+	if area == "Spinesreach" then	snd.send("sell vermin to ghada")
+	elseif area == "Duiran" then snd.send("sell vermin to nysos")
+	elseif area == "Bloodloch" then snd.send("sell vermin to enzo")
+	elseif area == "the City of Enorian" then snd.send("sell vermin to shrift")
+	end
+  
+	snd.toggles.vermin = false
+	snd.send("vermin")
+	disableTimer("moveroom")
+end</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>A large scientific laboratory</string>
+					<string>Illuminated cave passage between shops</string>
+					<string>Entering Bloodloch market district</string>
+					<string>A dockyard slum</string>
+					<string>Cabalist Ghada nods curtly at you.</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>2</integer>
+					<integer>2</integer>
+					<integer>2</integer>
+					<integer>2</integer>
+					<integer>3</integer>
+				</regexCodePropertyList>
+			</Trigger>
+		</TriggerGroup>
+	</TriggerPackage>
+</MudletPackage>
