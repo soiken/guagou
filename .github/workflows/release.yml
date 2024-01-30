@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@vLATEST
+      uses: actions/checkout@LATEST
 
     - name: Download Latest File
       run: |
