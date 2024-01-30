@@ -25,23 +25,15 @@ jobs:
           git status
           git log -n 5
           # Add more commands as needed to gather information
-          
+
       - name: Debug Environment Variables
         run: |
           env
-    
-      - name: Create and push tag
-        run: |
-          git config --global user.email "neilkan8@gmail.com"
-          git config --global user.name "Nekios"
-          git tag -a v1 -m "Version 1"
-          git push origin v1
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
 
-      - name: Download Latest File
+      - name: Generate Release Tag
+        id: tag
         run: |
-          wget -O latest_file.mpackage https://github.com/soiken/guagou/raw/main/build/Nekios.mpackage
+          echo "::set-output name=release_tag::UserBuild_$(date +'%Y.%m.%d_%H-%M')"
         continue-on-error: true
 
       - name: Set up Git for Release
@@ -50,10 +42,23 @@ jobs:
           git config --global user.name "Nekios"
         # Ensure this step is set up for later release-related actions
 
+      - name: Create and push tag
+        run: |
+          git tag -a ${{ steps.tag.outputs.release_tag }} -m "Release ${{ steps.tag.outputs.release_tag }}"
+          git push origin ${{ steps.tag.outputs.release_tag }}
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+
+      - name: Download Latest File
+        run: |
+          wget -O latest_file.mpackage https://github.com/soiken/guagou/raw/main/build/Nekios.mpackage
+        continue-on-error: true
+
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ steps.tag.outputs.release_tag }}
           files: |
             latest_file.mpackage
           token: ${{ secrets.GH_PAT }}
