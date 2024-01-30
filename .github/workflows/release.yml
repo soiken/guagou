@@ -10,12 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
 
     - name: Download Latest File
       run: |
         wget -O latest_file.mpackage https://github.com/soiken/guagou/raw/main/build/Nekios.mpackage
       continue-on-error: true
+
+    - name: Create Tag
+      id: create_tag
+      run: git tag -a v1 -m "Version 1" && git push origin v1
+      if: success()
 
     - name: Create Release
       id: create_release
@@ -31,4 +36,3 @@ jobs:
         if [ ! -z "$release_id" ]; then
           curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/releases/$release_id
         fi
-
