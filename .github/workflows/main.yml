@@ -11,15 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@latest
 
       - name: Muddle
         uses: demonnic/build-with-muddler@main
         with:
-          muddlerVersion: 1.0.3
+          muddlerVersion: latest
       
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4.3
+        uses: actions/upload-artifact@latest
         with:
           name: Soiken
           path: build/tmp/
