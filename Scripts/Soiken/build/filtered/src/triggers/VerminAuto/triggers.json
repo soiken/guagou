@@ -1,0 +1,104 @@
+[
+  {
+    "name": "vermin",
+    "patterns":[
+      {
+        "pattern": "Tongue flicking to taste the air, a pebbly black snake comes into view.",
+        "type": "match"
+      },
+      {
+        "pattern": "The glint of pebbly scales alerts you to the entrance of a black snake.",
+        "type": "match"
+      },
+      {
+        "pattern": "With a faint slithering noise, a pebbly black snake enters.",
+        "type": "match"
+      },
+      {
+        "pattern": "^You spy a seagull, rooting around the ground for scraps of anything edible.",
+        "type": "match"
+      },
+      {
+        "pattern": "The faint clicking of insect legs on stone alerts you to the entrance of a carrion beetle.",
+        "type": "match"
+      },
+      {
+        "pattern": "A carrion beetle enters, scavenging for flesh.",
+        "type": "match"
+      },
+      {
+        "pattern": "^A carrion beetle scuttles in, searching for food.",
+        "type": "match"
+      },
+      {
+        "pattern": "A black rat scurries in, looking for food.",
+        "type": "match"
+      },
+      {
+        "pattern": "A reticulated planthopper lands on a perch nearby, becoming eerily still.",
+        "type": "match"
+      },
+      {
+        "pattern": "The faint clicking of insect legs on stone alerts you to the entrance of a giant ugly pincher.",
+        "type": "match"
+      },
+      {
+        "pattern": "An ugly pincher scuttles in, searching for food.",
+        "type": "match"
+      },
+      {
+        "pattern": "A tiny pincher scuttles in, searching for food.",
+        "type": "match"
+      },
+      {
+        "pattern": "The faint clicking of insect legs on stone alerts you to the entrance of an ugly pincher.",
+        "type": "match"
+      },
+      {
+        "pattern": "A giant ugly pincher enters, scavenging for flesh.",
+        "type": "match"
+      },
+      {
+        "pattern": "An ugly pincher enters, scavenging for flesh.",
+        "type": "match"
+      },
+      {
+        "pattern": "A tiny pincher enters, scavenging for flesh.",
+        "type": "match"
+      },
+      {
+        "pattern": "The faint clicking of insect legs on stone alerts you to the entrance of a tiny pincher.",
+        "type": "match"
+      },
+      {
+        "pattern": "A giant ugly pincher scuttles in, searching for food.",
+        "type": "match"
+      }
+    ]
+  },
+  {
+    "name": "Sell Vermin",
+    "patterns": [
+      {
+        "pattern": "A large scientific laboratory",
+        "type": "start"
+      },
+      {
+        "pattern": "Illuminated cave passage between shops",
+        "type": "start"
+      },
+      {
+        "pattern": "Entering Bloodloch market district",
+        "type": "start"
+      },
+      {
+        "pattern": "A dockyard slum",
+        "type": "start"
+      },
+      {
+        "pattern": "Cabalist Ghada nods curtly at you.",
+        "type": "match"
+      }
+    ]
+  }
+]

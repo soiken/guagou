@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Def",
+    "regex": "nekiosdef"
+  },
+  {
+    "name": "load_nekiosdef_script",
+    "regex": "^LOAD$"
+  },
+  {
+    "name": "Def Stop",
+    "regex": "^nekiosdef stop$"
+  }
+]
