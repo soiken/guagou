@@ -2,51 +2,53 @@ name: Update Release with Latest File
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   update-release:
     runs-on: ubuntu-latest
-    
+
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main # Make sure to checkout the correct branch
 
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Create and push tag
+        run: |
+          git config --global user.email "neilkan8@gmail.com"
+          git config --global user.name "Nekios"
+          git tag -a v1 -m "Version 1"
+          git push origin v1
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
 
-    - name: Download Latest File
-      run: |
-        wget -O latest_file.mpackage https://github.com/soiken/guagou/raw/main/build/Nekios.mpackage
-      continue-on-error: true
+      - name: Download Latest File
+        run: |
+          wget -O latest_file.mpackage https://github.com/soiken/guagou/raw/main/build/Nekios.mpackage
+        continue-on-error: true
 
-    - name: Set up Git
-      run: |
-        git config --global user.email "neilkan8@gmail.com"
-        git config --global user.name "Nekios"
-        git config --global credential.helper store
-        git push origin v1
-      env:
-        GH_PAT: ${{ secrets.GH_PAT }}
+      - name: Set up Git for Release
+        run: |
+          git config --global user.email "neilkan8@gmail.com"
+          git config --global user.name "Nekios"
+        # Ensure this step is set up for later release-related actions
 
-    - name: Create Tag
-      id: create_tag
-      run: |
-        git tag -a v1 -m "Version 1"
-        git push origin v1
-      if: success()
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            latest_file.mpackage
+          token: ${{ secrets.GH_PAT }}
 
-    - name: Create Release
-      id: create_release
-      uses: softprops/action-gh-release@v1
-      with:
-        files: |
-          latest_file.mpackage
-        token: ${{ secrets.GH_PAT }}
-
-    - name: Delete Previous Release
-      run: |
-        release_id=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.id')
-        if [ ! -z "$release_id" ]; then
-          curl -X DELETE -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/${{ github.repository }}/releases/$release_id
-        fi
+      - name: Delete Previous Release
+        run: |
+          release_id=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.id')
+          if [ ! -z "$release_id" ]; then
+            curl -X DELETE -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/${{ github.repository }}/releases/$release_id
+          fi
