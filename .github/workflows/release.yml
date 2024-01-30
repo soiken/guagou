@@ -20,6 +20,11 @@ jobs:
         wget -O latest_file.mpackage https://github.com/soiken/guagou/raw/main/build/Nekios.mpackage
       continue-on-error: true
 
+    - name: Set up Git
+      run: |
+        git config --global user.email "neilkan8@gmail.com"
+        git config --global user.name "Nekios"
+
     - name: Create Tag
       id: create_tag
       run: git tag -a v1 -m "Version 1" && git push origin v1
