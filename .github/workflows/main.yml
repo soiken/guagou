@@ -11,7 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3.3.0
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # You can use a Node.js version that is compatible with your project
+
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Change working directory
         run: cd main/Scripts/Soiken
