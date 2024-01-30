@@ -19,7 +19,7 @@ jobs:
           muddlerVersion: 0.5
       
       - name: Upload Artifact
-        uses: actions/upload-artifact@3.1.2
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: Soiken
           path: build/tmp/
