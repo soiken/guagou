@@ -27,6 +27,11 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
 
+      - name: Debug Information
+        run: |
+          echo "GH_PAT: ${{ secrets.GH_PAT }}"
+          git remote -v
+
       - name: Download Latest File
         run: |
           wget -O latest_file.mpackage https://github.com/soiken/guagou/raw/main/build/Nekios.mpackage
