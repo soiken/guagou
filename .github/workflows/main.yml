@@ -1,0 +1,17 @@
+name: Build with Muddler
+
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger the workflow on
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build with Muddler
+      uses: demonnic/build-with-muddler@v1.4

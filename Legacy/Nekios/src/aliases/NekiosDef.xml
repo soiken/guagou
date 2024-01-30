@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<AliasPackage>
+		<AliasGroup isActive="yes" isFolder="yes">
+			<name>NekiosDef</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<regex></regex>
+			<Alias isActive="yes" isFolder="no">
+				<name>NekiosDefRun</name>
+				<script>run_nekiosdef()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>nekiosdef</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>load_nekiosdef_script</name>
+				<script>dofile(getMudletHomeDir() .. "/nekiosdef_script.lua")</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^LOAD$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>NekiosDefStop</name>
+				<script>stop_nekiosdef()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^nekiosdef stop$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>NekiosInvRun</name>
+				<script>updateInventoryList()
+</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>nekiosinv</regex>
+			</Alias>
+		</AliasGroup>
+	</AliasPackage>
+</MudletPackage>

@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<ScriptPackage>
+		<ScriptGroup isActive="yes" isFolder="yes">
+			<name>NekiosDef</name>
+			<packageName></packageName>
+			<script></script>
+			<eventHandlerList />
+			<Script isActive="yes" isFolder="no">
+				<name>nekiosdef_script</name>
+				<packageName></packageName>
+				<script>echo("Testing Script Initialization\n")
+
+local commands = {
+    "envenom weapon with darkshade",
+    "touch Cloak",
+    "touch Chameleon Lolita",
+    "touch Starburst",
+    "touch bell",
+    "touch Flame",
+    "touch Feather",
+    "touch starburst",
+    "touch Bell",
+    "touch ring",
+    "touch bracelet",
+    "touch necklace",
+    "touch chainmail",
+    "fabricate brutaliser",
+    "PATH TRACK 12668",
+    --"buy 10 design19116",
+    "PATH TRACK 12678",
+    "buy refill of epidermal for fluidcache",
+    "buy 10 thanatonin",
+    "PATH TRACK 13032",
+    "buy 10 reishi",
+    "put reishi in pipe",
+    "light pipe",
+    "smoke pipe",
+    "dodge all",
+    "mount brutaliser",
+    "fabricate Eviscerator",
+    "PATH TRACK 14507",
+    "buy refill OF speed FOR fluidcache",
+    "buy refill OF speed FOR fluidcache",
+    "buy refill OF speed FOR fluidcache",
+    "buy refill OF speed FOR fluidcache",
+    "buy refill OF speed FOR fluidcache",
+    "buy refill of caloric for fluidcache",
+    "buy refill of caloric for fluidcache",
+    "buy refill of caloric for fluidcache",
+    "buy refill of caloric for fluidcache",
+    "buy refill of caloric for fluidcache",
+    "PATH TRACK 14393",
+    "buy refill of mending for fluidcache",
+    "buy refill of mending for fluidcache",
+    "buy refill of mending for fluidcache",
+    "buy refill of mending for fluidcache",
+    "buy refill of mending for fluidcache",
+    "buy rose",
+    "buy rose",
+    "buy rose",
+    "buy rose",
+    "buy rose",
+    "PATH TRACK 14395",
+    "buy 10 Stimulant",
+    "buy 10 amaurosis",
+    "buy 10 ototoxin",
+    "buy 10 eucrasia",
+    "buy 10 steroid",
+    "buy 10 stimulant",
+    "buy 10 depressant",
+    "buy 10 panacea",
+    "buy 10 acuity",
+    "buy 10 kawhe",
+    "buy 10 antipsychotic",
+    "buy 10 decongestant",
+    "buy 10 coagulation",
+    "buy 10 opiate",
+    "buy 10 euphoriant",
+    "buy refill of darkshade for fluidcache",
+    "buy refill of darkshade for fluidcache",
+    "buy refill of darkshade for fluidcache",
+    "buy refill of darkshade for fluidcache",
+    "buy refill of darkshade for fluidcache",
+    "buy refill of antivenin for fluidcache",
+    "buy refill of antivenin for fluidcache",
+    "buy refill of antivenin for fluidcache",
+    "buy refill of antivenin for fluidcache",
+    "buy refill of antivenin for fluidcache",
+    "buy refill of levitation for fluidcache",
+    "buy refill of levitation for fluidcache",
+    "buy refill of levitation for fluidcache",
+    "buy refill of levitation for fluidcache",
+    "buy refill of levitation for fluidcache",
+    "buy refill of frost for fluidcache",
+    "buy refill of frost for fluidcache",
+    "buy refill of frost for fluidcache",
+    "buy refill of frost for fluidcache",
+    "buy refill of frost for fluidcache",
+    "buy refill of health for fluidcache",
+    "buy refill of health for fluidcache",
+    "buy refill of health for fluidcache",
+    "buy refill of health for fluidcache",
+    "buy refill of health for fluidcache",
+    "buy refill of mana for fluidcache",
+    "buy refill of mana for fluidcache",
+    "buy refill of mana for fluidcache",
+    "buy refill of mana for fluidcache",
+    "buy refill of mana for fluidcache",
+    "buy refill of Mass for fluidcache",
+    "buy refill of Mass for fluidcache",
+    "buy refill of Mass for fluidcache",
+    "buy refill of Mass for fluidcache",
+    "buy refill of Mass for fluidcache",
+    "buy refill of restoration for fluidcache",
+    "buy refill of restoration for fluidcache",
+    "buy refill of restoration for fluidcache",
+    "buy refill of restoration for fluidcache",
+    "buy refill of restoration for fluidcache",
+    "BUY RECHARGE OF resistance on ring",
+    "BUY RECHARGE OF cold on ring",
+    "BUY RECHARGE OF electric on ring",
+    "BUY RECHARGE OF fire on ring",
+    "BUY RECHARGE OF allsight on necklace",
+    "BUY RECHARGE OF waterwalking on bracelet",
+    "PATH TRACK 22627",
+    "buy refill OF vigor FOR fluidcache",
+    "buy refill OF vigor FOR fluidcache",
+    "buy refill OF vigor FOR fluidcache",
+    "buy refill OF vigor FOR fluidcache",
+    "buy refill OF vigor FOR fluidcache",
+    "BUY RECHARGE OF purity on chainmail",
+    "drink antivenin",
+    "drink levitation",
+    "drink speed",
+    "drink frost",
+    "drink vigor",
+    "eat thanatonin",
+    "eat Stimulant",
+    "eat amaurosis",
+    "eat ototoxin",
+    "lithe on",
+    "coagulation on",
+    "inspirited on",
+    "efficiency on",
+    "somersault on",
+    "fabricate Rimestalker",
+    "hide",
+    "PATH TRACK 35199",
+    "REMOVE GAUNTLET",
+    "GIVE GAUNTLET TO BARAKIN",
+    "WEAR GAUNTLET"
+    "gogo custom"
+}
+
+
+-- Variable to track whether the automation is running or stopped
+local automationRunning = false
+
+-- Variable to store the "PATH TRACK" command and its target number
+local pathTrackCommand = nil
+local pathTrackTargetNum = nil
+
+-- Function to send the next command in the list
+function sendNextCommand()
+    if #commands == 0 then
+        automationRunning = false
+        cecho("&lt;red&gt;Automation completed. No more commands to execute.&lt;reset&gt;\n")
+        return
+    end
+
+    if not automationRunning then
+        cecho("&lt;red&gt;Automation stopped or not started.&lt;reset&gt;\n")
+        return
+    end
+
+    local command = table.remove(commands, 1) -- Get the next command from the list
+    if string.match(command, "PATH TRACK") then
+        pathTrackCommand = command
+        pathTrackTargetNum = tonumber(string.match(command, "%d+")) -- Extract the target room number
+        send(command) -- Send the "PATH TRACK" command immediately
+        cecho("&lt;green&gt;Sending PATH TRACK: " .. command .. "&lt;reset&gt;\n")
+        tempTimer(1.5, checkPathTrack)
+    else
+        send(command) -- Send non-"PATH TRACK" command immediately
+        cecho("&lt;green&gt;Sending: " .. command .. "&lt;reset&gt;\n")
+        tempTimer(3, sendNextCommand) -- Wait for 3 seconds before sending the next command
+    end
+end
+
+-- Function to check if the current room matches the target room number
+function checkPathTrack()
+    if not pathTrackCommand then
+        sendNextCommand()
+        return
+    end
+
+    local currentNum = gmcp.Room.Info.num -- Get the current room number from GMCP
+    if currentNum == pathTrackTargetNum then
+        pathTrackCommand = nil -- Reset the pathTrackCommand variable
+        sendNextCommand() -- Proceed to send the next command
+    else
+        tempTimer(1, checkPathTrack) -- Wait for 1 second and then check again
+        cecho("&lt;yellow&gt;Waiting for room match. Current: " .. currentNum .. ", Target: " .. pathTrackTargetNum .. "&lt;reset&gt;\n")
+    end
+end
+
+-- Function to start the automation
+function run_nekiosdef()
+    if automationRunning then
+        cecho("&lt;yellow&gt;Automation is already running.&lt;reset&gt;\n")
+        return
+    end
+
+    automationRunning = true
+    cecho("&lt;green&gt;Automation started.&lt;reset&gt;\n")
+    sendNextCommand() -- Start sending commands
+end
+
+-- Function to stop the automation
+function stop_nekiosdef()
+    automationRunning = false -- Stop the automation
+    cecho("&lt;red&gt;Automation stopped.&lt;reset&gt;\n")
+end
+
+-- Initialize the GMCP module (if not already done in another part of your script)
+if not gmcp then
+    enableGMCP()
+end</script>
+				<eventHandlerList />
+			</Script>
+			<Script isActive="no" isFolder="no">
+				<name>nekiosinv_script</name>
+				<packageName></packageName>
+				<script>ProgressDisplay = ProgressDisplay or {
+  font = "Ubuntu Mono",
+  fontSize = 10,
+  height = 200,
+  width = 400
+}
+ProgressDisplay.goldLog = ProgressDisplay.goldLog or {}
+ProgressDisplay.expLog = ProgressDisplay.expLog or {}
+
+-- Inventory management
+inv = inv or {}
+
+local function itemList(_, _)
+  local event = gmcp.Char.Items.List
+  if event.location ~= "inv" then
+    return
+  end
+  -- Clear inventory table and rebuild
+  inv = {}
+  for _, item in pairs(event.items) do
+    inv[item.id] = item
+  end
+  raiseEvent("inventory updated")
+end
+
+function ProgressDisplay:reset()
+  self.goldLog = {}
+  self.expLog = {}
+  self.startTime = os.time()
+end
+
+function ProgressDisplay.format_int(number)
+  number = math.floor(number)
+  local i, j, minus, int, fraction = tostring(number):find('([-]?)(%d+)([.]?%d*)')
+  -- reverse the int-string and append a comma to all blocks of 3 digits
+  int = int:reverse():gsub("(%d%d%d)", "%1,")
+  -- reverse the int-string back remove an optional comma and put the 
+  -- optional minus and fractional part back
+  return minus .. int:reverse():gsub("^,", "") .. fraction
+end
+
+function ProgressDisplay.breakdownTime(time)
+  local hours, minutes, seconds = shms(time)
+  hours = tonumber(hours)
+  minutes = tonumber(minutes)
+  seconds = tonumber(seconds)
+  local days = math.floor(hours / 24)
+  hours = hours % 24
+  return days, hours, minutes, seconds
+end
+
+function ProgressDisplay:create()
+  self.container = Adjustable.Container:new({
+    name = "Progress Display",
+    x = 0,
+    y = 0,
+    height = self.height,
+    width = self.width,
+  })
+  self.console = Geyser.MiniConsole:new({
+    name = "progress displayinator gold console",
+    x = 0,
+    y = 0,
+    height = "100%",
+    width = "100%",
+    font = self.font,
+    fontSize = self.fontSize,
+    color = "black",
+  }, self.container)
+  self:update()
+end
+
+function ProgressDisplay:show()
+  self.container:show()
+  self:update()
+end
+
+function ProgressDisplay:hide()
+  self.container:hide()
+end
+
+function ProgressDisplay:update()
+  if self.container.hidden then return end
+  ProgressDisplay:expCheck()
+  ProgressDisplay:goldCheck()
+  ProgressDisplay:displayInventory()
+end
+
+function ProgressDisplay:goldUpdate(amount)
+  local goldLog = self.goldLog
+  local where = gmcp.Room.Info
+  local when = os.time()
+  local logEntry = {
+    ["where"] = {
+      ["roomNum"] = where.num,
+      ["area"] = where.area,
+    },
+    ["when"] = when,
+    ["amount"] = amount,
+  }
+  goldLog[#goldLog+1] = logEntry
+  self:update()
+end
+
+function ProgressDisplay:expUpdate(amount)
+  local expLog = self.expLog
+  local where = gmcp.Room.Info
+  local when = os.time()
+
+  local entry = {
+    ["where"] = {
+      ["roomNum"] = where.num,
+      ["area"] = where.area,
+    },
+    ["when"] = when,
+    ["amount"] = amount,
+  }
+  expLog[#expLog+1] = entry
+  self:update()
+end
+
+function ProgressDisplay:expCheck()
+  local console = self.console
+  local total = 0
+  if not self.startTime then
+    self.startTime = os.time()
+  end
+  local startTime = self.startTime
+  local endTime = os.time()
+  local thisArea, thisRoom = "Unknown", "Unknown"
+  if gmcp.Room and gmcp.Room.Info then
+    thisArea = gmcp.Room.Info.area
+    thisRoom = gmcp.Room.Info.num
+  end
+  local areaExp = 0
+  local roomExp = 0
+  console:clear()
+  for _, log in ipairs(self.expLog) do
+    if log.where.area == thisArea then
+      areaExp = areaExp + log.amount
+    end
+    if log.where.roomNum == thisRoom then
+      roomExp = roomExp + log.amount
+    end
+    total = total + log.amount
+  end
+  local duration = endTime - startTime
+  local days, hours, minutes, seconds = self.breakdownTime(duration)
+  local timeString = f"{days} days {hours} hours {minutes} minutes {seconds} seconds"
+
+  local xph = total / (duration / 60 / 60)
+  local xpToLevel, xpPercentGained = "Unknown", "Unknown"
+  if gmcp.Char and gmcp.Char.Vitals then
+    xpToLevel = tonumber(gmcp.Char.Vitals.maxxp) - tonumber(gmcp.Char.Vitals.xp)
+    xpPercentGained = string.format("%.2f", (total*100)/tonumber(gmcp.Char.Vitals.maxxp))
+  end
+  local timeToLevel = "Infinity"
+  if xph &gt; 1 then
+    timeToLevel = string.format("%.2f", xpToLevel / xph)
+  end
+
+  local readable_total = self.format_int(total)
+  local readable_xph = self.format_int(xph)
+
+  console:cecho(f[[
+&lt;white&gt;Area        : &lt;green&gt;{thisArea}
+&lt;white&gt;Time Period : &lt;green&gt;{timeString}
+&lt;LightSlateBlue&gt;Exp change  : {total&lt;0 and "&lt;red&gt;" or "&lt;green&gt;"}{readable_total} &lt;green&gt;({xpPercentGained}%)
+&lt;LightSlateBlue&gt;Exp/Hour    : {xph&lt;0 and "&lt;red&gt;" or "&lt;green&gt;"}{readable_xph}
+&lt;LightSlateBlue&gt;Hrs to Lvl  : &lt;yellow&gt;{timeToLevel} &lt;green&gt;hours
+]])
+end
+
+function ProgressDisplay:goldCheck()
+  local console = self.console
+  local goldLog = self.goldLog
+  local total = 0
+  local startTime = self.startTime
+  local endTime = os.time()
+  local thisArea = "Unknown"
+  if gmcp.Room and gmcp.Room.Info then
+    thisArea = gmcp.Room.Info.area:gsub("an unstable section of ","")
+  end
+  local areaGold = 0
+  for _, log in ipairs(goldLog) do
+    if log.where.area == thisArea then
+      areaGold = areaGold + log.amount
+    end
+    total = total + log.amount
+  end
+  local duration = endTime - startTime
+  local gps = total / duration
+  local gph = total / (duration/60/60)
+
+  console:cecho(f[[
+&lt;yellow&gt;Gold change : {total&lt;=0 and "&lt;red&gt;" or "&lt;green&gt;"}{total}
+&lt;yellow&gt;Gold in area: &lt;green&gt;{areaGold}
+&lt;yellow&gt;Gold/Second : &lt;green&gt;{string.format("%.2f",gps)}
+&lt;yellow&gt;Gold/Hour   : &lt;green&gt;{string.format("%.2f",gph)}]])
+end
+
+function ProgressDisplay:displayInventory()
+  local console = self.console
+  console:cecho("\n&lt;LightSlateBlue&gt;Inventory Items (Alphabetical Order):\n")
+  
+  -- Create a sorted list of item names and IDs
+  local sortedItems = {}
+  for id, item in pairs(inv) do
+    table.insert(sortedItems, {name = item.name, id = id})
+  end
+  table.sort(sortedItems, function(a, b) return a.name &lt; b.name end)
+
+  for _, item in pairs(sortedItems) do
+    console:cecho(string.format("&lt;yellow&gt;%s &lt;green&gt;ID: %s\n", item.name, item.id))
+  end
+end
+
+if not ProgressDisplay.container then
+  ProgressDisplay:create()
+  ProgressDisplay:reset()
+end
+
+registerNamedTimer("ProgressDisplay", "regular update", 1, function() ProgressDisplay:update() end, true)
+</script>
+				<eventHandlerList />
+			</Script>
+		</ScriptGroup>
+	</ScriptPackage>
+</MudletPackage>

@@ -1,0 +1,1 @@
+dofile(getMudletHomeDir() .. "/nekiosdef_script.lua")
