@@ -9,14 +9,10 @@ jobs:
   update-release:
     runs-on: ubuntu-latest
     steps:
-    - name: Set up Git
-      run: |
-        git config --global user.email "neilkan8@gmail.com"
-        git config --global user.name "Nekios"
-      # Continue on error since the configuration might already be set up.
-
-    - name: Checkout code
+    - name: Checkout code with full history and tags
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history and tags
 
     - name: Download Latest File
       run: |
@@ -34,7 +30,7 @@ jobs:
       with:
         files: |
           latest_file.mpackage
-        token: ${{ secrets.GH_PAT }}
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Delete Previous Release
       run: |
