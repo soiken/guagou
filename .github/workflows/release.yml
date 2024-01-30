@@ -39,15 +39,6 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
 
-      - name: Conditional Debug
-        run: |
-          if [ ${{ failure() }} == true ]; then
-            echo "The previous step failed."
-            echo "SomeVariable: ${{ secrets.SomeVariable }}"
-            # Add more debug statements
-          fi
-        continue-on-error: true
-
       - name: Download Latest File
         run: |
           wget -O latest_file.mpackage https://github.com/soiken/guagou/raw/main/build/Nekios.mpackage
