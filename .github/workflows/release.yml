@@ -18,6 +18,14 @@ jobs:
         with:
           ref: main # Make sure to checkout the correct branch
 
+      - name: Debug Information
+        run: |
+          echo "GH_PAT: ${{ secrets.GH_PAT }}"
+          git remote -v
+          git status
+          git log -n 5
+          # Add more commands as needed to gather information
+    
       - name: Create and push tag
         run: |
           git config --global user.email "neilkan8@gmail.com"
@@ -27,10 +35,6 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
 
-      - name: Debug Information
-        run: |
-          echo "GH_PAT: ${{ secrets.GH_PAT }}"
-          git remote -v
 
       - name: Download Latest File
         run: |
