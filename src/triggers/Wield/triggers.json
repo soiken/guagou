@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Wield",
+    "patterns":[
+      {
+        "pattern": "^You must be wielding a ringblade for that attack.*",
+        "type": "regex"
+      }
+    ]
+  }
+]

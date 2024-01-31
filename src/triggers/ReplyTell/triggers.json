@@ -1,9 +1,9 @@
 [
   {
-    "name": "vermin",
+    "name": "ReplyTell",
     "patterns":[
       {
-        "pattern": "^(Tells): ([^\\s]+) tells you, \".*(?:help|wandering|alright|okay).*\"",
+        "pattern": "^(Tells): ([^,]+) tells you, \".*(?:help|wandering|alright|okay).*\"",
         "type": "regex"
       }
     ]
