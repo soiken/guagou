@@ -1,18 +1,20 @@
 name: Update Release with Latest File
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["main.yml"] # Specify the name of the workflow to wait for
+    types:
+      - completed
 
 jobs:
   update-release:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Wait for main.yml to complete
+        id: wait_for_main
+        run: echo "Waiting for main.yml to complete..."
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -42,17 +44,15 @@ jobs:
           git config --global user.name "Nekios"
         # Ensure this step is set up for later release-related actions
 
+      - name: Move file to workspace
+        run: mv /home/runner/work/guagou/guagou/build/soiken-1.0.0.mpackage latest_file.mpackage
+
       - name: Create and push tag
         run: |
           git tag -a ${{ steps.tag.outputs.release_tag }} -m "Release ${{ steps.tag.outputs.release_tag }}"
           git push origin ${{ steps.tag.outputs.release_tag }}
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
-
-      - name: Download Latest File
-        run: |
-          wget -O latest_file.mpackage https://github.com/soiken/guagou/raw/main/build/Nekios.mpackage
-        continue-on-error: true
 
       - name: Create Release
         id: create_release

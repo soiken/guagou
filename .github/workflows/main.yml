@@ -22,4 +22,37 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: Soiken
-          path: build/tmp/
+          path: build/
+          
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: Soiken
+          path: downloaded-artifact
+
+      - name: Print Current Directory
+        run: pwd
+
+      - name: Print Workspace Directory
+        run: echo ${{ github.workspace }}
+      
+      - name: List Files in Workspace
+        run: ls -R ${{ github.workspace }}
+
+      - name: Debug Step
+        run: |
+          echo "GitHub Workspace: ${{ github.workspace }}"
+          echo "Target Folder: $GITHUB_WORKSPACE/build"
+          echo "Repository Path: $GITHUB_REPOSITORY"
+          echo "Location: $(pwd)"
+          ls -R ${{ github.workspace }}/downloaded-artifact
+        env:
+          MUDDLER_VERSION: 0.5
+      
+      - name: Move Artifact to Repository Folder
+        run: cp -r ${{ github.workspace }}/downloaded-artifact/* $GITHUB_WORKSPACE/build/
+        env:
+          MUDDLER_VERSION: 0.5
+
+
+
