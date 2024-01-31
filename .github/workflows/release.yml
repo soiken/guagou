@@ -2,25 +2,21 @@ name: Update Release with Latest File
 
 on:
   push:
-    branches: [main]
-        #workflow_run:
-          #workflows: ["main.yml"] # Specify the name of the workflow to wait for
-          #types:
-            #- completed
-      
-      #jobs:
-        #update-release:
-          #runs-on: ubuntu-latest
-      
-          #steps:
-            #- name: Wait for main.yml to complete
-              #id: wait_for_main
-              #run: echo "Waiting for main.yml to complete..."
-  
-        - name: Checkout code
-          uses: actions/checkout@v4
-          with:
-            ref: main # Make sure to checkout the correct branch
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  update-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main # Make sure to checkout the correct branch
 
       - name: Debug Information
         run: |
