@@ -31,4 +31,4 @@ jobs:
           path: downloaded-artifact
 
       - name: Move Artifact to Repository Folder
-        run: mv downloaded-artifact/* build/
+        run: cp -r downloaded-artifact/* build/
