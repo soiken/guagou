@@ -40,6 +40,6 @@ jobs:
         run: ls -R ${{ github.workspace }}
 
       - name: Move Artifact to Repository Folder
-        run: cp -r downloaded-artifact/* ../build/
-        working-directory: ${{ github.workspace }}
+        run: cp -r ${{ github.workspace }}/downloaded-artifact/* $GITHUB_WORKSPACE/build/
+
 
