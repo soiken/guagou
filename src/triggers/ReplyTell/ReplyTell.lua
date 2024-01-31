@@ -48,3 +48,11 @@ if name then
   -- Set the timer to execute the sendResponseWithDelay function after the randomDelay
   tempTimer(randomDelay, sendResponseWithDelay)
 end
+
+mmp.pause("on")
+send("PATH TRACK CITY")
+tempTimer(900, mmp.pause("off"))
+if snd.toggles.fasthunt == true then 
+  snd.toggle("fasthunt") end
+snd.runPath("spinesreach")
+
