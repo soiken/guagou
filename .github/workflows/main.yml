@@ -90,10 +90,3 @@ jobs:
           files: |
             latest_file.mpackage
           token: ${{ secrets.GH_PAT }}
-
-      - name: Delete Previous Release
-        run: |
-          release_id=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.id')
-          if [ ! -z "$release_id" ]; then
-            curl -X DELETE -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/${{ github.repository }}/releases/$release_id
-          fi
