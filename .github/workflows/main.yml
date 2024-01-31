@@ -30,6 +30,9 @@ jobs:
           name: Soiken
           path: downloaded-artifact
 
+      - name: Print Current Directory
+        run: pwd
+
       - name: Move Artifact to Repository Folder
         run: cp -r downloaded-artifact/* ../build/
         working-directory: ${{ github.workspace }}
