@@ -1,0 +1,20 @@
+[
+  {
+    "name": "onGive",
+    "patterns":[
+      {
+        "pattern": "^You give (.+) to (.+)$",
+        "type": "regex"
+      }
+    ]
+  },
+  {
+    "name": "questCompletionTrigger",
+    "patterns":[
+      {
+        "pattern": "^You have completed (\\w+)$",
+        "type": "regex"
+      }
+    ]
+  }
+]

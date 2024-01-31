@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Hungry",
+    "patterns":[
+      {
+        "pattern": "(hungry|hunger)",
+        "type": "regex"
+      }
+    ]
+  }
+]

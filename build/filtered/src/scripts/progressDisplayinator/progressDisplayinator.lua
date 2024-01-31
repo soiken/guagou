@@ -187,7 +187,7 @@ function ProgressDisplay:expCheck()
   end
   local duration = endTime - startTime
   local days, hours, minutes, seconds = self.breakdownTime(duration)
-  local timeString = string.format("%d days %d hours %d minutes %d seconds", days, hours, minutes, seconds)
+  local timeString = f"{days} days {hours} hours {minutes} minutes {seconds} seconds"
 
   local xph = total / (duration / 60 / 60)
   local xpToLevel, xpPercentGained = "Unknown", "Unknown"
@@ -203,12 +203,14 @@ function ProgressDisplay:expCheck()
   local readable_total = self.format_int(total)
   local readable_xph = self.format_int(xph)
 
-  console:cecho(string.format([[
-<white>Area        : <green>%s
-<white>Time Period : <green>%s
-<LightSlateBlue>Exp change  : %s%s <green>(%s%%)
-<LightSlateBlue>Exp/Hour    : %s%s <green>(hours)
-]], thisArea, timeString, total < 0 and "<red>" or "<green>", readable_total, xpPercentGained, total < 0 and "<red>" or "<green>", readable_xph))
+
+  console:cecho(f[[
+<white>Area        : <green>{thisArea}
+<white>Time Period : <green>{timeString}
+<LightSlateBlue>Exp change  : {total<0 and "<red>" or "<green>"}{readable_total} <green>({xpPercentGained}%)
+<LightSlateBlue>Exp/Hour    : {xph<0 and "<red>" or "<green>"}{readable_xph}
+<LightSlateBlue>Hrs to Lvl  : <yellow>{timeToLevel} <green>hours
+]])
 end
 
 function ProgressDisplay:goldCheck()
