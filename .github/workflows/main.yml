@@ -82,17 +82,14 @@ jobs:
         run: echo "::set-output name=version::$(./bin/azblogfilter --version)"
         id: version
         
-      - name: release
-        uses: actions/create-release@v1
-        id: create_release_0
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
         with:
-          draft: false
-          prerelease: false
-          release_name: ${{ steps.version.outputs.version }}
           tag_name: ${{ steps.tag.outputs.release_tag }}
-          body_path: CHANGELOG.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          files: |
+            latest_file.mpackage
+          token: ${{ secrets.GH_PAT }}
 
       - name: Delete Previous Release
         run: |
