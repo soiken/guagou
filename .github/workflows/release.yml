@@ -1,6 +1,8 @@
 name: Update Release with Latest File
 
 on:
+  push:
+      [main]
   workflow_run:
     workflows: ["main.yml"] # Specify the name of the workflow to wait for
     types:
