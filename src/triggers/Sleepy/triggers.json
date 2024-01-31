@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Sleepy",
+    "patterns":[
+      {
+        "pattern": "^You feel your eyelids drooping; a sure sign that you need sleep.*",
+        "type": "regex"
+      }
+    ]
+  },
+  {
+    "name": "Wake",
+    "patterns":[
+      {
+        "pattern": "^You open your eyes and stretch languidly, feeling deliciously well-rested.*",
+        "type": "regex"
+      }
+    ]
+  }
+]

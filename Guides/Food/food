@@ -1,0 +1,61 @@
+PATH TRACK 14510
+
+buy 5 design10848
+buy 5 design22415
+buy 5 design29058
+buy 5 design7251
+buy 5 design14723
+
+eat pie
+eat cup
+eat mousse
+eat plate
+eat pie
+
+design10848 a blackberry pie                                20     36gp
+design14723 a chocolate chunk cookie cup                   124     60gp
+design7251 a creamy cloudberry mousse                      40     48gp
+design29058 a plate of roasted vegetables                   20     42gp
+design22415 a pumpkin pie                                   15     42gp
+
+
+PATH TRACK 21061
+
+buy 5 snack458990
+buy 5 snack285951
+buy 5 design30165
+buy 5 design30166
+buy 5 design30167
+
+eat snack
+eat snack
+eat snack
+eat snack
+eat snack
+
+snack458990 a cheese-stuffed spider snack    23    150g
+snack285951 a crunchy centipede snack   16    150g
+design30165 a snack of crumbly, yellowish cheese 298    150g
+design30166 a round snack of hard, white cheese  298    150g
+design30167 a hard, crumbly white cheese snack   170    150g
+
+PATH TRACK 14393
+
+buy 5 design25455
+buy 5 design26059
+buy 5 design30171
+buy 5 design30195
+buy 5 design30361
+
+eat snack
+eat snack
+eat snack
+eat snack
+eat cookie
+
+
+design25455 a charred broccoli snack                        68    100gp
+design26059 a sweet pickle snack                            28    100gp
+design30171 a baby carrot and cream cheese snack            24    100gp
+design30195 a flower-shaped fried onion snack               19    100gp
+design30361 a heart-shaped chocolate cookie                122    200gp

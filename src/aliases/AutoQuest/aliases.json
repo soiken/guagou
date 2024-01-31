@@ -1,0 +1,6 @@
+[
+  {
+    "name": "startQuest",
+    "regex": "^startquest (\\w+)$"
+  }
+]

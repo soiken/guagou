@@ -1,0 +1,449 @@
+I have a quest list that I want to automate using mudlet triggers, aliases and scripts, note that since the quest list might be updated later, make it as convenient for me to edit if the quests updates
+
+here are some commands, functions and gmcp actions u can refer when creating this:
+1. sending "PATH TRACK (area)" can reach the area, for example PATH TRACK ALAQSII will start walking to ALAQSII
+2. gmcp.Room.Info.area will return "area", this can be used check if the character has arrvied the correct area before executing the next command/action, please make the area upper case so it can be better matched
+3. when the area is checked and verified being same as the quest required area, you can use "snd_bashArea()"" which will kill all enemies in the location
+4. when the quest require giving an npc or talking to an npc, you can use "demonwalker:init()" to run the area and continuosly and using "gmcp.Char.Items.List.items" will return an array of items/npcs in the current room, here is an example:
+{
+  items = { {
+      id = "3277",
+      name = "The Inner Gate of Spinesreach"
+    }, {
+      id = "43803",
+      name = "a sturdy wooden pallet"
+    }, {
+      id = "70108",
+      name = "a simple veranda"
+    }},
+  location = "room"
+}
+5. if you can partially match the name with the npc name from the quest list below meaning the npc is found, use "demonwalker:stop()" to stop run the area. For example if you are looking for the npc "Seviel", for Quest 2A below, you can "PATH TRACK ARBOTHIA" and after you verify the current area is ARBOTHIA, you can use "demonwalker:init()" and keep running in ARBOTHIA and keep running "gmcp.Char.Items.List.items" to check for the npc. 
+6. The same goes for items that need to be picked up, for example you need to pick up ash/ashes for Quest 3A, if the word ash/ashes is found in "gmcp.Char.Items.List.items" array, then you can send "get (id)" found from "gmcp.Char.Items.List.items" array
+7. sending "give (item) to (npc)" will give the item from inventory to npc, note that each time its sent it will only give 1 piece of the item, for example "give corpses to hunter" will only give 1 corpse, you can keep giving until you see "You hold no (item)" in this scenario you will see "You hold no corpse" 
+8. sending "greet (npc)" will greet the npc as requested by some quests
+
+
+
+
+
+QUEST LIST BELOW:
+
+
+1.  ALAQSII INLET
+
+   A. QUEST ALAQSII_ANIMALS
+        LEVEL: 25+
+        REWARD: 10gp per animal
+        DIRECTIONS: PATH TRACK ALAQSII and kill all the animals in the area.
+Find a roaming hunter and give him the corpses.
+NOTE: Beware the aggressive wolves at the entrance to Alaqsii. Do not hurt the
+Apex Wolf.
+
+2.  ARBOTHIA
+
+   A. QUEST ARBOTHIA_BAKER and ARBOTHIA_FISHERMAN
+       LEVEL: All
+       REWARD: 150gp from Gorwin and 150gp from Seviel.
+       DIRECTIONS: PATH TRACK ARBOTHIA and locate Seviel. Greet her and let
+her know Gorwin needs something and she will give you a piece of flatbread.
+Locate Gorwin by the water and give him the flatbread. He will give you a
+fish. Return to Seviel and give her the fish.
+
+   B. QUEST ARBOTHIA_NAILS
+        LEVEL: All
+        REWARD: 150pg
+        DIRECTIONS: PATH TRACK ARBOTHIA and locate Eddan. Mention nails to him
+and he will give you a box of nails. Locate Nathan and give the box to him.
+
+   C. QUEST ARBOTHIA_PATTERN
+        LEVEL: All, if cautious
+        REWARD: 500gp
+        DIRECTIONS: PATH TRACK ARBOTHIA, locate and greet Lizenne. She will
+ask you to find a pattern for her. PATH TRACK MORGUN  and look through the
+area until you find the pattern. Return to Lizenne and give the pattern to
+her.
+NOTE: Beware the aggressive hemlock bushes.
+
+   D. QUEST ARBOTHIA_ROPEMAKER and ARBOTHIA_BLACKSMITH
+        LEVEL: All
+        REWARD: 150gp from Nadmar and 200gp from Nathan.
+        DIRECTIONS: PATH TRACK 14729 and pick up the hemp plant there. Locate
+Nadmar and give the hemp to him. Wait a few moments and he will give you your
+rewards and a piece of rope. Locate Nathan and give the rope to him for a
+reward.
+
+3.  ARGET MASSAI
+
+   A. QUEST MASSAI_ASH
+        LEVEL: All, with caution
+        REWARD: 200gp per for 1000gp
+        DIRECTIONS: PATH TRACK 28511. Walk around and pick up the five pieces of
+ash. PATH TRACK 37005 and give the ash to the gardener.
+NOTE: Beware the aggressive lava hounds and badgers.
+
+   B. QUEST MASSAI_COMMODITIES
+        LEVEL: All, with caution
+        REWARD: 10gp per coal
+        DIRECTIONS: PATH TRACK SIROCCIANS. Wander around and gather all the
+coal. PATH TRACK ARGET MASSAI locate the builder|173. Give the coal to the
+him.
+NOTE: Beware the aggressive wolverines and giant ant.
+
+   C. QUEST MASSAI_WEEDING
+        LEVEL: All
+        REWARD: 50gp per weed
+        DIRECTIONS: PATH TRACK ARGET MASSAI and locate the gardener. Greet him
+and let him know you can help him with the weeds. Only get weeds, which are
+THRIVING, TENACIOUS, or STUBBORN. Make sure to PROBE GARDEN in order to find
+the right ones. Do not get fragrant, colorful, vigorous, sparse, spindly, or
+dry flowers, blossoms, blooms, plants, or stalks.
+
+4.  ARURER HAVEN
+
+   A. QUEST HAVEN_GUNDER
+        LEVEL: All
+        REWARD: 500gp
+        DIRECTIONS: PATH TRACK ARURER  and search the area for a key. When you
+find it, PATH TRACK 19487. Unlock the chest and get the seashell from within.
+Give the seashell to Gunder.
+
+   B. QUEST HAVEN_RELIC
+        LEVEL: All
+        REWARD: 350gp
+        DIRECTIONS: PATH TRACK AZDUN and retrieve the ruby statuette from
+somewhere in the area. PATH TRACK ARURER, locate Garron and give the statuette
+to him.
+
+5.  ATTICA
+
+   A. QUEST ATTICA_BARREL
+        LEVEL: All
+        REWARD: 100gp
+        DIRECTIONS: PATH TRACK ATTICA and find the barrel in the basement of
+the inn. Get the barrel and give it to Johan.
+
+   B. QUEST ATTICA_BREAD
+        LEVEL: All
+        REWARD: 100 gold
+        DIRECTIONS: PATH TRACK ATTICA, locate Matilda and ask her if you can
+help her. When she gives you bread, go to the inn and give it to Trudd.
+
+   C. QUEST ATTICA_CHILDREN
+        LEVEL: All
+        REWARD: 500gp
+        DIRECTIONS: PATH TRACK ATTICA, find and greet Mira. She will ask for
+help finding her children, Leena, Daryn and Erin. The children will not follow
+you willingly. Perhaps Alanna can help? When each child is following you,
+bring them back to Mira.
+
+    D. QUEST ATTICA_CUTLERY
+        LEVEL: All
+        REWARD: 100gp
+        DIRECTIONS: PATH TRACK ATTICA and find Aran to ask if you can help
+him. When he gives you cutlery, go to the inn and give them to Trudd.
+
+    E. QUEST ATTICA_LUNCH
+        LEVEL: All
+        REWARD: 100gp
+        DIRECTIONS: PATH TRACK ATTICA and find Alanna. Ask her if you can help
+her. When she gives you a lunch, locate her husband Bern at the shore and give
+him the lunch.
+
+   F. QUEST ATTICA_MILK
+        LEVEL: All
+        REWARD: 100gp
+        DIRECTIONS: PATH TRACK ATTICA  and find Arila to ask if you can help
+her. When she gives you milk, deliver the jug to Trudd at the inn.
+
+   G. QUEST ATTICA_RING
+        LEVEL: All
+        REWARD: 500gp
+        DIRECTIONS: PATH TRACK 11453 and get the ring. Go to the inn and give
+the ring to Vladerhelm.
+
+    H. QUEST ATTICA_SHAWL
+        LEVEL: All
+        REWARD: 100gp
+        DIRECTIONS: PATH TRACK ATTICA and find Tern to ask if you can help
+him. When he gives you a shawl, locate Alanna and give it to her.
+
+   I. QUEST ATTICA_SUPPLIES and ATTICA_MEDICINE
+        LEVEL: All
+        REWARD: 250gp for the supplies and 100gp for the medicine
+        DIRECTIONS: PATH TRACK 11317 and get the lily of mourning. Then PATH
+TRACK 11509 and get the hemlock plant. Locate Helga and give the lily and
+hemlock to her. Wait for a little while and you will be given a jar of
+medicine. Bring the jar of medicine to Arila.
+
+   J. QUEST ATTICA_WEDDINGNOTE and ATTICA_WEDDINGDRESS
+        LEVEL: All
+        REWARD: 100gp for the note and 200gp for the dress
+        DIRECTIONS: After Vladerhelma  lengthy proposal, Frida will leave the
+inn. Find her and greet her. She will give you a note. Locate Tern and give
+the note to him. After a little while, he will give you a wedding dress.
+Return to Frida and give her the dress.
+
+6.  AUGERWEALD
+
+   A. QUEST WEALD_ANSLEY
+        LEVEL: All
+        REWARD: Experience
+        DIRECTIONS: PATH TRACK AUGERWEALD  and kill four salmon in the river.
+Locate the bear Ansley in a hidden cave at the northern part of the river and
+give the salmon to him.
+
+   B. QUEST WEALD_TAYANATRA
+        LEVEL: All
+        REWARD: 600gp
+        DIRECTIONS: PATH TRACK AUGERWEALD, locate and ask about cats. You will
+need to walk around the area and when you find a cat or kitten, GET CAT.
+
+7.  CHAPEL GARDEN
+
+   A. QUEST CHAPELGARDEN_FISHFOOD
+        LEVEL: All
+        REWARD: 500gp
+        DIRECTIONS: PATH FIND CHAPEL GARDEN  and make your way to the Chapel
+of Change. Ask the attendant if he needs help. Go to Jael and ask if he has
+any fish food. Return to the Chapel of Change and PUT PELLET IN POND.
+
+8.  DJEIR
+
+   A. QUEST DJEIR_LOVERGIFT
+        LEVEL: All
+        REWARD: 50gp
+        DIRECTIONS: PATH TRACK 12225 and ask Walinei if he likes Shayalah. He
+will give you an orchid. Locate Shalayah nearby and give the orchid to her.
+She will give you a letter to return to Walinei and he will provide a reward.
+
+   B. QUEST DJEIR_SLEEPINGMAID
+        LEVEL: All
+        REWARD: 100gp
+        DIRECTIONS: PATH TRACK 12223 and ask Shayalah if she needs any help.
+Locate a sleeping maid up in the palace. SLAP MAID and return to Shalayah for
+your reward.
+
+9.  DOLBODI CAMPSITE
+
+    A. DROTHYR QUEST
+         LEVEL: All (65+)
+         REWARD: 50gp per rabbit
+         DIRECTIONS: PATH TRACK DOLBODI  and kill the rabbits around the
+forest. You can also find rabbits in AURELIANA and AUGERWEALD. PATH TRACK
+19408 to find Drothyr. Give the rabbits to him.
+NOTE: The Augerweald rabbits are stronger and you need to be at least 65+ to
+handle them.
+
+10. GRAND LIBRARY
+
+   A. QUEST MAURIC_DUSTDEVILS
+        LEVEL: All
+        REWARD: 500gp and a platinum keystone
+        DIRECTIONS: PATH TRACK 56975. Greet Mauric and say that you will help
+him. Wander around the library and GRAB DEVIL whenever you see a dust devil.
+When you have collected ten, return to Mauric and greet him again.
+
+   B. SGS QUESTS
+
+In order to do the quests for the Siroccian Geological Society, you need to
+become a member. In order to do that, PATH TRACK GRAND LIBRARY and locate Geb
+at the research greenhouse. He will ask for SAMPLES, which can be found all
+over Sapience. Examples of samples are soil samples, fur samples, and flora
+samples. Hand in ten of these, any kind will work, and you will become a
+member.
+ 
+   (a). QUEST SGS_CONSERVATION
+          LEVEL: All
+          REWARD: 500gp and a platinum keystone
+          
+          DIRECTIONS: PATH TRACK GRAND LIBRARY and locate the research
+greenhouse. Push the door to enter. Greet Nalin and ask what jobs he has.
+Choose the CONSERVATION job. He will give you an area in which to plant a
+seedling. Locate the seedling nursery and get a seedling and go to the area.
+Make sure to SAMPLE the ground until you find the perfect spot for the
+seedling. Once you do, drop the seedling and return to Nalin for your reward.
+
+   (b). QUEST SGS_SURVEY
+          LEVEL: All
+          REWARD: 500gp and a platinum keystone
+          DIRECTIONS: PATH TRACK GRAND LIBRARY and locate the research
+greenhouse. Push the door to enter. Greet Nalin and ask what jobs he has.
+Choose the SURVEY job. You will be given a specific area to survey. PATH TRACK
+to the area. Wander around the area and CATALOGUE any observations you make.
+When you have made five observations, return to Nalin and greet him for your
+reward.
+NOTE: You can look at CATALOGUE OBSERVANCES to see what you are supposed to
+catalogue.
+
+------------------------------------------------------------------------------
+
+           QUESTS TIER 1 DETAILED LIST (Section B)
+
+------------------------------------------------------------------------------
+
+11.  HEYLAI
+
+    A. QUEST HEYLAI_ORES
+         LEVEL: All
+         REWARD: 10gp per coal, nugget, hematite
+         DIRECTIONS: PATH TRACK SIROCCIANS , wander around and pick up coal
+and ores. PATH TRACK 58748 and give items to Bernar.
+NOTE: Beware the aggressive wolverines and giant ant.
+
+12.  MOUNT HUMGURD
+
+    A. JINJIN QUESTS
+
+        (a) QUEST HUMGURD_DWARVES_WARRIORS - 15 ores
+             LEVEL: All
+             REWARD: 500gp for every 15 ore.
+             DIRECTIONS: PATH TRACK 23159 Wander around the mines collecting
+the ores. PATH TRACK 23137 and give the ores to Jinjin.
+
+        (b) QUEST HUMGURD_DWARVES_MINERS - 15 pickaxe
+        (c) QUEST HUMGURD_TROLLS_FARMERS - 15 seeds
+        (d) QUEST HUMBURD_TROLLS_HUNTERS - 15 nets
+             LEVEL: All
+             REWARD: 500gp for every 15 of each
+             DIRECTIONS: PATH TRACK 23137 Greet Jinjin and Duerig (only need
+to do this once.) PATH TRACK THREE WIDOWS and walk around mountains picking up
+all pickaxes, seed packs, and nets. Return to Jinjin and give
+pickaxe/seeds/net to him.
+           NOTE: pickaxes, nets, seeds reset quickly
+
+        (e) QUEST HUMGURD_TROLLS_VILLAGERS - 15 cows
+             LEVEL: All, with caution
+             REWARD: 500gp for every 15 cows
+             DIRECTIONS: PATH TRACK 23708 and wander around in the
+northwestern part and kill the cows. Be careful and follow any cow that flees
+into the room to prevent accidental death by multiple upset cows. Return to
+Jinjin and give him the cows.
+
+13.  MAGHUIR FISSURE
+
+   A. QUEST MAGHUIR EMBERS
+        LEVEL: All (30+)
+        REWARD: 250gp per ember
+        DIRECTIONS: PATH TRACK MAGHUIR  and search through the area to find
+three tiny glowing embers. Locate Maghuir and give him the embers.
+NOTE: Sometimes the priests pick up the embers, so you need to slay them to
+get it.
+
+14.  OPHIDIAN EMPIRE
+
+Tired of trying to catch that stupid summerstorm butterfly?
+Just kill the butterflies!
+
+   A. QUEST ARINAS_BUTTERFLY
+        LEVEL: All
+        REWARD: 10gp per butterfly corpse
+        DIRECTIONS: PATH TRACK PASH and kill any butterfly you see.  PATH
+TRACK LIRUMA and kill any butterfly you see. When complete, PATH TRACK 64129
+and give the butterfly corpses to Arinas.
+
+15.  RIPARIUM
+
+   A. QUEST RIPARIUM_SLAY_TRAITOR
+        LEVEL: 25+
+        REWARD: 500gp
+        DIRECTIONS: PATH TRACK 6580 and greet Nissandar. Mention Nishir and he
+will ask you to slay his son. PATH TRACK 6655 and kill Nishir. Then return to
+Nissandar and give him the corpse.
+
+   B. RIPARIUM_TRIDENT
+        LEVEL: All
+        REWARD: 100gp
+        DIRECTIONS: PATH TRACK 6239 to find Xahlen. Ask him about his trident
+and he will ask you to fetch it for him. He provides a key for his chest.
+Locate the chest, unlock it and get the trident from within. Return to Xahlen
+and give him the trident to recieve your reward.
+
+16.  SALURIA
+
+   A. QUEST INSECTS FOR IZCANTL
+        LEVEL: ALL, with caution
+        REWARD: 50gp per tizapez and aurivv
+        DIRECTIONS: PATH TRACK ITZATL  and wander the rainforest and kill all
+the tizapeza  and aurivvs you can see. PATH TRACK SALURIA and locate Izcantl
+in the southern parts. Give the corpses to him for your reward.
+NOTE: The tizapeza  are aggressive. Also beware the aggressive black panthers,
+tigers and occasional roaming shadow during night.
+
+   B. QUEST SALURIA_WARBLERFEATHERS
+        LEVEL: All
+        REWARD: 100gp for the first two feathers, 300gp for the last feather.
+A total of 500gp
+        DIRECTIONS: PATH TRACK SALURIA and locate Izcantl in the southern
+parts of the village. Greet him and ask if he is a jeweler. After some
+coaxing, he will ask you to find feathers for him. PATH TRACK NORTHERN ITHMIAS
+and look for the frilled warblers. When you find one, PULL WARBLER to remove a
+plume from the bird. You can pull two from each bird and you need three in
+total. Once you have the plumes, return to Izcantl and give the plumes to him.
+NOTE: The warblers will become aggressive when you pull the plume out.
+
+17.  SIROCCIAN MOUNTAINS
+    
+   A. QUEST TORDAHL'S AXE
+        LEVEL: All
+        REWARD: 2500gp
+        DIRECTIONS: Get a shovel. PATH TRACK SIROCCIANS. DIG around the
+mountains searching for a brass key and a chest. Once you have both, the key
+will unlock the chest. Open it and get the axe from the chest. PATH TRACK 1433
+and look through the area towards the north and you will find Tordahl. Give him the axe to receive the reward.
+NOTE:Beware the aggressive wolverines and giant ant.
+
+18.  SPINESREACH
+
+   A. QUEST SPINESREACH_CRICKETS
+        LEVEL: 25+
+        REWARD: 40gp per cricket. 100gp for quest completion. Total: 500gp.
+        DIRECTIONS: Find Ghada in the Institute and ask her for a challenge.
+Go to a sewer grate and ENTER GRATE. Sewer grates look like, "A sewer grate
+looms darkly beneath your feet." Wander around and slay the infected crickets,
+(NOT the enormous, mutated crickets). Return to Ghada and give her the
+crickets.
+NOTE: AB SEWERS provides you with information regarding how to access the
+sewers. Beware aggressive crickets and rockworms.
+
+19.  SNAKE PIT
+
+    A. QUESTS SNAKEPIT_ABAELA
+         LEVEL: All, with caution
+         REWARD: 250gp
+         DIRECTIONS: PATH TRACK SNAKE PIT. Locate the body of Abaela on the
+first floor to the south. Get the body and get out. Locate Trivalin outside
+the pit and give her body to him.
+NOTE: Beware the aggressive snakes.
+
+    B. QUESTS SNAKEPIT_EGGS
+         LEVEL: All, with caution
+         REWARD: 100gp per egg and 300gp for completing the quest. 700gp total
+         DIRECTIONS: PATH TRACK SNAKE PIT. Go to the bottom floor and find the
+         four eggs. Get them quickly and leave. 
+Find Grumlen on the first floor to the
+north and give the eggs to him.
+NOTE: Beware the aggressive snakes.
+
+20.  TORSTON
+
+   A. QUEST TORSTON_ESTOK
+        LEVEL: All, with caution
+        REWARD: 250gp
+        DIRECTIONS: PATH TRACK 17606 and get the spear. Be quick, there are a
+lot of aggressive animals there. Locate Estok in the northeastern parts of
+Torston and give the spear to him.
+
+21.  VILIMO
+
+   A. QUEST VILIMO_WINE
+        LEVEL: All
+        REWARD: 1000gp
+        DIRECTIONS:PATH TRACK VILIMO and locate Baruce in the eastern parts of
+the village. Greet Baruce and ask if he has any work and he will ask you to
+make wine. Go to the vineyard and probe the vines to find ripe grapes. When
+you do, PLUCK VINE until you have enough grapes. PATH TRACK 73550 and probe
+the tools. ADJUST the temperature, concentration and yeast of your wine and
+when you are DONE, wait a full week for the wine to be finished. When the wine
+is finished, give it to Baruce for a tasting and review.
+NOTE: This can only be done once a week.

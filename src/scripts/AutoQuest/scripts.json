@@ -1,0 +1,17 @@
+[
+  {
+    "name": "questList"
+  },
+  {
+    "name": "startQuest"
+  },
+  {
+    "name": "autoQuestß"
+  },
+  {
+    "name": "completeQuest"
+  },
+  {
+    "name": "onRoomInfoUpdate"
+  }
+]
