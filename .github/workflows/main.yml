@@ -67,7 +67,7 @@ jobs:
         # Ensure this step is set up for later release-related actions
 
       - name: Move file to workspace
-        run: mv /home/runner/work/guagou/guagou/build/soiken-1.0.0.mpackage latest_file.mpackage
+        run: mv /home/runner/work/guagou/guagou/build/soiken-1.0.0.mpackage soiken.mpackage
 
       - name: Create and push tag
         run: |
@@ -88,5 +88,5 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           files: |
-            latest_file.mpackage
+            soiken.mpackage
           token: ${{ secrets.GH_PAT }}
