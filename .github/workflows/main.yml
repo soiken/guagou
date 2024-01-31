@@ -33,6 +33,12 @@ jobs:
       - name: Print Current Directory
         run: pwd
 
+      - name: Print Workspace Directory
+        run: echo ${{ github.workspace }}
+      
+      - name: List Files in Workspace
+        run: ls -R ${{ github.workspace }}
+
       - name: Move Artifact to Repository Folder
         run: cp -r downloaded-artifact/* ../build/
         working-directory: ${{ github.workspace }}
