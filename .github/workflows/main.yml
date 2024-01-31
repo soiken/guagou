@@ -31,4 +31,6 @@ jobs:
           path: downloaded-artifact
 
       - name: Move Artifact to Repository Folder
-        run: cp -r downloaded-artifact/* build/
+        run: cp -r downloaded-artifact/* ../build/
+        working-directory: ${{ github.workspace }}
+
