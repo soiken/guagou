@@ -23,3 +23,12 @@ jobs:
         with:
           name: Soiken
           path: build/
+          
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: Soiken
+          path: downloaded-artifact
+
+      - name: Move Artifact to Repository Folder
+        run: mv downloaded-artifact/* build/
