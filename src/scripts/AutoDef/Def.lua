@@ -155,13 +155,13 @@ local pathTrackTargetNum = nil
 function sendNextCommand()
     if #commands == 0 then
         automationRunning = false
-        cecho("&lt;red&gt;Automation completed. No more commands to execute.&lt;reset&gt;\n")
+        cecho("<red>Automation completed. No more commands to execute.<reset>\n")
         snd.runPath("custom")
         return
     end
 
     if not automationRunning then
-        cecho("&lt;red&gt;Automation stopped or not started.&lt;reset&gt;\n")
+        cecho("<red>Automation stopped or not started.<reset>\n")
         return
     end
 
@@ -170,11 +170,11 @@ function sendNextCommand()
         pathTrackCommand = command
         pathTrackTargetNum = tonumber(string.match(command, "%d+")) -- Extract the target room number
         send(command) -- Send the "PATH TRACK" command immediately
-        cecho("&lt;green&gt;Sending PATH TRACK: " .. command .. "&lt;reset&gt;\n")
+        cecho("<green>Sending PATH TRACK: " .. command .. "<reset>\n")
         tempTimer(1.5, checkPathTrack)
     else
         send(command) -- Send non-"PATH TRACK" command immediately
-        cecho("&lt;green&gt;Sending: " .. command .. "&lt;reset&gt;\n")
+        cecho("<green>Sending: " .. command .. "<reset>\n")
         tempTimer(3, sendNextCommand) -- Wait for 3 seconds before sending the next command
     end
 end
@@ -192,26 +192,26 @@ function checkPathTrack()
         sendNextCommand() -- Proceed to send the next command
     else
         tempTimer(1, checkPathTrack) -- Wait for 1 second and then check again
-        cecho("&lt;yellow&gt;Waiting for room match. Current: " .. currentNum .. ", Target: " .. pathTrackTargetNum .. "&lt;reset&gt;\n")
+        cecho("<yellow>Waiting for room match. Current: " .. currentNum .. ", Target: " .. pathTrackTargetNum .. "<reset>\n")
     end
 end
 
 -- Function to start the automation
 function run_nekiosdef()
     if automationRunning then
-        cecho("&lt;yellow&gt;Automation is already running.&lt;reset&gt;\n")
+        cecho("<yellow>Automation is already running.<reset>\n")
         return
     end
 
     automationRunning = true
-    cecho("&lt;green&gt;Automation started.&lt;reset&gt;\n")
+    cecho("<green>Automation started.<reset>\n")
     sendNextCommand() -- Start sending commands
 end
 
 -- Function to stop the automation
 function stop_nekiosdef()
     automationRunning = false -- Stop the automation
-    cecho("&lt;red&gt;Automation stopped.&lt;reset&gt;\n")
+    cecho("<red>Automation stopped.<reset>\n")
 end
 
 -- Initialize the GMCP module (if not already done in another part of your script)
