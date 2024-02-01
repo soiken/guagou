@@ -238,3 +238,18 @@ efficiency on&&
 somersault on&&
 fabricate Rimestalker&&
 hide&&
+
+
+
+ALIASES
+-------
+buypills #            Pills! Typing buypills followed by an amount will buy that amount
+                      of every type of pill! EXAMPLE: buypills 500 will buy 500 of each pill.
+
+fillcache # type      Fluidcache! Just use fillcache followed by the number of times
+                      you want to buy a refill and what type of refill you want to buy.
+                      The types are: venoms, poultices, and elixirs. EXAMPLE: fillcache
+                      10 elixirs will purchase 10 refills of each type of elixir. The purchase
+                      line may be gagged, so just check your FC before and after purchasing!
+                      **NOTE** This will buy the amount of refills, so to fill your cache(1500)
+                      you will only need to purchase 30 refills!
