@@ -9,9 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    using: 'node20'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@main
 
       - name: Muddle
         uses: demonnic/build-with-muddler@main
@@ -19,13 +20,13 @@ jobs:
           muddlerVersion: 0.5
       
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@main
         with:
           name: Soiken
           path: build/
           
       - name: Download Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@main
         with:
           name: Soiken
           path: downloaded-artifact
@@ -84,7 +85,7 @@ jobs:
         
       - name: Create Release
         id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@main
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           files: |
