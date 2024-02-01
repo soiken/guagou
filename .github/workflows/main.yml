@@ -57,8 +57,10 @@ jobs:
       - name: Generate Release Tag
         id: tag
         run: |
-          echo "::set-output name=release_tag::UserBuild_$(date +'%Y.%m.%d_%H-%M')"
+          release_tag="UserBuild_$(date +'%Y.%m.%d_%H-%M')"
+          echo "release_tag=$release_tag" >> $GITHUB_OUTPUT
         continue-on-error: true
+
 
       - name: Set up Git for Release
         run: |
@@ -78,12 +80,16 @@ jobs:
 
       - name: build
         run: make build
+
       - name: version
-        run: echo "::set-output name=version::$(./bin/azblogfilter --version)"
-        id: version
+        run: |
+          version=$(./bin/azblogfilter --version)
+          echo "version=$version" >> $GITHUB_OUTPUT
+
         
       - name: Create Release
         id: create_release
+        using: 'node20'
         uses: softprops/action-gh-release@master
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
