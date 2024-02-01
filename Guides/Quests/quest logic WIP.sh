@@ -12,25 +12,27 @@ lua gmcp.Char.Items.List
 find [163721] a hunter clad in furs
 give corpses to hunter
 You hold no 'animal'
+You can find no such target as 'lolita'.
 
-FUNCTION 1
+I have a quest list for the game aetolia that I play on mudlet and I want to go through the quest list automatically when I type "nekiosquest"
 
-PATH TRACK AND CHECK LOCATION
+Here is an example of my quest list
 
-FUNCTION 2
+I need a function for each type of action in each quest
+the action will be performed in order, and there should be checkings for each action being completed before moving on to the next
 
-BASH QUEST AREA
-
-FUNCTION 3
-
-check if back to spinesreach
-
-FUNCTION 4
-
-FIND NPC
-
-FUNCTION 5
-
-GIVE ITEM TO NPC 
-
-until 
+15172
+ [61781] Seviel the baker
+ greet seviel
+ 3
+15139
+[183331] Gorwin
+greet Gorwin
+give flatbread to gorwin
+15172
+ [61781] Seviel the baker
+ give fish to seviel
+ greet seviel 1
+ 15139
+[183331] Gorwin
+give pie to gorwin

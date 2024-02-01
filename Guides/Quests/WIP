@@ -1,9 +1,9 @@
 I have a quest list that I want to automate using mudlet triggers, aliases and scripts, note that since the quest list might be updated later, make it as convenient for me to edit if the quests updates
 
 here are some commands, functions and gmcp actions u can refer when creating this:
-1. sending "PATH TRACK (area)" can reach the area, for example PATH TRACK ALAQSII will start walking to ALAQSII
-2. gmcp.Room.Info.area will return "area", this can be used check if the character has arrvied the correct area before executing the next command/action, please make the area upper case so it can be better matched
-3. when the area is checked and verified being same as the quest required area, you can use "snd_bashArea()"" which will kill all enemies in the location
+1. sending "PATH TRACK (area)" command can reach the area, for example PATH TRACK ALAQSII will start walking to Alaqsii
+2. function "gmcp.Room.Info.area" will return "area", this can be used check if the character has arrvied the correct area before executing the next command/action, keep looping the function until "Alaqsii" exists in the function response
+3. when the area is checked and verified being same as the quest required area, you can use function "snd_bashArea()"" which will kill all enemies in the location
 4. when the quest require giving an npc or talking to an npc, you can use "demonwalker:init()" to run the area and continuosly and using "gmcp.Char.Items.List.items" will return an array of items/npcs in the current room, here is an example:
 {
   items = { {
