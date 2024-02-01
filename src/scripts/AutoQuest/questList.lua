@@ -1,15 +1,16 @@
 quests = {
   ALAQSII_ANIMALS = {
-      name = "QUEST_ALAQSII_ANIMALS"
+      name = "QUEST_ALAQSII_ANIMALS",
       area = "ALAQSII",
       steps = {
           {action = "PATH TRACK ALAQSII", type = "path"},
           {action = "snd_bashArea()", type = "kill"},
+          {action = "demonwalker:init()", type = "search_npc", npc = "Hunter"},
           {action = "give corpses to hunter", type = "give", item = "corpses"}
       }
   },
   ARBOTHIA_BAKER_FISHERMAN = {
-    name = "QUEST_ARBOTHIA_BAKER_FISHERMAN"
+    name = "QUEST_ARBOTHIA_BAKER_FISHERMAN",
       area = "ARBOTHIA",
       steps = {
           {action = "PATH TRACK ARBOTHIA", type = "path"},
