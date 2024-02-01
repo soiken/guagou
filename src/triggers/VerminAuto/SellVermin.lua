@@ -3,31 +3,34 @@ if snd.toggles.vermin == true then
 
   if area == "Spinesreach" then
     snd.send("sell vermin to ghada")
+      snd.send("eat pie")
     if snd.toggles.vermin == true then
       snd.send("path track 43846")
       send("path track 43846")
       snd.runPath("duiran")
-      snd.send("eat pie")
+      else snd.toggle("vermin")
       if snd.toggles.fasthunt == true then 
         snd.toggle("fasthunt") end
     end
   elseif area == "Duiran" then
     snd.send("sell vermin to nysos")
+      snd.send("eat snack")
     if snd.toggles.vermin == true then
       snd.send("path track 9194")
       send("path track 9194")
       snd.runPath("bloodloch")
-      snd.send("eat snack")
+      else snd.toggle("vermin")
       if snd.toggles.fasthunt == true then 
         snd.toggle("fasthunt") end
     end
   elseif area == "Bloodloch" then
     snd.send("sell vermin to enzo")
+      snd.send("eat mousse")
     if snd.toggles.vermin == true then
       snd.send("path track 11687")
       send("path track 11687")
       snd.runPath("spinesreach")
-      snd.send("eat mousse")
+      else snd.toggle("vermin")
       if snd.toggles.fasthunt == true then 
         snd.toggle("fasthunt") end
     end

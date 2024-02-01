@@ -1,5 +1,5 @@
 handleHunger()
-
+snd_bashArea()
 if snd.toggles.vermin == false then
     snd.toggle("vermin")
 end

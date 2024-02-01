@@ -1,2 +1,2 @@
 mmp.pause("on")
-send("hunger")
+send("nekioshungry")
