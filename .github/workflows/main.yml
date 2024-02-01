@@ -90,3 +90,22 @@ jobs:
           files: |
             soiken.mpackage
           token: ${{ secrets.GH_PAT }}
+
+      - name: Delete Oldest Release
+        run: |
+          # Fetch the list of releases using GitHub API
+          releases=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" "https://api.github.com/repos/${{ github.repository }}/releases")
+      
+          # Check if there are more than one releases
+          if [ "$(echo "$releases" | jq length)" -gt 1 ]; then
+            # Find the oldest release by sorting the releases by created_at field
+            oldest_release_url=$(echo "$releases" | jq -r 'sort_by(.created_at) | .[0].url')
+      
+            # Delete the oldest release
+            curl -X DELETE -H "Authorization: token ${{ secrets.GH_PAT }}" "$oldest_release_url"
+          else
+            echo "No releases to delete."
+          fi
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+
