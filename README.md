@@ -1,12 +1,8 @@
 # Guagou
 
 
+Installation
 
 ```
-lua uninstallPackage("Nekios") installPackage("https://github.com/soiken/guagou/releases/latest/download/Soiken.mpackage")
-```
-
-
-```
-lua uninstallPackage("Soiken") installPackage("https://github.com/soiken/guagou/blob/main/build/Nekios.mpackage")
+lua uninstallPackage("soiken-1.0.0") installPackage("https://github.com/soiken/guagou/releases/latest/download/soiken.mpackage")
 ```

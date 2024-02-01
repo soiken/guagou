@@ -3,7 +3,7 @@
     "name": "Hungry",
     "patterns":[
       {
-        "pattern": "(hungry|hunger)",
+        "pattern": "^Your mental equilibrium is disturbed by overpowering thoughts of food.*",
         "type": "regex"
       }
     ]

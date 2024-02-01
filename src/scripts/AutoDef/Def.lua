@@ -16,7 +16,8 @@ local commands = {
     "touch chainmail",
     "fabricate brutaliser",
     "PATH TRACK 12668",
-    --"buy 10 design19116",
+    "buy 1 design19116",
+    "buy 1 bandage",
     "PATH TRACK 12678",
     "buy refill of epidermal for fluidcache",
     "buy 10 thanatonin",
@@ -138,7 +139,8 @@ local commands = {
     "PATH TRACK 35199",
     "REMOVE GAUNTLET",
     "GIVE GAUNTLET TO BARAKIN",
-    "WEAR GAUNTLET"
+    "WEAR GAUNTLET",
+    "PATH TRACK 66078"
 }
 
 
@@ -154,6 +156,7 @@ function sendNextCommand()
     if #commands == 0 then
         automationRunning = false
         cecho("&lt;red&gt;Automation completed. No more commands to execute.&lt;reset&gt;\n")
+        snd.runPath("custom")
         return
     end
 

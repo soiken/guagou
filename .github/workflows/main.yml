@@ -54,5 +54,39 @@ jobs:
         env:
           MUDDLER_VERSION: 0.5
 
+      - name: Generate Release Tag
+        id: tag
+        run: |
+          echo "::set-output name=release_tag::UserBuild_$(date +'%Y.%m.%d_%H-%M')"
+        continue-on-error: true
 
+      - name: Set up Git for Release
+        run: |
+          git config --global user.email "neilkan8@gmail.com"
+          git config --global user.name "Nekios"
+        # Ensure this step is set up for later release-related actions
 
+      - name: Move file to workspace
+        run: mv /home/runner/work/guagou/guagou/build/soiken-1.0.0.mpackage soiken.mpackage
+
+      - name: Create and push tag
+        run: |
+          git tag -a ${{ steps.tag.outputs.release_tag }} -m "Release ${{ steps.tag.outputs.release_tag }}"
+          git push origin ${{ steps.tag.outputs.release_tag }}
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+
+      - name: build
+        run: make build
+      - name: version
+        run: echo "::set-output name=version::$(./bin/azblogfilter --version)"
+        id: version
+        
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.tag.outputs.release_tag }}
+          files: |
+            soiken.mpackage
+          token: ${{ secrets.GH_PAT }}
