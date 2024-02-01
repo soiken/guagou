@@ -1,0 +1,30 @@
+for hunger true false
+
+snd.afflictions.aff_battle_hunger.assess
+
+for current room number
+
+gmcp.Room.Info.num
+
+for start stop mmp
+
+mmp.pause("on")
+mmp.pause("off")
+
+for running autobash paths
+
+snd.runPath("area")
+
+for fasthunt toggle
+
+if snd.toggles.fasthunt == true then 
+    snd.toggle("fasthunt") end
+
+for vermin toggle
+
+if snd.toggles.vermin == false then
+    snd.toggle("vermin")
+
+for getting Character vitals
+
+gmcp.Char.Vitals

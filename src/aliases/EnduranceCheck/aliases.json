@@ -1,0 +1,6 @@
+[
+  {
+    "name": "EnduranceCheck",
+    "regex": "^check_vitals$"
+  }
+]
