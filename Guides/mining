@@ -1,0 +1,89 @@
+6.16.2 Mining
+
+       PREV |                                                   | NEXT
+     6.16.1 | Farming                         Items and Mobiles | 7
+
+Mining is the ability to extract metal ores from the earth. It is a fully realised skillset centred
+around establishing and staffing your own mining operations and navigating the dangers of the under-
+deeps in order to harvest resources from the earth.
+
+OBTAINING THE SKILL OF MINING
+=============================
+
+To learn the skill of Mining, seek out Philbert in the Gorshire Mining Syndicate headquarters
+(v70606). For a cost of 10,000 gold, you may simply LEARN ABILITY OF MINING FROM PHILBERT to pick up 
+the skill. It is then learned with lessons like any other.
+
+* You must have an Agriculture skill slot available in order to do this. See HELP AGRICULTURE for
+details on slots.
+
+Philbert will also supply a variety of basic equipment from both the Syndicate headquarters in Lodi
+and at the various outposts across the world.
+
+GETTING STARTED WITH MINING
+===========================
+
+Once you've obtained the skill and picked up your equipment, you'll want to head to your city's
+outpost. Mines operate on their own maps in a similar way to Farming, but the maps are significantly 
+larger.
+
+Bloodloch   | The Mhojave Desert   | v53195
+Duiran      | The Western Ithmia   | v68504
+Enorian     | The Shamtota Hills   | v68550
+Spinesreach | The Telfinne Caverns | v68946
+
+After arriving there, you simply ENTER OUTPOST and you can begin searching for a desirable mine
+using the PROSPECT ability.
+
+PROSPECTING
+===========
+The PROSPECT command (AB MINING PROSPECT) allows you to discern the ores available in a specific
+location, and in what volume.
+
+PROSPECT AREA allows you to scan the whole map at once and see an at a glance view of what ore is
+most common on which tile.
+
+* The ore presence on each tile is set until the next Howling, at which point it will be rerolled.
+
+OPENING A MINE
+==============
+
+Utilise the MINES ability (AB MINING MINES) to delve into a mine and explore it.
+
+If you wish to keep the mine that you've just opened, return to the surface with LEAVE MINE and
+CLAIM MINE WITH DEED.
+
+You are then ready to get started! AB MINING OFFICE is the place to begin!
+
+DEEDS
+=====
+
+There is currently a limit of one Mining deed per person. This is obtained when the skill is
+acquired.
+
+This limit may be relaxed in the future as knowledge and use of Mining becomes more widespread.
+
+DEPOSITS AND VEINS
+==================
+
+You will find ores in two different states within mines: deposits, and veins. Deposits appear in the
+room like a normal item and can be mined with your pickaxe. Whereas veins are tiles on the map that 
+must be mined by your Gnome workers. Refer to AB MINING PICKAXE and AB MINING VEINS for more 
+details.
+
+GRAPHICAL MAP
+=============
+At this time, there's no graphical map for Mining. The challenges posed are significantly higher for
+Mining, but it is something that may occur in future.
+
+OTHER USEFUL FILES
+==================
+
+- AB MINING
+- HELP MINING
+- HELP AGRICULTURE
+- HELP PRODUCTION
+- HELP DEVELOPMENT PRODUCTION
+
+       PREV |                                                   | NEXT
+     6.16.1 | Farming                         Items and Mobiles | 7
