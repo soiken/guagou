@@ -57,10 +57,7 @@ jobs:
       - name: Generate Release Tag
         id: tag
         run: |
-          release_tag="UserBuild_$(date +'%Y.%m.%d_%H-%M')"
-          echo "release_tag=$release_tag" >> $GITHUB_OUTPUT
-        continue-on-error: true
-
+          echo "release_tag=UserBuild_$(date +'%Y.%m.%d_%H-%M')" >> $GITHUB_OUTPUT
 
       - name: Set up Git for Release
         run: |
@@ -83,9 +80,7 @@ jobs:
 
       - name: version
         run: |
-          version=$(./bin/azblogfilter --version)
-          echo "version=$version" >> $GITHUB_OUTPUT
-
+          echo "version=$(./bin/azblogfilter --version)" >> $GITHUB_OUTPUT
         
       - name: Create Release
         id: create_release
