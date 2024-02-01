@@ -3,101 +3,101 @@
     "name": "vermin",
     "patterns":[
       {
-        "pattern": "Tongue flicking to taste the air, a pebbly black snake comes into view.",
-        "type": "3"
+        "pattern": "^Tongue flicking to taste the air, a pebbly black snake comes into view.*",
+        "type": "regex"
       },
       {
-        "pattern": "The glint of pebbly scales alerts you to the entrance of a black snake.",
-        "type": "3"
+        "pattern": "^The glint of pebbly scales alerts you to the entrance of a black snake.*",
+        "type": "regex"
       },
       {
-        "pattern": "With a faint slithering noise, a pebbly black snake enters.",
-        "type": "3"
+        "pattern": "^With a faint slithering noise, a pebbly black snake enters.*",
+        "type": "regex"
       },
       {
-        "pattern": "^You spy a seagull, rooting around the ground for scraps of anything edible.",
-        "type": "3"
+        "pattern": "^You spy a seagull, rooting around the ground for scraps of anything edible.*",
+        "type": "regex"
       },
       {
-        "pattern": "The faint clicking of insect legs on stone alerts you to the entrance of a carrion beetle.",
-        "type": "3"
+        "pattern": "^The faint clicking of insect legs on stone alerts you to the entrance of a carrion beetle.*",
+        "type": "regex"
       },
       {
-        "pattern": "A carrion beetle enters, scavenging for flesh.",
-        "type": "3"
+        "pattern": "^A carrion beetle enters, scavenging for flesh.*",
+        "type": "regex"
       },
       {
-        "pattern": "^A carrion beetle scuttles in, searching for food.",
-        "type": "3"
+        "pattern": "^A carrion beetle scuttles in, searching for food.*",
+        "type": "regex"
       },
       {
-        "pattern": "A black rat scurries in, looking for food.",
-        "type": "3"
+        "pattern": "^A black rat scurries in, looking for food.*",
+        "type": "regex"
       },
       {
-        "pattern": "A reticulated planthopper lands on a perch nearby, becoming eerily still.",
-        "type": "3"
+        "pattern": "^A reticulated planthopper lands on a perch nearby, becoming eerily still.*",
+        "type": "regex"
       },
       {
-        "pattern": "The faint clicking of insect legs on stone alerts you to the entrance of a giant ugly pincher.",
-        "type": "3"
+        "pattern": "^The faint clicking of insect legs on stone alerts you to the entrance of a giant ugly pincher.*",
+        "type": "regex"
       },
       {
-        "pattern": "An ugly pincher scuttles in, searching for food.",
-        "type": "3"
+        "pattern": "^An ugly pincher scuttles in, searching for food.*",
+        "type": "regex"
       },
       {
-        "pattern": "A tiny pincher scuttles in, searching for food.",
-        "type": "3"
+        "pattern": "^A tiny pincher scuttles in, searching for food.*",
+        "type": "regex"
       },
       {
-        "pattern": "The faint clicking of insect legs on stone alerts you to the entrance of an ugly pincher.",
-        "type": "3"
+        "pattern": "^The faint clicking of insect legs on stone alerts you to the entrance of an ugly pincher.*",
+        "type": "regex"
       },
       {
-        "pattern": "A giant ugly pincher enters, scavenging for flesh.",
-        "type": "3"
+        "pattern": "^A giant ugly pincher enters, scavenging for flesh.*",
+        "type": "regex"
       },
       {
-        "pattern": "An ugly pincher enters, scavenging for flesh.",
-        "type": "3"
+        "pattern": "^An ugly pincher enters, scavenging for flesh.*",
+        "type": "regex"
       },
       {
-        "pattern": "A tiny pincher enters, scavenging for flesh.",
-        "type": "3"
+        "pattern": "^A tiny pincher enters, scavenging for flesh.*",
+        "type": "regex"
       },
       {
-        "pattern": "The faint clicking of insect legs on stone alerts you to the entrance of a tiny pincher.",
-        "type": "3"
+        "pattern": "^The faint clicking of insect legs on stone alerts you to the entrance of a tiny pincher.*",
+        "type": "regex"
       },
       {
-        "pattern": "A giant ugly pincher scuttles in, searching for food.",
-        "type": "3"
+        "pattern": "^A giant ugly pincher scuttles in, searching for food.*",
+        "type": "regex"
       }
     ]
   },
   {
-    "name": "Sell Vermin",
+    "name": "SellVermin",
     "patterns": [
       {
-        "pattern": "A large scientific laboratory",
-        "type": "2"
+        "pattern": "^A large scientific laboratory*",
+        "type": "regex"
       },
       {
-        "pattern": "Illuminated cave passage between shops",
-        "type": "2"
+        "pattern": "^Illuminated cave passage between shops*",
+        "type": "regex"
       },
       {
-        "pattern": "Entering Bloodloch market district",
-        "type": "2"
+        "pattern": "^Entering Bloodloch market district*",
+        "type": "regex"
       },
       {
-        "pattern": "A dockyard slum",
-        "type": "2"
+        "pattern": "^A dockyard slum*",
+        "type": "regex"
       },
       {
-        "pattern": "Cabalist Ghada nods curtly at you.",
-        "type": "3"
+        "pattern": "^Cabalist Ghada nods curtly at you.*",
+        "type": "regex"
       }
     ]
   }
