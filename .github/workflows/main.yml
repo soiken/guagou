@@ -89,7 +89,6 @@ jobs:
         
       - name: Create Release
         id: create_release
-        using: 'node20'
         uses: softprops/action-gh-release@master
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
