@@ -1,6 +1,6 @@
 [
   {
-    "name": "startQuest",
-    "regex": "^startquest (\\w+)$"
+    "name": "nekiosquest",
+    "regex": "^nekiosquest$"
   }
 ]

@@ -1,0 +1,15 @@
+Apparently people have liked some of the things I've made so far. Here's one thing I've decided to give out; I figured it could be helpful for those who want to know where things are.
+
+What is it?
+- A slain tracker
+- Keep track of mobs you've come across
+
+How to use it?
+- Should install itself when you install the package. If not, use mdb redo
+- mdb slain will print a list of things you've slain, and where.
+- mdb slain (area) will print a list of things you've slain matching the provided request.
+- mdb pks will print a list of players you've slain.
+
+- mdb lookup area (area) will print a list of mobs you've come across in the specific area, as well as the room num they were first spotted in.
+- mdb lookup mob (mob) similar to the above, but prints a list of mobs matching specified request, and the area they're in as well as the room number first spotted.
+- mdb clear (thing) will remove things from the database, matching the specified request. This only removes from the db, not the slain tracker.

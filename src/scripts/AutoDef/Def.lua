@@ -134,8 +134,7 @@ local commands = {
     "PATH TRACK 35199",
     "REMOVE GAUNTLET",
     "GIVE GAUNTLET TO BARAKIN",
-    "WEAR GAUNTLET",
-    "PATH TRACK 66078"
+    "WEAR GAUNTLET"
 }
 
 

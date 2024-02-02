@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<TriggerGroup isActive="yes" isFolder="yes" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>Denizen Tracker</name>
+			<script></script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList />
+			<regexCodePropertyList />
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>Mob Slain</name>
+				<script>local mob = matches[2]
+mobDB.slainMob(mob)</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^The final blow is too much, you have slain (.+).$</string>
+					<string>^Having slain (.+)\, you retrieve the corpse.$</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+			<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+				<name>Player Slain (maybe)</name>
+				<script>mobDB.slainPlayer(matches[2])</script>
+				<triggerType>0</triggerType>
+				<conditonLineDelta>0</conditonLineDelta>
+				<mStayOpen>0</mStayOpen>
+				<mCommand></mCommand>
+				<packageName></packageName>
+				<mFgColor>#ff0000</mFgColor>
+				<mBgColor>#ffff00</mBgColor>
+				<mSoundFile></mSoundFile>
+				<colorTriggerFgColor>#000000</colorTriggerFgColor>
+				<colorTriggerBgColor>#000000</colorTriggerBgColor>
+				<regexCodeList>
+					<string>^You have slain (\w+).$</string>
+				</regexCodeList>
+				<regexCodePropertyList>
+					<integer>1</integer>
+				</regexCodePropertyList>
+			</Trigger>
+		</TriggerGroup>
+	</TriggerPackage>
+	<TimerPackage />
+	<AliasPackage>
+		<AliasGroup isActive="yes" isFolder="yes">
+			<name>Denizen Tracker</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<regex></regex>
+			<Alias isActive="yes" isFolder="no">
+				<name>Redo Database</name>
+				<script>if mobDB.restartTimer then
+  mobDB.info = nil
+  mobDB.initialise()
+  killTimer(mobDB.restartTimer)
+  mobDB.restartTimer = nil
+else
+  mobDB.echo("This will clean your database entirely, use the alias again if you're sure.")
+  mobDB.restartTimer = tempTimer(5, [[ mobDB.echo("Aborted refreshing of database."); mobDB.restartTimer = nil]])
+end</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^mdb redo$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Check Slain</name>
+				<script>if matches[2] then
+  mobDB.slainIn(matches[2])
+else
+  mobDB.showSlain()
+end</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^mdb slain(?: (\w+)|)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Lookup Denizens</name>
+				<script>local toCheck = matches[3]
+if matches[2] == "area" then
+  mobDB.lookupArea(toCheck)
+else
+  mobDB.lookupMob(toCheck)
+end</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^mdb lookup (area|mob) (.+)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Clear Matches</name>
+				<script>mobDB.clearMatches(matches[2])</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^mdb clear (\w+)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Show Players Slain</name>
+				<script>mobDB.showPlayersSlain()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^mdb pks$</regex>
+			</Alias>
+		</AliasGroup>
+	</AliasPackage>
+	<ActionPackage />
+	<ScriptPackage>
+		<ScriptGroup isActive="yes" isFolder="yes">
+			<name>Denizen Database</name>
+			<packageName></packageName>
+			<script>mobDB = mobDB or {}
+
+function mobDB.initialise()
+  if not mobDB.info then
+    mobDB.info = {
+      slain = {},
+      mobs = {},
+    }
+    mobDB.echo("Denizen database and slain tracker has been initialised.")
+  end
+end
+
+mobDB.initialise()</script>
+			<eventHandlerList />
+			<Script isActive="yes" isFolder="no">
+				<name>Denizen API</name>
+				<packageName></packageName>
+				<script>function mobDB.echo(text)
+  cecho("\n&lt;ansi_063&gt;(&lt;ansi_060&gt;mobDB&lt;ansi_063&gt;): &lt;ansi_033&gt;"..text)
+end
+
+
+function mobDB.showSlain()
+  cecho("\n ")
+  mobDB.echo("Displaying entire list of everything we've killed thus far.")
+  cecho("\n ")
+  local num, slen = 0, 0
+  for area, mobs in spairs(mobDB.info.slain) do
+    cecho("\n&lt;ansi_033&gt;[&lt;ansi_039&gt;"..area.."&lt;ansi_033&gt;]:")
+    num = 0
+    for mob, count in spairs(mobDB.info.slain[area]) do
+      num = num + 1
+      slen = (string.len(mob)+string.len(count)+3)
+      if (num-1)%2 == 0 then
+        echo("\n ")
+      end
+      cecho("&lt;ansi_020&gt;[&lt;ansi_039&gt;"..count.."&lt;ansi_020&gt;] &lt;ansi_147&gt;"..mob:title())
+      echo(string.rep(" ", 48-slen))
+    end
+    echo("\n")
+  end
+  cecho("\n&lt;ansi_020&gt; --------------------------------------------------------------------------------")
+  if mobDB.info.players then
+    cecho("\n\n&lt;ansi_033&gt;[&lt;ansi_039&gt;Players&lt;ansi_033&gt;]:")
+    num = 0
+    for person, count in spairs(mobDB.info.players) do
+      num = num + 1
+      slen = (string.len(person)+string.len(count)+3)
+      if (num-1)%3 == 0 then
+        echo("\n ")
+      end
+      cecho("&lt;ansi_020&gt;[&lt;ansi_039&gt;"..count.."&lt;ansi_020&gt;] &lt;ansi_147&gt;"..person:title())
+      echo(string.rep(" ", 30-slen))
+    end
+    cecho("\n\n&lt;ansi_020&gt; --------------------------------------------------------------------------------")
+  end
+  send(" ")
+end
+
+function mobDB.slainIn(loc)
+  cecho("\n ")
+  mobDB.echo("Looking up mobs slain in area matching '"..loc.."' ...")
+  cecho("\n ")
+  local num, slen, x = 0, 0, loc
+  for area, mobs in spairs(mobDB.info.slain) do
+    if string.starts(area:lower(), loc:lower()) or string.find(area:lower(), loc:lower()) then
+      cecho("\n&lt;ansi_033&gt;[&lt;ansi_039&gt;"..area.."&lt;ansi_033&gt;]:")
+      num = 0
+      for mob, count in spairs(mobDB.info.slain[area]) do
+        num = num + 1
+        slen = (string.len(mob)+string.len(count)+3)
+        if (num-1)%2 == 0 then
+          echo("\n ")
+        end
+        cecho("&lt;ansi_020&gt;[&lt;ansi_039&gt;"..count.."&lt;ansi_020&gt;] &lt;ansi_147&gt;"..mob:title())
+        echo(string.rep(" ", 48-slen))
+      end
+      echo("\n")
+    end
+  end
+  cecho("\n&lt;ansi_020&gt; --------------------------------------------------------------------------------")
+  send(" ")  
+end
+
+function mobDB.showPlayersSlain()
+  if not mobDB.info.players then
+    mobDB.echo("No players tracked as being slain by you...")
+    return
+  end
+
+  cecho("\n ")
+  mobDB.echo("Displaying a list of players we've killed thus far.")
+  if mobDB.info.players then
+    cecho("\n\n&lt;ansi_033&gt;[&lt;ansi_039&gt;Players&lt;ansi_033&gt;]:")
+    num = 0
+    for person, count in spairs(mobDB.info.players) do
+      num = num + 1
+      slen = (string.len(person)+string.len(count)+3)
+      if (num-1)%3 == 0 then
+        echo("\n ")
+      end
+      cecho("&lt;ansi_020&gt;[&lt;ansi_039&gt;"..count.."&lt;ansi_020&gt;] &lt;ansi_147&gt;"..person:title())
+      echo(string.rep(" ", 30-slen))
+    end
+    cecho("\n\n&lt;ansi_020&gt; --------------------------------------------------------------------------------")
+  end
+  send(" ")
+end</script>
+				<eventHandlerList />
+			</Script>
+			<Script isActive="yes" isFolder="no">
+				<name>Denizen Tracking</name>
+				<packageName></packageName>
+				<script>function mobDB.slainMob(mobName)
+  local x, y = mobName, gmcp.Room.Info.area 
+  mobDB.initArea(y)
+  mobDB.info.slain[y][x] = mobDB.info.slain[y][x] or 0
+  mobDB.info.slain[y][x] = mobDB.info.slain[y][x] + 1
+end
+
+function mobDB.slainPlayer(name)
+  mobDB.info.players = mobDB.info.players or {}
+  mobDB.info.players[name] = mobDB.info.players[name] or 0
+  mobDB.info.players[name] = mobDB.info.players[name] + 1
+end
+
+function mobDB.initArea(area)
+  mobDB.info.slain[area] = mobDB.info.slain[area] or {}
+  mobDB.info.mobs[area] = mobDB.info.mobs[area] or {}
+end
+
+</script>
+				<eventHandlerList />
+			</Script>
+			<Script isActive="yes" isFolder="no">
+				<name>mobDB_roomUpdate</name>
+				<packageName></packageName>
+				<script>function mobDB_roomUpdate(event)
+	--We need to make a baseline table first.
+	mobDB.roomMobs = mobDB.roomMobs or {}
+
+	--For QL/Entering a room.
+	if event == "gmcp.Char.Items.List" and gmcp.Char.Items.List.location ~= "inv" then
+		mobDB.roomMobs = {}
+    
+		for i,v in pairs(gmcp.Char.Items.List.items) do
+      if (v.attrib) and (v.attrib == "mx" or v.attrib == "m") then
+				mobDB.roomMobs[tonumber(v.id)] = v.name
+			end
+		end
+	
+	--Mob left the room somehow.
+	elseif event == "gmcp.Char.Items.Remove" then
+		for i,v in pairs(mobDB.roomMobs) do
+			if tonumber(i) == tonumber(gmcp.Char.Items.Remove.item.id) then
+				mobDB.roomMobs[i] = nil
+			end
+		end
+		
+	--A mob entered our room.
+	else
+		if gmcp.Char.Items.Add.location == "room" and gmcp.Char.Items.Add.item.attrib ~= "t" and gmcp.Char.Items.Add.item.icon ~= "guard" 
+      and gmcp.Char.Items.Add.item.attrib ~= "mx" then
+			mobDB.roomMobs[gmcp.Char.Items.Add.item.id] = gmcp.Char.Items.Add.item.name
+		end
+  end
+  mobDB.initArea(gmcp.Room.Info.area)
+  mobDB.checkRoom(gmcp.Room.Info.area, gmcp.Room.Info.num)
+end</script>
+				<eventHandlerList>
+					<string>gmcp.Char.Items.List</string>
+					<string>gmcp.Char.Items.Remove</string>
+					<string>gmcp.Char.Items.Add</string>
+				</eventHandlerList>
+			</Script>
+			<Script isActive="yes" isFolder="no">
+				<name>Saving and Loading</name>
+				<packageName></packageName>
+				<script>function mobDB.save()
+  if not mobDB.info then return end
+	local slash = string.char(getMudletHomeDir():byte()) == "/" and "/" or "\\"
+	local saveTo = getMudletHomeDir()..slash.."aetoliaMobDB"
+
+	table.save(saveTo, mobDB.info)
+end
+
+function mobDB.load()
+	local slash = string.char(getMudletHomeDir():byte()) == "/" and "/" or "\\"
+	local loadFrom = getMudletHomeDir()..slash.."aetoliaMobDB"
+  
+  if io.exists(loadFrom) then
+    mobDB.info = {}
+    table.load(loadFrom, mobDB.info)
+    mobDB.echo("Loaded previous mob database.")
+  else
+    mobDB.echo("No previous mob database found.")
+  end
+end
+
+registerAnonymousEventHandler("sysDisconnectionEvent", "mobDB.save")
+registerAnonymousEventHandler("sysLoadEvent", "mobDB.load")</script>
+				<eventHandlerList />
+			</Script>
+			<Script isActive="yes" isFolder="no">
+				<name>Lookup Database Stuff</name>
+				<packageName></packageName>
+				<script>function mobDB.checkRoom(gArea, gNum)
+  local a, v = gArea, gNum
+  
+  for id, name in pairs(mobDB.roomMobs) do
+    if not mobDB.info.mobs[gArea][name] then
+      mobDB.info.mobs[gArea][name] = gNum
+    end
+  end
+end
+
+function mobDB.lookupArea(toCheck)
+  local area = toCheck
+  mobDB.echo("Looking at mobs discovered in areas matching '"..area.."' ...")
+  echo("\n ")
+  local num, slen = 0, 0
+  
+  for mdbArea, mdbMobs in spairs(mobDB.info.mobs) do
+    if string.starts(mdbArea:lower(), area:lower()) or string.find(mdbArea:lower(), area:lower()) then
+      cecho("\n&lt;ansi_033&gt;[&lt;ansi_039&gt;"..mdbArea.."&lt;ansi_033&gt;]:")
+      num = 0
+      for mob, vnum in spairs(mobDB.info.mobs[mdbArea]) do
+        num = num + 1
+        slen = ((string.len(mob) + string.len(vnum)+2))
+        if (num-1)%2 == 0 then
+          echo("\n ")
+        end
+        cechoLink("&lt;blue&gt;[&lt;green&gt;"..vnum.."&lt;blue&gt;] ", [[ send("path track ]]..vnum..[[",false) ]], "Go to "..vnum.." where "..mob.." was last spotted!", true)
+        cecho("&lt;ansi_147&gt;"..mob:title()..string.rep(" ", 48-slen))
+      end
+      echo("\n ")
+    end
+  end
+  send(" ",false)
+end
+
+function mobDB.lookupMob(toCheck)
+  local name = toCheck
+  mobDB.echo("Looking for mobs discovered matching '"..name.."' ...")
+  echo("\n ")
+  
+  for dbArea, dbMobs in spairs(mobDB.info.mobs) do
+    for mob, vnum in spairs(mobDB.info.mobs[dbArea]) do
+      if string.starts(mob:lower(), name:lower()) or string.find(mob:lower(), name:lower()) then
+        echo("\n &gt; ")
+        cechoLink("&lt;blue&gt;[&lt;green&gt;"..vnum.."&lt;blue&gt;] ", [[ send("path track ]]..vnum..[[",false) ]], "Go to "..vnum.." where "..mob.." was last spotted!", true)
+        cecho("&lt;ansi_147&gt;"..mob:title()..string.rep(" ", 40-string.len(mob)).."&lt;ansi_033&gt; - (in &lt;ansi_148&gt;"..dbArea.."&lt;ansi_033&gt;)")
+      end
+    end
+  end
+  
+  send(" ",false)
+end
+
+function mobDB.clearMatches(toClear)
+  local what = toClear
+  mobDB.echo("Wiping lookup database of everything matching '"..what.."' ...")
+  echo("\n ")
+  
+  for dbArea, dbMobs in spairs(mobDB.info.mobs) do
+    for mob, vnum in spairs(mobDB.info.mobs[dbArea]) do
+      if string.starts(mob:lower(), what:lower()) or string.find(mob:lower(), what:lower()) then
+        cecho("\n &gt; &lt;ansi_147&gt;"..mob:title()..string.rep(" ", 40-string.len(mob)).."&lt;ansi_033&gt; - (in &lt;ansi_148&gt;"..dbArea.."&lt;ansi_033&gt;)")
+        mobDB.info.mobs[dbArea][mob] = nil
+      end
+    end
+  end
+  
+  send(" ",false)
+end</script>
+				<eventHandlerList />
+			</Script>
+		</ScriptGroup>
+	</ScriptPackage>
+	<KeyPackage />
+	<VariablePackage>
+		<HiddenVariables />
+	</VariablePackage>
+</MudletPackage>

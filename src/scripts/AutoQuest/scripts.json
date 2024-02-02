@@ -1,17 +1,29 @@
 [
   {
-    "name": "questList"
+    "name": "action_advanceQuestStep"
   },
   {
-    "name": "startQuest"
+    "name": "action_command"
   },
   {
-    "name": "autoQuestß"
+    "name": "action_executeCurrentStep"
   },
   {
-    "name": "completeQuest"
+    "name": "action_give"
   },
   {
-    "name": "onRoomInfoUpdate"
+    "name": "action_greet"
+  },
+  {
+    "name": "action_kill"
+  },
+  {
+    "name": "action_path"
+  },
+  {
+    "name": "action_search_npc"
+  },
+  {
+    "name": "questlist"
   }
 ]
