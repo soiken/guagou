@@ -27,6 +27,8 @@ function action_path(target)
     if hasArrived then
       -- Unregister the event handler to stop checking for arrival
       killAnonymousEventHandler(checkArrivalHandler)
+      -- arrival message
+      cecho("<red>Arrived<reset>" ... target)
       -- Advance to the next quest step
       advanceQuestStep()
     end
