@@ -24,7 +24,7 @@
     "name": "action_search_npc"
   },
   {
-    "name": "questlist"
+    "name": "questList"
   },
   {
     "name": "checkQuestProgress"
