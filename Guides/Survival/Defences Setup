@@ -253,3 +253,8 @@ fillcache # type      Fluidcache! Just use fillcache followed by the number of t
                       line may be gagged, so just check your FC before and after purchasing!
                       **NOTE** This will buy the amount of refills, so to fill your cache(1500)
                       you will only need to purchase 30 refills!
+
+buypills 10
+fillcache 30 venoms
+fillcache 30 poultices
+fillcache 30 elixirs
