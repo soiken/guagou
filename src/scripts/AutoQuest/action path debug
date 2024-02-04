@@ -1,0 +1,110 @@
+H:3380 M:3129 [cdb eb] [none]nekiosquest
+PATH TRACK Arbothia
+Going to Arbothia
+Distance to Scenic path: 4.
+Path: w, w, w, w
+You start speedwalking.
+H:3380 M:3129 [cdb eb] [none]
+You travel west to 'The peak of an arched sandstone bridge'.
+You have 3 room(s) left to travel. PATH STOP to halt.
+You travel west to 'Silverain bridge near Arbothia'.
+You have 2 room(s) left to travel. PATH STOP to halt.
+H:3380 M:3129 [cdb eb] [none]
+Arrived Arbothia
+Advance Quest Step Arbothia
+PATH TRACK 15172
+going to 15172
+Current Quest: QUEST_ARBOTHIA_BAKER_FISHERMAN
+Step: 2/12
+Action: pathArrived Arbothia
+Advance Quest Step Arbothia
+greet 61781
+3
+PATH TRACK 15139
+going to 15139
+Current Quest: QUEST_ARBOTHIA_BAKER_FISHERMAN
+Step: 5/12
+Action: pathArrived Arbothia
+Advance Quest Step Arbothia
+give flatbread to 183331
+Current Quest: QUEST_ARBOTHIA_BAKER_FISHERMAN
+Step: 6/12
+Action: giveArrived Arbothia
+Advance Quest Step Arbothia
+PATH TRACK 15172
+going to 15172
+Current Quest: QUEST_ARBOTHIA_BAKER_FISHERMAN
+Step: 7/12
+Action: pathArrived Arbothia
+Advance Quest Step Arbothia
+give fish to 183331
+Current Quest: QUEST_ARBOTHIA_BAKER_FISHERMAN
+Step: 8/12
+Action: giveArrived Arbothia
+Advance Quest Step Arbothia
+greet 183331
+1
+PATH TRACK 15139
+going to 15139
+Current Quest: QUEST_ARBOTHIA_BAKER_FISHERMAN
+Step: 11/12
+Action: path
+You travel west to 'Scenic path near a giant chasm'.
+You have 1 room(s) left to travel. PATH STOP to halt.
+Scenic path.
+Rain pours down from the sky, the dawn's light filtering dimly through the cloud cover. A missing
+child poster has been tacked up here. A sigil in the shape of a small, rectangular monolith is on 
+the ground. A harvested hemp plant has been carelessly left here. An indigo nightfire butterfly 
+flits about randomly. 
+You see exits leading east and southwest.
+[HINT]: This is an interesting hemp plant. That might make for some great rope!
+You have reached your destination.
+H:3380 M:3129 [cdb eb] [none]
+Entering: Arbothia
+ Level Range: 85-95
+Possible Targets:
+ an enraged female servant
+ an enraged male servant
+ an enraged female villager
+ an enraged male villager
+
+ Level Range: 85-95
+Possible Targets:
+ an enraged female servant
+ an enraged male servant
+ an enraged female villager
+ an enraged male villager [none]
+You cannot find a new path so soon.
+H:3380 M:3129 [cdb eb] [none]
+You greet those around you with a smile.
+H:3380 M:3129 [cdb eb] [none]
+Your input, '3' is not a valid command. Type HELP BASECOMMANDS for a list of common commands.
+H:3380 M:3129 [cdb eb] [none]
+You cannot find a new path so soon.
+H:3380 M:3129 [cdb eb] [none]
+You can find no such target as '183331'.
+H:3380 M:3129 [cdb eb] [none]
+You cannot find a new path so soon.
+H:3380 M:3129 [cdb eb] [none]
+You can find no such target as '183331'.
+H:3380 M:3129 [cdb eb] [none]
+You greet those around you with a smile.
+H:3380 M:3129 [cdb eb] [none]
+Your input, '1' is not a valid command. Type HELP BASECOMMANDS for a list of common commands.
+H:3380 M:3129 [cdb eb] [none]
+You cannot find a new path so soon.
+H:3380 M:3129 [cdb eb] [none]
+H:3380 M:3129 [cdb eb] [none]
+this is timer #1 going off 3s after being made
+ 
+H:3380 M:3129 [cdb eb] [none]
+this is timer #1 going off 3s after being made
+this is timer #1 going off 3s after being made
+this is timer #1 going off 3s after being made
+this is timer #1 going off 3s after being made
+Drops of rain fall to the ground from a sky grey with pregnant clouds.
+H:3380 M:3129 [cdb eb] [none]
+The loud sound of thunder rolls through the skies, shaking the air around you.
+H:3380 M:3129 [cdb eb] [none]
+Occasional raindrops fall on your head as the drizzle continues.
+H:3380 M:3129 [cdb eb] [none]

@@ -5,10 +5,14 @@ function action_path(target)
   if isRoomId then
     -- Target is a room ID, send path command for room
     send("PATH TRACK " .. target)
+    cecho("<yellow>going to <reset>" .. target.. "\n")
   else
     -- Target is an area name, send path command for area
     send("PATH TRACK " .. target)
+    cecho("<yellow>Going to <reset>" .. target.. "\n")
   end
+  
+  tempTimer(3, [[ echo("this is timer #1 going off 3s after being made\n") ]])
 
   -- Function to check if the character has arrived at the target location
   local function checkArrival()
@@ -20,20 +24,21 @@ function action_path(target)
       -- Check if current room ID matches target room ID
       hasArrived = currentRoomId:find(target)
     else
-      -- Check if current area name partially matches target area name (case-insensitive)
-      hasArrived = currentArea:lower():find(target:lower(), 1, true)
+      -- Check if target area name partially matches current area name (case-insensitive)
+      hasArrived = target:lower():find(currentArea:lower(), 1, true)
     end
 
     if hasArrived then
       -- Unregister the event handler to stop checking for arrival
       killAnonymousEventHandler(checkArrivalHandler)
       -- arrival message
-      cecho("<red>Arrived<reset>" ... target)
+      cecho("<yellow>Arrived <reset>" .. target.."\n")
       -- Advance to the next quest step
+      cecho("<yellow>Advance Quest Step <reset>\n")
       advanceQuestStep()
+      checkQuestProgress()
     end
   end
-
 
   -- Register the event handler to continuously check for arrival
   -- Note: You need to ensure 'gmcp.Room.Info' is correctly subscribed and handled in your Mudlet profile
