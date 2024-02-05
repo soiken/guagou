@@ -21,7 +21,7 @@ local elixirs = {
         snd.send("fc consume " .. elixir)
         currentIndex = currentIndex + 1
     
-        tempTimer(0.5, consumeNextElixir) -- Wait for 0.5 seconds before consuming the next elixir
+        tempTimer(1, consumeNextElixir) -- Wait for 0.5 seconds before consuming the next elixir
     end
     
     consumeNextElixir() -- Start consuming the first elixir

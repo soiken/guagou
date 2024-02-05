@@ -1,22 +1,22 @@
 [
   {
-    "name": "Buying Fluids",
+    "name": "buyNextFluidType",
     "regex": "^fillcache (\\d+) (elixirs|poultices|venoms)$"
   },
   {
-    "name": "Filling Elixirs!",
+    "name": "fillNextElixir",
     "regex": "^fillvials$"
   },
   {
-    "name": "Consuming Elixirs",
+    "name": "consumeNextElixir",
     "regex": "^unfillvials$"
   },
   {
-    "name": "Filling Poultices",
+    "name": "fillNextPoultice",
     "regex": "^fillbandages$"
   },
   {
-    "name": "Consuming Poultices",
+    "name": "consumeNextPoultice",
     "regex": "^unfillbandages$"
   },
   {
@@ -24,11 +24,11 @@
     "regex": "^priceall (\\w+) (\\d+) (\\d+)$"
   },
   {
-    "name": "Buying pills",
+    "name": "buyNextPill",
     "regex": "^buypills (\\d+)$"
   },
   {
-    "name": "Consuming Pills",
+    "name": "consumeNextPill",
     "regex": "^unfillpills (\\d+)$"
   }
 ]

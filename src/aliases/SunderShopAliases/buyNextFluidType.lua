@@ -63,7 +63,7 @@ local fluid_types = {
           currentAmount = 0
       end
   
-      tempTimer(0.5, buyNextFluidType) -- Wait for 0.5 seconds before buying the next one
+      tempTimer(1, buyNextFluidType) -- Wait for 0.5 seconds before buying the next one
   end
   
   buyNextFluidType() -- Start buying the first fluid type
