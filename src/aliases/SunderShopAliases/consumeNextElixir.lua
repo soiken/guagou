@@ -7,6 +7,8 @@ local elixirs = {
     "frost",
     "speed",
     "vigor",
+    "infusion",
+    "purgative"
     }
     
     local currentIndex = 1

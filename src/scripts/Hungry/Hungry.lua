@@ -8,14 +8,19 @@ local currentHungerIndex = 1
 
 function handleHunger()
   local roomNum = gmcp.Room.Info.num or 0
-  if currentHungerIndex <= #hungerCommands then
+  while currentHungerIndex <= #hungerCommands do
       if roomNum == hungerCommands[currentHungerIndex].num then
           for _, command in ipairs(hungerCommands[currentHungerIndex].commands) do
               send(command)
           end
           currentHungerIndex = currentHungerIndex + 1
+      else
+          -- Break the loop if the room doesn't match
+          break
       end
-  else
-      mmp.pause("off")
+  end
+  if currentHungerIndex > #hungerCommands then
+      -- All commands have finished, you can reset the index or take further action
+      currentHungerIndex = 1
   end
 end

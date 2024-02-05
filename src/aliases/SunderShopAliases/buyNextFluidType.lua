@@ -32,7 +32,9 @@ local fluid_types = {
     "antivenin",
     "frost",
     "speed",
-    "vigor",
+    "vigor",,
+    "purgative",
+    "infusion"
     },
     
     poultices = {
@@ -41,6 +43,7 @@ local fluid_types = {
     "restoration",
     "caloric",
     "epidermal",
+    "soothing"
     },
   }
   
