@@ -5,7 +5,6 @@ local commands = {
     "touch Cloak",
     "touch Chameleon Lolita",
     "touch Starburst",
-    "touch bell",
     "touch Flame",
     "touch Feather",
     "touch starburst",
@@ -15,12 +14,23 @@ local commands = {
     "touch necklace",
     "touch chainmail",
     "fabricate brutaliser",
+    "PATH TRACK 14395",
+    expandAlias("buypills 10"),
+    expandAlias("fillcache 30 venoms"),
+    expandAlias("fillcache 30 poultices"),
+    expandAlias("fillcache 30 elixirs"),
+    "PATH TRACK 14507",
+    expandAlias("fillcache 30 venoms"),
+    expandAlias("fillcache 30 poultices"),
+    expandAlias("fillcache 30 elixirs"),
     "PATH TRACK 12668",
     "buy 1 design19116",
     "buy 1 bandage",
     "PATH TRACK 12678",
-    "buy refill of epidermal for fluidcache",
-    "buy 10 thanatonin",
+    expandAlias("fillcache 30 venoms"),
+    expandAlias("fillcache 30 poultices"),
+    expandAlias("fillcache 30 elixirs"),
+    "buypills 10",
     "PATH TRACK 13032",
     "buy 10 reishi",
     "put reishi in pipe",
@@ -29,79 +39,10 @@ local commands = {
     "dodge all",
     "mount brutaliser",
     "fabricate Eviscerator",
-    "PATH TRACK 14507",
-    "buy refill OF speed FOR fluidcache",
-    "buy refill OF speed FOR fluidcache",
-    "buy refill OF speed FOR fluidcache",
-    "buy refill OF speed FOR fluidcache",
-    "buy refill OF speed FOR fluidcache",
-    "buy refill of caloric for fluidcache",
-    "buy refill of caloric for fluidcache",
-    "buy refill of caloric for fluidcache",
-    "buy refill of caloric for fluidcache",
-    "buy refill of caloric for fluidcache",
     "PATH TRACK 14393",
-    "buy refill of mending for fluidcache",
-    "buy refill of mending for fluidcache",
-    "buy refill of mending for fluidcache",
-    "buy refill of mending for fluidcache",
-    "buy refill of mending for fluidcache",
-    "PATH TRACK 14395",
-    "buy 10 Stimulant",
-    "buy 10 amaurosis",
-    "buy 10 ototoxin",
-    "buy 10 eucrasia",
-    "buy 10 steroid",
-    "buy 10 stimulant",
-    "buy 10 depressant",
-    "buy 10 panacea",
-    "buy 10 acuity",
-    "buy 10 kawhe",
-    "buy 10 antipsychotic",
-    "buy 10 decongestant",
-    "buy 10 coagulation",
-    "buy 10 opiate",
-    "buy 10 euphoriant",
-    "buy refill of darkshade for fluidcache",
-    "buy refill of darkshade for fluidcache",
-    "buy refill of darkshade for fluidcache",
-    "buy refill of darkshade for fluidcache",
-    "buy refill of darkshade for fluidcache",
-    "buy refill of antivenin for fluidcache",
-    "buy refill of antivenin for fluidcache",
-    "buy refill of antivenin for fluidcache",
-    "buy refill of antivenin for fluidcache",
-    "buy refill of antivenin for fluidcache",
-    "buy refill of levitation for fluidcache",
-    "buy refill of levitation for fluidcache",
-    "buy refill of levitation for fluidcache",
-    "buy refill of levitation for fluidcache",
-    "buy refill of levitation for fluidcache",
-    "buy refill of frost for fluidcache",
-    "buy refill of frost for fluidcache",
-    "buy refill of frost for fluidcache",
-    "buy refill of frost for fluidcache",
-    "buy refill of frost for fluidcache",
-    "buy refill of health for fluidcache",
-    "buy refill of health for fluidcache",
-    "buy refill of health for fluidcache",
-    "buy refill of health for fluidcache",
-    "buy refill of health for fluidcache",
-    "buy refill of mana for fluidcache",
-    "buy refill of mana for fluidcache",
-    "buy refill of mana for fluidcache",
-    "buy refill of mana for fluidcache",
-    "buy refill of mana for fluidcache",
-    "buy refill of Mass for fluidcache",
-    "buy refill of Mass for fluidcache",
-    "buy refill of Mass for fluidcache",
-    "buy refill of Mass for fluidcache",
-    "buy refill of Mass for fluidcache",
-    "buy refill of restoration for fluidcache",
-    "buy refill of restoration for fluidcache",
-    "buy refill of restoration for fluidcache",
-    "buy refill of restoration for fluidcache",
-    "buy refill of restoration for fluidcache",
+    expandAlias("fillcache 30 venoms"),
+    expandAlias("fillcache 30 poultices"),
+    expandAlias("fillcache 30 elixirs"),
     "BUY RECHARGE OF resistance on ring",
     "BUY RECHARGE OF cold on ring",
     "BUY RECHARGE OF electric on ring",
@@ -109,21 +50,15 @@ local commands = {
     "BUY RECHARGE OF allsight on necklace",
     "BUY RECHARGE OF waterwalking on bracelet",
     "PATH TRACK 22627",
-    "buy refill OF vigor FOR fluidcache",
-    "buy refill OF vigor FOR fluidcache",
-    "buy refill OF vigor FOR fluidcache",
-    "buy refill OF vigor FOR fluidcache",
-    "buy refill OF vigor FOR fluidcache",
+    expandAlias("fillcache 30 venoms"),
+    expandAlias("fillcache 30 poultices"),
+    expandAlias("fillcache 30 elixirs"),
     "BUY RECHARGE OF purity on chainmail",
-    "drink antivenin",
-    "drink levitation",
-    "drink speed",
-    "drink frost",
-    "drink vigor",
-    "eat thanatonin",
-    "eat Stimulant",
-    "eat amaurosis",
-    "eat ototoxin",
+    expandAlias("fillvials"),
+    expandAlias("unfillvials"),
+    expandAlias("fillbandages"),
+    expandAlias("unfillbandages"),
+    expandAlias("unfillpills"),
     "lithe on",
     "coagulation on",
     "inspirited on",
@@ -146,6 +81,7 @@ local pathTrackCommand = nil
 local pathTrackTargetNum = nil
 
 -- Function to send the next command in the list
+-- Function to send the next command in the list
 function sendNextCommand()
     if #commands == 0 then
         automationRunning = false
@@ -160,18 +96,24 @@ function sendNextCommand()
     end
 
     local command = table.remove(commands, 1) -- Get the next command from the list
-    if string.match(command, "PATH TRACK") then
-        pathTrackCommand = command
-        pathTrackTargetNum = tonumber(string.match(command, "%d+")) -- Extract the target room number
-        send(command) -- Send the "PATH TRACK" command immediately
-        cecho("<green>Sending PATH TRACK: " .. command .. "<reset>\n")
-        tempTimer(1.5, checkPathTrack)
+
+    if string.match(command, "expandAlias") then
+        send(expandAlias(command))
     else
-        send(command) -- Send non-"PATH TRACK" command immediately
-        cecho("<green>Sending: " .. command .. "<reset>\n")
-        tempTimer(3, sendNextCommand) -- Wait for 3 seconds before sending the next command
+        if string.match(command, "PATH TRACK") then
+            pathTrackCommand = command
+            pathTrackTargetNum = tonumber(string.match(command, "%d+")) -- Extract the target room number
+            send(command) -- Send the "PATH TRACK" command immediately
+            cecho("<green>Sending PATH TRACK: " .. command .. "<reset>\n")
+            tempTimer(1.5, checkPathTrack)
+        else
+            send(command) -- Send non-"PATH TRACK" command immediately
+            cecho("<green>Sending: " .. command .. "<reset>\n")
+            tempTimer(3, sendNextCommand) -- Wait for 3 seconds before sending the next command
+        end
     end
 end
+
 
 -- Function to check if the current room matches the target room number
 function checkPathTrack()

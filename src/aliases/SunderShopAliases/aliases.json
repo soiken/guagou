@@ -26,5 +26,9 @@
   {
     "name": "Buying pills",
     "regex": "^buypills (\\d+)$"
+  },
+  {
+    "name": "Consuming Pills",
+    "regex": "^unfillpills (\\d+)$"
   }
 ]
