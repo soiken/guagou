@@ -1,49 +1,63 @@
 # Constants
-total_seconds = 10 * 60 * 60  # 10 hours in seconds
+total_time = 36000  # Total available time in seconds (10 hours)
 transition_time = 0.5  # Time to move between rooms in seconds
+vermin_per_hour = 3  # Maximum vermin appearances per room per hour
+hour_in_seconds = 3600  # Number of seconds in an hour
 
-# Scenarios: Stay durations in seconds (excluding the extreme of infinite waiting)
-stay_durations = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]  # Different fixed intervals to evaluate
+# Stay durations to evaluate, in seconds
+stay_durations = [1, 5, 10, 15, 30, 60, 120]
 
-# Calculate expected gain for different stay durations
-def calculate_visits_and_time(stay_duration, total_seconds, transition_time):
-    total_time_per_room = stay_duration + transition_time
-    total_visits = total_seconds / total_time_per_room
-    return total_visits, total_visits * total_time_per_room
+# Function to calculate rooms visited and expected vermin encounters
+def calculate_metrics(stay_duration):
+    # Calculate the total time per room visit, including transition
+    total_time_per_visit = stay_duration + transition_time
+    # Calculate the number of rooms visited
+    rooms_visited = total_time / total_time_per_visit
+    # Estimate expected vermin encounters based on stay duration
+    expected_vermin_per_visit = min((stay_duration / hour_in_seconds) * vermin_per_hour, vermin_per_hour)
+    # Total expected vermin encounters
+    total_expected_vermin = rooms_visited * expected_vermin_per_visit
+    return rooms_visited, total_expected_vermin
 
-# Evaluate each scenario
-results = {stay_duration: calculate_visits_and_time(stay_duration, total_seconds, transition_time) for stay_duration in stay_durations}
+# Calculate and store results for each stay duration
+results = {duration: calculate_metrics(duration) for duration in stay_durations}
 
-print(results)
+results
 
 
-1: (24000.0, 36000.0
-2: (14400.0, 36000.0
-3: (10285.714285714286, 36000.0
-4: (8000.0, 36000.0
-5: (6545.454545454545, 36000.0
-6: (5538.461538461538, 36000.0
-7: (4800.0, 36000.0
-8: (4235.294117647059, 36000.0
-9: (3789.4736842105262, 36000.0
-10: (3428.5714285714284, 36000.0
-11: (3130.4347826086955, 36000.0
-12: (2880.0, 36000.0
-13: (2666.6666666666665, 36000.0
-14: (2482.7586206896553, 36000.0
-15: (2322.5806451612902, 36000.0
-16: (2181.818181818182, 36000.0
-17: (2057.1428571428573, 36000.0
-18: (1945.945945945946, 36000.0
-19: (1846.1538461538462, 36000.0
-20: (1756.0975609756097, 36000.0
-21: (1674.4186046511627, 36000.0
-22: (1600.0, 36000.0
-23: (1531.9148936170213, 36000.0
-24: (1469.3877551020407, 36000.0
-25: (1411.764705882353, 36000.0
-26: (1358.4905660377358, 36000.0
-27: (1309.090909090909, 36000.0
-28: (1263.157894736842, 36000.0
-29: (1220.3389830508474, 36000.0
-30: (1180.327868852459, 36000.0)}
+
+Timer (run this every 13 seconds)
+
+-- Call this function when you enter a new room or after moving to the next room
+function setupRoomTimer()
+  if snd.verminCount < 3 then
+    -- Set a timer for 13 seconds to move to the next room
+    tempTimer(13, function()
+      snd.move() -- Your function to move to the next room
+      snd.verminCount = 0 -- Reset the count for the new room
+    end)
+  end
+end
+
+-- Ensure this is called each time you enter a new room
+setupRoomTimer()
+
+
+New Script
+
+if snd.toggles.vermin then
+  if snd.toggles.newbie then
+    send("k vermin")
+  else
+    -- Define your attack logic here
+    snd.bashing.target = "vermin"
+    -- Your attack commands and logic here
+  end
+  snd.verminCount = (snd.verminCount or 0) + 1 -- Initialize if nil and increment the vermin count
+  -- Check if 3 vermin have been defeated to move immediately
+  if snd.verminCount >= 3 then
+    snd.move() -- Your function to move to the next room
+    -- Reset vermin count for the new room
+    snd.verminCount = 0
+  end
+end

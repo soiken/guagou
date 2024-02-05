@@ -18,7 +18,7 @@ if snd.toggles.vermin then
     end
   end
   snd.vermin = snd.vermin + 1
-  if snd.vermin >= 1 then
+  if snd.vermin >= 3 then
    if snd.toggles.vermin == true then
            if bot.going then
         tempTimer(1, snd.move)
