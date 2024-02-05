@@ -96,7 +96,11 @@
         "type": "regex"
       },
       {
-        "pattern": "^Cabalist Ghada nods curtly at you.*",
+        "pattern": "Cabalist Ghada nods curtly at you.",
+        "type": "regex"
+      },
+      {
+        "pattern": "Archivist Ghada nods curtly at you.",
         "type": "regex"
       }
     ]

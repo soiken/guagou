@@ -1,2 +1,0 @@
-snd.move()
-disableTimer("moveroom")
