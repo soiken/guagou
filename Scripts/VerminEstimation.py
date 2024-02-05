@@ -45,19 +45,74 @@ setupRoomTimer()
 
 New Script
 
+-- Initialize variables if not already set
+snd.verminCount = snd.verminCount or 0
+snd.lastVerminTime = snd.lastVerminTime or os.time()
+snd.spawnRates = snd.spawnRates or {}
+
+-- Function to update spawn rate tracking
+function updateSpawnRate()
+  local currentTime = os.time()
+  local timeSinceLastVermin = currentTime - snd.lastVerminTime
+  table.insert(snd.spawnRates, timeSinceLastVermin)
+  snd.lastVerminTime = currentTime
+  
+  -- Calculate the average spawn rate if we have enough data
+  if #snd.spawnRates > 3 then -- Using 3 for basic trend analysis, adjust as needed
+    local sum = 0
+    for _, duration in ipairs(snd.spawnRates) do
+      sum = sum + duration
+    end
+    local averageSpawnRate = sum / #snd.spawnRates
+    adjustMovementStrategy(averageSpawnRate)
+  end
+end
+
+-- Function to adjust movement based on observed spawn rate
+function adjustMovementStrategy(averageSpawnRate)
+  -- Here you can define how to adjust your strategy based on the average spawn rate.
+  -- For simplicity, this example will just print the adjustment plan.
+  print("Adjusting strategy based on average spawn rate of: " .. averageSpawnRate .. " seconds")
+  
+  -- Example: If vermin spawn quickly, consider staying shorter. If slow, consider the full duration.
+  if averageSpawnRate < 30 then
+    -- Vermin spawn quickly, adjust timer for shorter stays if it's significantly faster than our current strategy
+    setupRoomTimer(math.max(5, averageSpawnRate)) -- Stay at least 5 seconds
+  else
+    -- Vermin spawn slowly, stick to the standard strategy (e.g., 13 seconds)
+    setupRoomTimer(13)
+  end
+end
+
+-- Timer setup function with dynamic stay duration
+function setupRoomTimer(stayDuration)
+  stayDuration = stayDuration or 13 -- Default to 13 seconds if not specified
+  if snd.roomTimer then killTimer(snd.roomTimer) end -- Reset the timer if it exists
+  snd.roomTimer = tempTimer(stayDuration, function()
+    snd.move()
+    snd.verminCount = 0
+    -- Reset tracking for the new room
+    snd.lastVerminTime = os.time()
+    snd.spawnRates = {}
+  end)
+end
+
+-- Vermin encounter logic
 if snd.toggles.vermin then
   if snd.toggles.newbie then
     send("k vermin")
   else
-    -- Define your attack logic here
-    snd.bashing.target = "vermin"
-    -- Your attack commands and logic here
+    -- Your existing attack logic
   end
-  snd.verminCount = (snd.verminCount or 0) + 1 -- Initialize if nil and increment the vermin count
-  -- Check if 3 vermin have been defeated to move immediately
+  snd.verminCount = snd.verminCount + 1
+  updateSpawnRate() -- Update spawn rate tracking with each vermin encounter
+  
+  -- Immediate move if 3 vermin have been defeated
   if snd.verminCount >= 3 then
-    snd.move() -- Your function to move to the next room
-    -- Reset vermin count for the new room
+    snd.move()
     snd.verminCount = 0
+    snd.lastVerminTime = os.time() -- Reset for the new room
+    snd.spawnRates = {}
   end
 end
+
