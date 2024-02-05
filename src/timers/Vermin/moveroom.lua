@@ -1,0 +1,2 @@
+snd.move()
+disableTimer("moveroom")
