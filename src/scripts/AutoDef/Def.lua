@@ -15,21 +15,21 @@ local commands = {
     "touch chainmail",
     "fabricate brutaliser",
     "PATH TRACK 14395",
-    expandAlias("buypills 10"),
-    expandAlias("fillcache 30 venoms"),
-    expandAlias("fillcache 30 poultices"),
-    expandAlias("fillcache 30 elixirs"),
+    "buypills 5",
+    "fillcache 10 venoms",
+    "fillcache 10 poultices",
+    "fillcache 10 elixirs",
     "PATH TRACK 14507",
-    expandAlias("fillcache 30 venoms"),
-    expandAlias("fillcache 30 poultices"),
-    expandAlias("fillcache 30 elixirs"),
+    "fillcache 10 venoms",
+    "fillcache 10 poultices",
+    "fillcache 10 elixirs",
     "PATH TRACK 12668",
     "buy 1 design19116",
     "buy 1 bandage",
     "PATH TRACK 12678",
-    expandAlias("fillcache 30 venoms"),
-    expandAlias("fillcache 30 poultices"),
-    expandAlias("fillcache 30 elixirs"),
+    "fillcache 10 venoms",
+    "fillcache 10 poultices",
+    "fillcache 10 elixirs",
     "buypills 10",
     "PATH TRACK 13032",
     "buy 10 reishi",
@@ -40,9 +40,9 @@ local commands = {
     "mount brutaliser",
     "fabricate Eviscerator",
     "PATH TRACK 14393",
-    expandAlias("fillcache 30 venoms"),
-    expandAlias("fillcache 30 poultices"),
-    expandAlias("fillcache 30 elixirs"),
+    "fillcache 10 venoms",
+    "fillcache 10 poultices",
+    "fillcache 10 elixirs",
     "BUY RECHARGE OF resistance on ring",
     "BUY RECHARGE OF cold on ring",
     "BUY RECHARGE OF electric on ring",
@@ -50,15 +50,15 @@ local commands = {
     "BUY RECHARGE OF allsight on necklace",
     "BUY RECHARGE OF waterwalking on bracelet",
     "PATH TRACK 22627",
-    expandAlias("fillcache 30 venoms"),
-    expandAlias("fillcache 30 poultices"),
-    expandAlias("fillcache 30 elixirs"),
+    "fillcache 10 venoms",
+    "fillcache 10 poultices",
+    "fillcache 10 elixirs",
     "BUY RECHARGE OF purity on chainmail",
-    expandAlias("fillvials"),
-    expandAlias("unfillvials"),
-    expandAlias("fillbandages"),
-    expandAlias("unfillbandages"),
-    expandAlias("unfillpills"),
+    "fillvials",
+    "unfillvials",
+    "fillbandages",
+    "unfillbandages",
+    "unfillpills",
     "lithe on",
     "coagulation on",
     "inspirited on",
@@ -81,12 +81,10 @@ local pathTrackCommand = nil
 local pathTrackTargetNum = nil
 
 -- Function to send the next command in the list
--- Function to send the next command in the list
 function sendNextCommand()
     if #commands == 0 then
         automationRunning = false
-        cecho("<red>Automation completed. No more commands to execute.<reset>\n")
-        snd.runPath("custom")
+        cecho("&lt;red&gt;Automation completed. No more commands to execute.&lt;reset&gt;\n")
         return
     end
 
@@ -97,19 +95,22 @@ function sendNextCommand()
 
     local command = table.remove(commands, 1) -- Get the next command from the list
 
-    if string.match(command, "expandAlias") then
-        send(expandAlias(command))
+    if string.find(command, "^buypills") or string.find(command, "^fillcache") or string.find(command, "^fillvials")
+      or string.find(command, "^unfillvials") or string.find(command, "^fillbandages") or string.find(command, "^unfillbandages") or string.find(command, "^unfillpills") 
+    then
+        expandAlias(command)
+        tempTimer(3.5, sendNextCommand) -- Wait for 2 seconds before sending the next command
     else
         if string.match(command, "PATH TRACK") then
             pathTrackCommand = command
             pathTrackTargetNum = tonumber(string.match(command, "%d+")) -- Extract the target room number
             send(command) -- Send the "PATH TRACK" command immediately
             cecho("<green>Sending PATH TRACK: " .. command .. "<reset>\n")
-            tempTimer(1.5, checkPathTrack)
+            tempTimer(1, checkPathTrack)
         else
             send(command) -- Send non-"PATH TRACK" command immediately
             cecho("<green>Sending: " .. command .. "<reset>\n")
-            tempTimer(3, sendNextCommand) -- Wait for 3 seconds before sending the next command
+            tempTimer(1.5, sendNextCommand) -- Wait for 2 seconds before sending the next command
         end
     end
 end

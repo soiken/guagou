@@ -18,7 +18,7 @@ local function fillNextPoultice()
     snd.send("fc fill " .. poultice)
     currentIndex = currentIndex + 1
 
-    tempTimer(0.5, fillNextPoultice) -- Wait for 0.5 seconds before filling the next poultice
+    tempTimer(1, fillNextPoultice) -- Wait for 0.5 seconds before filling the next poultice
 end
 
 fillNextPoultice() -- Start filling the first poultice
