@@ -30,5 +30,13 @@
   {
     "name": "consumeNextPill",
     "regex": "^unfillpills (\\d+)$"
+  },
+  {
+    "name": "eatNextPill",
+    "regex": "^eatpills (\\d+)$"
+  },
+  {
+    "name": "drinkNextElixir",
+    "regex": "^drinkelixirs (\\d+)$"
   }
 ]

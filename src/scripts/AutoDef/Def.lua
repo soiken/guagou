@@ -59,6 +59,8 @@ local commands = {
     "fillbandages",
     "unfillbandages",
     "unfillpills",
+    "eatpills",
+    "drinkelixirs",
     "lithe on",
     "coagulation on",
     "inspirited on",
