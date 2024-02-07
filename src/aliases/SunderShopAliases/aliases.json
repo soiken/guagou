@@ -37,6 +37,6 @@
   },
   {
     "name": "drinkNextElixir",
-    "regex": "^drinkelixirs$"
+    "regex": "^needmaelixirs$"
   }
 ]
