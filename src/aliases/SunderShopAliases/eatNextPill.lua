@@ -22,7 +22,7 @@ local pills = {
     
 local currentIndex = 1
 
-local function consumeNextPill()
+local function eatNextPill()
     if currentIndex > #pills then
         -- All pills have been bought
         return
@@ -32,7 +32,7 @@ local function consumeNextPill()
     snd.send("eat " .. matches[2] .. " " .. pill)
     currentIndex = currentIndex + 1
 
-    tempTimer(1, consumeNextPill) -- Wait for 0.5 seconds before buying the next pill
+    tempTimer(1, eatNextPill) -- Wait for 0.5 seconds before buying the next pill
 end
 
-consumeNextPill() -- Start buying the first pill
+eatNextPill() -- Start buying the first pill

@@ -99,7 +99,7 @@ function sendNextCommand()
       or string.find(command, "^unfillvials") or string.find(command, "^fillbandages") or string.find(command, "^unfillbandages") or string.find(command, "^unfillpills") 
     then
         expandAlias(command)
-        tempTimer(3.5, sendNextCommand) -- Wait for 2 seconds before sending the next command
+        tempTimer(5, sendNextCommand) -- Wait for 2 seconds before sending the next command
     else
         if string.match(command, "PATH TRACK") then
             pathTrackCommand = command
