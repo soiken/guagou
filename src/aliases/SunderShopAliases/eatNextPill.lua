@@ -29,10 +29,10 @@ local function eatNextPill()
     end
 
     local pill = pills[currentIndex]
-    snd.send("eat " .. matches[2] .. " " .. pill)
+    snd.send("eat " .. pill)
     currentIndex = currentIndex + 1
 
-    tempTimer(1, eatNextPill) -- Wait for 0.5 seconds before buying the next pill
+    tempTimer(2, eatNextPill) -- Wait for 0.5 seconds before buying the next pill
 end
 
 eatNextPill() -- Start buying the first pill

@@ -32,7 +32,7 @@ local fluid_types = {
     "antivenin",
     "frost",
     "speed",
-    "vigor",,
+    "vigor",
     "purgative",
     "infusion"
     },

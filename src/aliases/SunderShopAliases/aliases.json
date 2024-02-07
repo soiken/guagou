@@ -33,10 +33,10 @@
   },
   {
     "name": "eatNextPill",
-    "regex": "^eatpills (\\d+)$"
+    "regex": "^needmapills$"
   },
   {
     "name": "drinkNextElixir",
-    "regex": "^drinkelixirs (\\d+)$"
+    "regex": "^drinkelixirs$"
   }
 ]
