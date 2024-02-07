@@ -83,7 +83,7 @@ local pathTrackTargetNum = nil
 function sendNextCommand()
     if #commands == 0 then
         automationRunning = false
-        cecho("&lt;red&gt;Automation completed. No more commands to execute.&lt;reset&gt;\n")
+        cecho("<red>Automation completed. No more commands to execute.<reset>\n")
         return
     end
 
@@ -96,6 +96,7 @@ function sendNextCommand()
 
     if string.find(command, "^buypills") or string.find(command, "^fillcache") or string.find(command, "^fillvials")
       or string.find(command, "^unfillvials") or string.find(command, "^fillbandages") or string.find(command, "^unfillbandages") or string.find(command, "^unfillpills") 
+      or string.find(command, "^needma")
     then
         expandAlias(command)
         tempTimer(5, sendNextCommand) -- Wait for 2 seconds before sending the next command

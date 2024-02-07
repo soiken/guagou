@@ -1,5 +1,6 @@
 function sellAndRun(npc, path, nextLocation)
   snd.send("sell vermin to " .. npc)
+  snd.send("put gold in pack")
   snd.send("path track " .. path)
   if snd.toggles.vermin ~= true then
     snd.toggle("vermin")
