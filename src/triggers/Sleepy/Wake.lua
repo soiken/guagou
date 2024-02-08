@@ -1,3 +1,5 @@
 send("wake")
 send("stand")
 mmp.pause("off")
+snd_bashArea()
+snd.toggle("fasthunt")
