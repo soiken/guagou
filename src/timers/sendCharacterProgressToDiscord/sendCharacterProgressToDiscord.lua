@@ -1,1 +1,1 @@
-sendCharacterProgressToDiscord()
+sendToDiscordWebhook(null, null, message)

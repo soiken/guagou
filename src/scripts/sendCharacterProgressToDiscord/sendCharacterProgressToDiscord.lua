@@ -1,50 +1,46 @@
-local http = require("socket.http")
-local ltn12 = require("ltn12")
-
--- Discord webhook URL
-local webhook_url = "https://discord.com/api/webhooks/1205329064416641074/ore8ruGAnYVwWr5uGwjoGaAOkYz9R7OyXPowVhidqzVTQ6iaTWJmu5MSn5V7PfmMAwBh"
-
--- Function to send message to Discord
-function sendMessageToDiscord(message)
-    local payload = '{"content":"' .. message .. '"}'
-    local response_body = {}
-    local res, code, response_headers = http.request {
-        url = webhook_url,
-        method = "POST",
-        headers = {
-            ["Content-Type"] = "application/json",
-            ["Content-Length"] = payload:len()
-        },
-        source = ltn12.source.string(payload),
-        sink = ltn12.sink.table(response_body)
-    }
-end
-
--- Function to get the character name
-function getCharacterName()
-    local characterName = "Unknown"
-    if gmcp.Char and gmcp.Char.Name and gmcp.Char.Name.name then
-        characterName = gmcp.Char.Name.name
-    end
-    return characterName
-end
-
--- Function to collect and format information from ProgressDisplay
-function collectProgressInfo()
-    local info = ""
-    if ProgressDisplay then
-        info = info .. ProgressDisplay.console:getText()
-    end
-    return info
-end
-
--- Main function to send character name and progress info to Discord
-function sendCharacterProgressToDiscord()
+function sendToDiscordWebhook(discord_username, avatarurl, message)
     local characterName = getCharacterName()
-    local progressInfo = collectProgressInfo()
-    local message = characterName .. "\n" .. progressInfo
-    sendMessageToDiscord(message)
-end
+    local progressData, inventoryData = "", ""
 
--- Call the main function to send character progress to Discord
-sendCharacterProgressToDiscord()
+    -- Format experience and gold log data
+    local totalExp = 0
+    for _, expLog in ipairs(ProgressDisplay.expLog) do
+        totalExp = totalExp + expLog.amount
+    end
+    local totalGold = 0
+    for _, goldLog in ipairs(ProgressDisplay.goldLog) do
+        totalGold = totalGold + goldLog.amount
+    end
+    progressData = "Experience Gained: " .. totalExp .. "\nGold Acquired: " .. totalGold
+
+    -- Format inventory data
+    local sortedItems = {}
+    for id, item in pairs(inv) do
+        table.insert(sortedItems, {name = item.name, id = id})
+    end
+    table.sort(sortedItems, function(a, b) return a.name < b.name end)
+    for _, item in ipairs(sortedItems) do
+        inventoryData = inventoryData .. "\n" .. item.name
+    end
+    if inventoryData == "" then inventoryData = "Inventory is empty" end
+
+    -- Combine all data into the message content
+    local message = characterName .. "\n\n" .. progressData --.. "\n\nInventory:\n" .. inventoryData
+
+    local url = "https://discord.com/api/webhooks/1205329064416641074/ore8ruGAnYVwWr5uGwjoGaAOkYz9R7OyXPowVhidqzVTQ6iaTWJmu5MSn5V7PfmMAwBh"
+    local data = {
+        username = discord_username, 
+        avatar_url = avatarurl,
+        content = message
+    }
+    local header = {
+        ["Content-Type"] = "application/json",
+    }
+  
+    local success, errorMessage = pcall(postHTTP, yajl.to_string(data), url, header)
+    if not success then
+        cecho("<red>Error sending message to Discord: " .. errorMessage .. "\n")
+    else
+        cecho("<green>Message sent to Discord successfully.\n")
+    end
+end
