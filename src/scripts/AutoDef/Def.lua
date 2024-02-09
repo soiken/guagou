@@ -1,7 +1,7 @@
 echo("Initialization\n")
 
 local commands = {
-    "envenom weapon with darkshade",
+    "envenom weapon with camus",
     "touch Cloak",
     "touch Chameleon Lolita",
     "touch Starburst",

@@ -1,5 +1,6 @@
 local fluid_types = {
     venoms = {
+    "camus",
     "epteth",
     "gecko",
     "epseth",
